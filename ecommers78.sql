@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 18, 2023 at 11:11 AM
+-- Generation Time: May 19, 2023 at 10:51 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -72,6 +72,45 @@ INSERT INTO `brands` (`brand_id`, `image_src`, `image_alt`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `contact_details`
+--
+
+CREATE TABLE `contact_details` (
+  `id` int(11) NOT NULL,
+  `section` varchar(20) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `phone_numbers` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `contact_details`
+--
+
+INSERT INTO `contact_details` (`id`, `section`, `email`, `phone_numbers`) VALUES
+(1, 'Start a Conversation', 'ashraf.uzzaman04082004@gmail.com', '+1 987-876-6543');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `office`
+--
+
+CREATE TABLE `office` (
+  `id` int(11) NOT NULL,
+  `section` varchar(20) DEFAULT NULL,
+  `address` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `office`
+--
+
+INSERT INTO `office` (`id`, `section`, `address`) VALUES
+(1, 'Office', '1 New York Plaza, New York, NY 10004, USA');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `slides`
 --
 
@@ -95,6 +134,29 @@ INSERT INTO `slides` (`id`, `image_src`, `image_alt`, `subtitle`, `title`, `pric
 (2, 'assets/images/demos/demo-14/slider/slide-2.jpg', 'Image Desc', 'Hottest Deals', 'Wherever You Go DJI Mavic 2 Pro', '$1,948.99', NULL, 'category.html'),
 (3, 'assets/images/demos/demo-14/slider/slide-3.jpg', 'Image Desc', 'Limited Quantities', 'Refresh Your Wardrobe', NULL, 'Summer Collection 2019', 'category.html');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `social_media`
+--
+
+CREATE TABLE `social_media` (
+  `id` int(11) NOT NULL,
+  `section` varchar(20) DEFAULT NULL,
+  `facebook_link` varchar(255) NOT NULL DEFAULT 'javascript:void(0)',
+  `twitter_link` varchar(255) NOT NULL DEFAULT 'javascript:void(0)',
+  `instagram_link` varchar(255) NOT NULL DEFAULT 'javascript:void(0)',
+  `youtube_link` varchar(255) NOT NULL DEFAULT 'javascript:void(0)',
+  `pinterest_link` varchar(255) NOT NULL DEFAULT 'javascript:void(0)'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `social_media`
+--
+
+INSERT INTO `social_media` (`id`, `section`, `facebook_link`, `twitter_link`, `instagram_link`, `youtube_link`, `pinterest_link`) VALUES
+(1, 'Social', 'https://www.facebook.com/ashraf.uzmahim/', 'javascript:void(0)', 'javascript:void(0)', 'javascript:void(0)', 'javascript:void(0)');
+
 --
 -- Indexes for dumped tables
 --
@@ -112,9 +174,27 @@ ALTER TABLE `brands`
   ADD PRIMARY KEY (`brand_id`);
 
 --
+-- Indexes for table `contact_details`
+--
+ALTER TABLE `contact_details`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `office`
+--
+ALTER TABLE `office`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `slides`
 --
 ALTER TABLE `slides`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `social_media`
+--
+ALTER TABLE `social_media`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -134,10 +214,28 @@ ALTER TABLE `brands`
   MODIFY `brand_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
+-- AUTO_INCREMENT for table `contact_details`
+--
+ALTER TABLE `contact_details`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `office`
+--
+ALTER TABLE `office`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `slides`
 --
 ALTER TABLE `slides`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `social_media`
+--
+ALTER TABLE `social_media`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -40,8 +40,10 @@
                         </a>
 
                         <div class="banner-content">
-                            <h4 class="banner-subtitle text-white"><a href="#">Best Deals</a></h4><!-- End .banner-subtitle -->
-                            <h3 class="banner-title text-white"><a href="#">Canon EOS <br>Mega Sale <br><span>Up To 20% Off</span></a></h3><!-- End .banner-title -->
+                            <h4 class="banner-subtitle text-white"><a href="#">Best Deals</a></h4>
+                            <!-- End .banner-subtitle -->
+                            <h3 class="banner-title text-white"><a href="#">Canon EOS <br>Mega Sale <br><span>Up To 20%
+                                        Off</span></a></h3><!-- End .banner-title -->
                             <a href="#" class="banner-link">Shop Now <i class="icon-long-arrow-right"></i></a>
                         </div><!-- End .banner-content -->
                     </div><!-- End .banner -->
@@ -84,7 +86,8 @@
                         </a>
 
                         <div class="product-action-vertical">
-                            <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><span>add to wishlist</span></a>
+                            <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><span>add to
+                                    wishlist</span></a>
                             <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
                             <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
                         </div><!-- End .product-action-vertical -->
@@ -98,7 +101,8 @@
                         <div class="product-cat">
                             <a href="#">Laptops</a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">MacBook Pro 13" Display, i5</a></h3><!-- End .product-title -->
+                        <h3 class="product-title"><a href="product.html">MacBook Pro 13" Display, i5</a></h3>
+                        <!-- End .product-title -->
                         <div class="product-price">
                             $1,199.99
                         </div><!-- End .product-price -->
@@ -118,7 +122,8 @@
                         </a>
 
                         <div class="product-action-vertical">
-                            <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><span>add to wishlist</span></a>
+                            <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><span>add to
+                                    wishlist</span></a>
                             <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
                             <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
                         </div><!-- End .product-action-vertical -->
@@ -132,7 +137,8 @@
                         <div class="product-cat">
                             <a href="#">Audio</a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">Bose - SoundLink Bluetooth Speaker</a></h3><!-- End .product-title -->
+                        <h3 class="product-title"><a href="product.html">Bose - SoundLink Bluetooth Speaker</a></h3>
+                        <!-- End .product-title -->
                         <div class="product-price">
                             $79.99
                         </div><!-- End .product-price -->
@@ -153,7 +159,8 @@
                         </a>
 
                         <div class="product-action-vertical">
-                            <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><span>add to wishlist</span></a>
+                            <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><span>add to
+                                    wishlist</span></a>
                             <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
                             <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
                         </div><!-- End .product-action-vertical -->
@@ -167,7 +174,8 @@
                         <div class="product-cat">
                             <a href="#">Tablets</a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">Apple - 11 Inch iPad Pro <br>with Wi-Fi 256GB </a></h3><!-- End .product-title -->
+                        <h3 class="product-title"><a href="product.html">Apple - 11 Inch iPad Pro <br>with Wi-Fi 256GB
+                            </a></h3><!-- End .product-title -->
                         <div class="product-price">
                             $899.99
                         </div><!-- End .product-price -->
@@ -181,7 +189,8 @@
                         <div class="product-nav product-nav-dots">
                             <a href="#" style="background: #edd2c8;"><span class="sr-only">Color name</span></a>
                             <a href="#" style="background: #eaeaec;"><span class="sr-only">Color name</span></a>
-                            <a href="#" class="active" style="background: #333333;"><span class="sr-only">Color name</span></a>
+                            <a href="#" class="active" style="background: #333333;"><span class="sr-only">Color
+                                    name</span></a>
                         </div><!-- End .product-nav -->
                     </div><!-- End .product-body -->
                 </div><!-- End .product -->
@@ -195,7 +204,8 @@
                         </a>
 
                         <div class="product-action-vertical">
-                            <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><span>add to wishlist</span></a>
+                            <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><span>add to
+                                    wishlist</span></a>
                             <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
                             <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
                         </div><!-- End .product-action-vertical -->
@@ -209,7 +219,8 @@
                         <div class="product-cat">
                             <a href="#">Cell Phone</a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">Google - Pixel 3 XL 128GB</a></h3><!-- End .product-title -->
+                        <h3 class="product-title"><a href="product.html">Google - Pixel 3 XL 128GB</a></h3>
+                        <!-- End .product-title -->
                         <div class="product-price">
                             <span class="new-price">$350.00</span>
                             <span class="old-price">Was $410.00</span>
@@ -222,7 +233,8 @@
                         </div><!-- End .rating-container -->
 
                         <div class="product-nav product-nav-dots">
-                            <a href="#" class="active" style="background: #edd2c8;"><span class="sr-only">Color name</span></a>
+                            <a href="#" class="active" style="background: #edd2c8;"><span class="sr-only">Color
+                                    name</span></a>
                             <a href="#" style="background: #eaeaec;"><span class="sr-only">Color name</span></a>
                         </div><!-- End .product-nav -->
                     </div><!-- End .product-body -->
@@ -236,7 +248,8 @@
                         </a>
 
                         <div class="product-action-vertical">
-                            <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><span>add to wishlist</span></a>
+                            <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><span>add to
+                                    wishlist</span></a>
                             <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
                             <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
                         </div><!-- End .product-action-vertical -->
@@ -250,7 +263,8 @@
                         <div class="product-cat">
                             <a href="#">Laptops</a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">MacBook Pro 13" Display, i5</a></h3><!-- End .product-title -->
+                        <h3 class="product-title"><a href="product.html">MacBook Pro 13" Display, i5</a></h3>
+                        <!-- End .product-title -->
                         <div class="product-price">
                             $1,199.99
                         </div><!-- End .product-price -->
@@ -294,8 +308,10 @@
                         </a>
 
                         <div class="banner-content">
-                            <h4 class="banner-subtitle text-white"><a href="#">Best Deals</a></h4><!-- End .banner-subtitle -->
-                            <h3 class="banner-title text-white"><a href="#">Furniture Sets <br><span>Up To 30% Off</span></a></h3><!-- End .banner-title -->
+                            <h4 class="banner-subtitle text-white"><a href="#">Best Deals</a></h4>
+                            <!-- End .banner-subtitle -->
+                            <h3 class="banner-title text-white"><a href="#">Furniture Sets <br><span>Up To 30%
+                                        Off</span></a></h3><!-- End .banner-title -->
                             <a href="#" class="banner-link">Shop Now <i class="icon-long-arrow-right"></i></a>
                         </div><!-- End .banner-content -->
                     </div><!-- End .banner -->
@@ -338,7 +354,8 @@
                         </a>
 
                         <div class="product-action-vertical">
-                            <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><span>add to wishlist</span></a>
+                            <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><span>add to
+                                    wishlist</span></a>
                             <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
                             <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
                         </div><!-- End .product-action-vertical -->
@@ -352,7 +369,8 @@
                         <div class="product-cat">
                             <a href="#">Tables</a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">Block Side Table/Trolley</a></h3><!-- End .product-title -->
+                        <h3 class="product-title"><a href="product.html">Block Side Table/Trolley</a></h3>
+                        <!-- End .product-title -->
                         <div class="product-price">
                             $299.99
                         </div><!-- End .product-price -->
@@ -364,7 +382,8 @@
                         </div><!-- End .rating-container -->
 
                         <div class="product-nav product-nav-dots">
-                            <a href="#" class="active" style="background: #333333;"><span class="sr-only">Color name</span></a>
+                            <a href="#" class="active" style="background: #333333;"><span class="sr-only">Color
+                                    name</span></a>
                             <a href="#" style="background: #e2e2e2;"><span class="sr-only">Color name</span></a>
                         </div><!-- End .product-nav -->
                     </div><!-- End .product-body -->
@@ -377,7 +396,8 @@
                         </a>
 
                         <div class="product-action-vertical">
-                            <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><span>add to wishlist</span></a>
+                            <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><span>add to
+                                    wishlist</span></a>
                             <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
                             <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
                         </div><!-- End .product-action-vertical -->
@@ -391,7 +411,8 @@
                         <div class="product-cat">
                             <a href="#">Sofas</a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">Roots Sofa Bed</a></h3><!-- End .product-title -->
+                        <h3 class="product-title"><a href="product.html">Roots Sofa Bed</a></h3>
+                        <!-- End .product-title -->
                         <div class="product-price">
                             $1,199.99
                         </div><!-- End .product-price -->
@@ -412,7 +433,8 @@
                         </a>
 
                         <div class="product-action-vertical">
-                            <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><span>add to wishlist</span></a>
+                            <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><span>add to
+                                    wishlist</span></a>
                             <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
                             <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
                         </div><!-- End .product-action-vertical -->
@@ -426,7 +448,8 @@
                         <div class="product-cat">
                             <a href="#">Lighting</a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">Carronade Large <br>Suspension Lamp</a></h3><!-- End .product-title -->
+                        <h3 class="product-title"><a href="product.html">Carronade Large <br>Suspension Lamp</a></h3>
+                        <!-- End .product-title -->
                         <div class="product-price">
                             <span class="new-price">$892.99</span>
                             <span class="old-price">Was $931.00</span>
@@ -439,7 +462,8 @@
                         </div><!-- End .rating-container -->
 
                         <div class="product-nav product-nav-dots">
-                            <a href="#" class="active" style="background: #f7f6f5;"><span class="sr-only">Color name</span></a>
+                            <a href="#" class="active" style="background: #f7f6f5;"><span class="sr-only">Color
+                                    name</span></a>
                             <a href="#" style="background: #825a45;"><span class="sr-only">Color name</span></a>
                         </div><!-- End .product-nav -->
                     </div><!-- End .product-body -->
@@ -452,7 +476,8 @@
                         </a>
 
                         <div class="product-action-vertical">
-                            <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><span>add to wishlist</span></a>
+                            <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><span>add to
+                                    wishlist</span></a>
                             <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
                             <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
                         </div><!-- End .product-action-vertical -->
@@ -466,7 +491,8 @@
                         <div class="product-cat">
                             <a href="#">Chairs</a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">Wingback Chair</a></h3><!-- End .product-title -->
+                        <h3 class="product-title"><a href="product.html">Wingback Chair</a></h3>
+                        <!-- End .product-title -->
                         <div class="product-price">
                             $210.00
                         </div><!-- End .product-price -->
@@ -478,7 +504,8 @@
                         </div><!-- End .rating-container -->
 
                         <div class="product-nav product-nav-dots">
-                            <a href="#" class="active" style="background: #999999;"><span class="sr-only">Color name</span></a>
+                            <a href="#" class="active" style="background: #999999;"><span class="sr-only">Color
+                                    name</span></a>
                             <a href="#" style="background: #cc9999;"><span class="sr-only">Color name</span></a>
                         </div><!-- End .product-nav -->
                     </div><!-- End .product-body -->
@@ -492,7 +519,8 @@
                         </a>
 
                         <div class="product-action-vertical">
-                            <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><span>add to wishlist</span></a>
+                            <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><span>add to
+                                    wishlist</span></a>
                             <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
                             <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
                         </div><!-- End .product-action-vertical -->
@@ -506,7 +534,8 @@
                         <div class="product-cat">
                             <a href="#">Tables</a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">Block Side Table/Trolley</a></h3><!-- End .product-title -->
+                        <h3 class="product-title"><a href="product.html">Block Side Table/Trolley</a></h3>
+                        <!-- End .product-title -->
                         <div class="product-price">
                             $299.99
                         </div><!-- End .product-price -->
@@ -518,7 +547,8 @@
                         </div><!-- End .rating-container -->
 
                         <div class="product-nav product-nav-dots">
-                            <a href="#" class="active" style="background: #333333;"><span class="sr-only">Color name</span></a>
+                            <a href="#" class="active" style="background: #333333;"><span class="sr-only">Color
+                                    name</span></a>
                             <a href="#" style="background: #e2e2e2;"><span class="sr-only">Color name</span></a>
                         </div><!-- End .product-nav -->
                     </div><!-- End .product-body -->
@@ -537,8 +567,10 @@
                 </a>
 
                 <div class="banner-content">
-                    <h4 class="banner-subtitle text-white d-none d-sm-block"><a href="#">Spring Sale is Coming</a></h4><!-- End .banner-subtitle -->
-                    <h3 class="banner-title text-white"><a href="#">Floral T-shirts and Vests <br><span>Spring Sale</span></a></h3><!-- End .banner-title -->
+                    <h4 class="banner-subtitle text-white d-none d-sm-block"><a href="#">Spring Sale is Coming</a></h4>
+                    <!-- End .banner-subtitle -->
+                    <h3 class="banner-title text-white"><a href="#">Floral T-shirts and Vests <br><span>Spring
+                                Sale</span></a></h3><!-- End .banner-title -->
                     <a href="#" class="banner-link">Shop Now <i class="icon-long-arrow-right"></i></a>
                 </div><!-- End .banner-content -->
             </div><!-- End .banner -->
@@ -551,8 +583,10 @@
                 </a>
 
                 <div class="banner-content">
-                    <h4 class="banner-subtitle text-white d-none d-sm-block"><a href="#">Amazing Value</a></h4><!-- End .banner-subtitle -->
-                    <h3 class="banner-title text-white"><a href="#">Upgrade and Save <br><span>On The Latest Apple Devices</span></a></h3><!-- End .banner-title -->
+                    <h4 class="banner-subtitle text-white d-none d-sm-block"><a href="#">Amazing Value</a></h4>
+                    <!-- End .banner-subtitle -->
+                    <h3 class="banner-title text-white"><a href="#">Upgrade and Save <br><span>On The Latest Apple
+                                Devices</span></a></h3><!-- End .banner-title -->
                     <a href="#" class="banner-link">Shop Now <i class="icon-long-arrow-right"></i></a>
                 </div><!-- End .banner-content -->
             </div><!-- End .banner banner-overlay -->
@@ -587,8 +621,10 @@
                         </a>
 
                         <div class="banner-content">
-                            <h4 class="banner-subtitle text-white"><a href="#">Best Deals</a></h4><!-- End .banner-subtitle -->
-                            <h3 class="banner-title text-white"><a href="#">Clearance <br>Outerwear<br><span>Up To 70% Off</span></a></h3><!-- End .banner-title -->
+                            <h4 class="banner-subtitle text-white"><a href="#">Best Deals</a></h4>
+                            <!-- End .banner-subtitle -->
+                            <h3 class="banner-title text-white"><a href="#">Clearance <br>Outerwear<br><span>Up To 70%
+                                        Off</span></a></h3><!-- End .banner-title -->
                             <a href="#" class="banner-link">Shop Now <i class="icon-long-arrow-right"></i></a>
                         </div><!-- End .banner-content -->
                     </div><!-- End .banner -->
@@ -630,7 +666,8 @@
                         </a>
 
                         <div class="product-action-vertical">
-                            <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><span>add to wishlist</span></a>
+                            <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><span>add to
+                                    wishlist</span></a>
                             <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
                             <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
                         </div><!-- End .product-action-vertical -->
@@ -644,7 +681,8 @@
                         <div class="product-cat">
                             <a href="#">Shoes</a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">Beige faux suede runner trainers</a></h3><!-- End .product-title -->
+                        <h3 class="product-title"><a href="product.html">Beige faux suede runner trainers</a></h3>
+                        <!-- End .product-title -->
                         <div class="product-price">
                             $64.00
                         </div><!-- End .product-price -->
@@ -665,7 +703,8 @@
                         </a>
 
                         <div class="product-action-vertical">
-                            <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><span>add to wishlist</span></a>
+                            <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><span>add to
+                                    wishlist</span></a>
                             <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
                             <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
                         </div><!-- End .product-action-vertical -->
@@ -679,7 +718,8 @@
                         <div class="product-cat">
                             <a href="#">Accessories</a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">Black boucle check scarf</a></h3><!-- End .product-title -->
+                        <h3 class="product-title"><a href="product.html">Black boucle check scarf</a></h3>
+                        <!-- End .product-title -->
                         <div class="product-price">
                             $36.00
                         </div><!-- End .product-price -->
@@ -699,7 +739,8 @@
                         </a>
 
                         <div class="product-action-vertical">
-                            <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><span>add to wishlist</span></a>
+                            <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><span>add to
+                                    wishlist</span></a>
                             <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
                             <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
                         </div><!-- End .product-action-vertical -->
@@ -713,7 +754,8 @@
                         <div class="product-cat">
                             <a href="#">T-Shirts</a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">Carronade Large <br>Suspension Lamp</a></h3><!-- End .product-title -->
+                        <h3 class="product-title"><a href="product.html">Carronade Large <br>Suspension Lamp</a></h3>
+                        <!-- End .product-title -->
                         <div class="product-price">
                             $56.00
                         </div><!-- End .product-price -->
@@ -733,7 +775,8 @@
                         </a>
 
                         <div class="product-action-vertical">
-                            <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><span>add to wishlist</span></a>
+                            <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><span>add to
+                                    wishlist</span></a>
                             <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
                             <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
                         </div><!-- End .product-action-vertical -->
@@ -747,7 +790,8 @@
                         <div class="product-cat">
                             <a href="#">Bags</a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">Triple compartment cross body bag</a></h3><!-- End .product-title -->
+                        <h3 class="product-title"><a href="product.html">Triple compartment cross body bag</a></h3>
+                        <!-- End .product-title -->
                         <div class="product-price">
                             $64.00
                         </div><!-- End .product-price -->
@@ -759,7 +803,8 @@
                         </div><!-- End .rating-container -->
 
                         <div class="product-nav product-nav-dots">
-                            <a href="#" class="active" style="background: #f1f1f1;"><span class="sr-only">Color name</span></a>
+                            <a href="#" class="active" style="background: #f1f1f1;"><span class="sr-only">Color
+                                    name</span></a>
                             <a href="#" style="background: #333333;"><span class="sr-only">Color name</span></a>
                         </div><!-- End .product-nav -->
                     </div><!-- End .product-body -->
@@ -772,7 +817,8 @@
                         </a>
 
                         <div class="product-action-vertical">
-                            <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><span>add to wishlist</span></a>
+                            <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><span>add to
+                                    wishlist</span></a>
                             <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
                             <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
                         </div><!-- End .product-action-vertical -->
@@ -786,7 +832,8 @@
                         <div class="product-cat">
                             <a href="#">Shoes</a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">Beige faux suede runner trainers</a></h3><!-- End .product-title -->
+                        <h3 class="product-title"><a href="product.html">Beige faux suede runner trainers</a></h3>
+                        <!-- End .product-title -->
                         <div class="product-price">
                             $64.00
                         </div><!-- End .product-price -->
@@ -830,8 +877,10 @@
                         </a>
 
                         <div class="banner-content">
-                            <h4 class="banner-subtitle text-white"><a href="#">Best Deals</a></h4><!-- End .banner-subtitle -->
-                            <h3 class="banner-title text-white"><a href="#">Cooking <br>Appliances <br><span>Up To 30% Off</span></a></h3><!-- End .banner-title -->
+                            <h4 class="banner-subtitle text-white"><a href="#">Best Deals</a></h4>
+                            <!-- End .banner-subtitle -->
+                            <h3 class="banner-title text-white"><a href="#">Cooking <br>Appliances <br><span>Up To 30%
+                                        Off</span></a></h3><!-- End .banner-title -->
                             <a href="#" class="banner-link">Shop Now <i class="icon-long-arrow-right"></i></a>
                         </div><!-- End .banner-content -->
                     </div><!-- End .banner -->
@@ -874,7 +923,8 @@
                         </a>
 
                         <div class="product-action-vertical">
-                            <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><span>add to wishlist</span></a>
+                            <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><span>add to
+                                    wishlist</span></a>
                             <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
                             <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
                         </div><!-- End .product-action-vertical -->
@@ -888,7 +938,8 @@
                         <div class="product-cat">
                             <a href="#">Cooking Appliances</a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">KitchenAid Professional 500 Series Stand Mixer</a></h3><!-- End .product-title -->
+                        <h3 class="product-title"><a href="product.html">KitchenAid Professional 500 Series Stand
+                                Mixer</a></h3><!-- End .product-title -->
                         <div class="product-price">
                             <span class="new-price">$249.99</span>
                             <span class="old-price">Was $299.99</span>
@@ -909,7 +960,8 @@
                         </a>
 
                         <div class="product-action-vertical">
-                            <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><span>add to wishlist</span></a>
+                            <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><span>add to
+                                    wishlist</span></a>
                             <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
                             <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
                         </div><!-- End .product-action-vertical -->
@@ -923,7 +975,8 @@
                         <div class="product-cat">
                             <a href="#">Dinnerware</a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">MoDRN Industrial 7 Piece</a></h3><!-- End .product-title -->
+                        <h3 class="product-title"><a href="product.html">MoDRN Industrial 7 Piece</a></h3>
+                        <!-- End .product-title -->
                         <div class="product-price">
                             $40.00
                         </div><!-- End .product-price -->
@@ -943,7 +996,8 @@
                         </a>
 
                         <div class="product-action-vertical">
-                            <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><span>add to wishlist</span></a>
+                            <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><span>add to
+                                    wishlist</span></a>
                             <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
                             <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
                         </div><!-- End .product-action-vertical -->
@@ -957,7 +1011,8 @@
                         <div class="product-cat">
                             <a href="#">Cookware</a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">Cuisinart French Classic 3 Piece</a></h3><!-- End .product-title -->
+                        <h3 class="product-title"><a href="product.html">Cuisinart French Classic 3 Piece</a></h3>
+                        <!-- End .product-title -->
                         <div class="product-price">
                             $44.99
                         </div><!-- End .product-price -->
@@ -978,7 +1033,8 @@
                         </a>
 
                         <div class="product-action-vertical">
-                            <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><span>add to wishlist</span></a>
+                            <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><span>add to
+                                    wishlist</span></a>
                             <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
                             <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
                         </div><!-- End .product-action-vertical -->
@@ -992,7 +1048,8 @@
                         <div class="product-cat">
                             <a href="#">Cooking Appliances</a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">KitchenAid - KSB1570WH Classic 5-Speed Blender</a></h3><!-- End .product-title -->
+                        <h3 class="product-title"><a href="product.html">KitchenAid - KSB1570WH Classic 5-Speed
+                                Blender</a></h3><!-- End .product-title -->
                         <div class="product-price">
                             $75.00
                         </div><!-- End .product-price -->
@@ -1004,7 +1061,8 @@
                         </div><!-- End .rating-container -->
 
                         <div class="product-nav product-nav-dots">
-                            <a href="#" class="active" style="background: #f1f1f1;"><span class="sr-only">Color name</span></a>
+                            <a href="#" class="active" style="background: #f1f1f1;"><span class="sr-only">Color
+                                    name</span></a>
                             <a href="#" style="background: #c00b1b;"><span class="sr-only">Color name</span></a>
                         </div><!-- End .product-nav -->
                     </div><!-- End .product-body -->
@@ -1018,7 +1076,8 @@
                         </a>
 
                         <div class="product-action-vertical">
-                            <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><span>add to wishlist</span></a>
+                            <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><span>add to
+                                    wishlist</span></a>
                             <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
                             <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
                         </div><!-- End .product-action-vertical -->
@@ -1032,7 +1091,8 @@
                         <div class="product-cat">
                             <a href="#">Cooking Appliances</a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">KitchenAid Professional 500 Series Stand Mixer</a></h3><!-- End .product-title -->
+                        <h3 class="product-title"><a href="product.html">KitchenAid Professional 500 Series Stand
+                                Mixer</a></h3><!-- End .product-title -->
                         <div class="product-price">
                             <span class="new-price">$249.99</span>
                             <span class="old-price">Was $299.99</span>
