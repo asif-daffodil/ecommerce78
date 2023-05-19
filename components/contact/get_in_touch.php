@@ -1,5 +1,5 @@
 <?php
-include_once("../../db.php");
+$conn = mysqli_connect("localhost", "root", "", "ecommers78");
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
@@ -155,7 +155,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['mailSend'])) {
             </div>
             <div style='background:#ffffff;background-color:#ffffff;border-radius:3px;padding:20px;border:1px solid #dddddd'><div style='border-spacing:0;border-collapse:collapse;vertical-align:top;text-align:left><p style='word-wrap:normal;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:18px;font-weight:normal;color:#333;line-height:20px;text-align:left;margin:15px 0 5px;padding:0'>
             <strong>From : </strong> $sender_email<br>
-            <strong>To : </strong> $recipient_email(Me)<br>
+            <strong>To : </strong> $recipient_email (Me)<br>
             <strong>Subject : </strong> $subject<br>
             <br>
             <strong>Message : </strong> $msg<br>
