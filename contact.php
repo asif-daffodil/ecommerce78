@@ -21,7 +21,29 @@ include_once("./components/contact/header.php");
 
     <div class="page-content">
         <div class="map mb-4">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3014.9013732230133!2d90.45550482881684!3d23.698296105115062!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b746b83bfcdd%3A0x124bb54edb3d3805!2sAshraf%20Uz%20Mahim!5e0!3m2!1sen!2sbd!4v1684416122043!5m2!1sen!2sbd" width="100%" height="420" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <!-- If you want to show your location from Google Maps on your website like the tag below then complete the work from my given link. 
+            link:https://embedgooglemap.2yu.co
+            -->
+            <div class="mapouter">
+                <div class="gmap_canvas"><iframe width="100%" height="420" id="gmap_canvas" src="https://maps.google.com/maps?q=ashraf uz mahim&t=&z=10&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><br>
+                    <style>
+                        .mapouter {
+                            position: relative;
+                            text-align: right;
+                            height: 420px;
+                            width: 100%;
+                        }
+                    </style>
+                    <style>
+                        .gmap_canvas {
+                            overflow: hidden;
+                            background: none !important;
+                            height: 420px;
+                            width: 100%;
+                        }
+                    </style>
+                </div>
+            </div>
         </div>
         <div class="container">
 
