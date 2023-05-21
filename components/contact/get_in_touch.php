@@ -202,7 +202,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['mailSend'])) {
                 dapibus sed, urna.</p>
         </div>
 
-        <form class="contact-form mb-2" id="mailsenderForm" method="POST">
+        <form action="<?= htmlentities(substr($_SERVER['PHP_SELF'], 0, -4)) ?>" class="contact-form mb-2" id="mailsenderForm" method="POST">
             <div class="row">
                 <div class="col-sm-4">
                     <label for="cname" class="sr-only">Name</label>
