@@ -3,16 +3,16 @@
     include_once("./components/main/home-promo.php");
     ?>
 
-    <div class="mb-3"></div><!-- End .mb-3 -->
+    <div class="mb-3"></div>
 
     <?php
     include_once("./components/main/brand.php");
     ?>
 
-    <div class="mb-5"></div><!-- End .mb-5 -->
+    <div class="mb-5"></div>
 
     <?php include_once("./trending.php") ?>
-    <div class="mb-5"></div><!-- End .mb-5 -->
+    <div class="mb-5"></div>
 
     <div class="row cat-banner-row electronics">
         <div class="col-xl-3 col-xxl-4">
@@ -81,7 +81,7 @@
                 <div class="product text-center">
                     <figure class="product-media">
                         <span class="product-label label-top">Top</span>
-                        <a href="product.html">
+                        <a href="product.php">
                             <img src="assets/images/demos/demo-14/products/product-6.jpg" alt="Product image" class="product-image">
                         </a>
 
@@ -100,24 +100,23 @@
                     <div class="product-body">
                         <div class="product-cat">
                             <a href="#">Laptops</a>
-                        </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">MacBook Pro 13" Display, i5</a></h3>
-                        <!-- End .product-title -->
+                        </div>
+                        <h3 class="product-title"><a href="product.php">MacBook Pro 13" Display, i5</a></h3>
                         <div class="product-price">
                             $1,199.99
-                        </div><!-- End .product-price -->
+                        </div>
                         <div class="ratings-container">
                             <div class="ratings">
                                 <div class="ratings-val" style="width: 100%;"></div><!-- End .ratings-val -->
-                            </div><!-- End .ratings -->
+                            </div>
                             <span class="ratings-text">( 4 Reviews )</span>
-                        </div><!-- End .rating-container -->
-                    </div><!-- End .product-body -->
-                </div><!-- End .product -->
+                        </div>
+                    </div>
+                </div>
 
                 <div class="product text-center">
                     <figure class="product-media">
-                        <a href="product.html">
+                        <a href="product.php">
                             <img src="assets/images/demos/demo-14/products/product-7.jpg" alt="Product image" class="product-image">
                         </a>
 
@@ -137,7 +136,7 @@
                         <div class="product-cat">
                             <a href="#">Audio</a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">Bose - SoundLink Bluetooth Speaker</a></h3>
+                        <h3 class="product-title"><a href="product">Bose - SoundLink Bluetooth Speaker</a></h3>
                         <!-- End .product-title -->
                         <div class="product-price">
                             $79.99
@@ -147,14 +146,14 @@
                                 <div class="ratings-val" style="width: 60%;"></div><!-- End .ratings-val -->
                             </div><!-- End .ratings -->
                             <span class="ratings-text">( 6 Reviews )</span>
-                        </div><!-- End .rating-container -->
-                    </div><!-- End .product-body -->
-                </div><!-- End .product -->
+                        </div>
+                    </div>
+                </div>
 
                 <div class="product text-center">
                     <figure class="product-media">
                         <span class="product-label label-new">New</span>
-                        <a href="product.html">
+                        <a href="product">
                             <img src="assets/images/demos/demo-14/products/product-8.jpg" alt="Product image" class="product-image">
                         </a>
 
@@ -174,7 +173,7 @@
                         <div class="product-cat">
                             <a href="#">Tablets</a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">Apple - 11 Inch iPad Pro <br>with Wi-Fi 256GB
+                        <h3 class="product-title"><a href="product.php">Apple - 11 Inch iPad Pro <br>with Wi-Fi 256GB
                             </a></h3><!-- End .product-title -->
                         <div class="product-price">
                             $899.99
@@ -199,7 +198,7 @@
                     <figure class="product-media">
                         <span class="product-label label-top">Top</span>
                         <span class="product-label label-sale">Sale</span>
-                        <a href="product.html">
+                        <a href="product.php">
                             <img src="assets/images/demos/demo-14/products/product-9.jpg" alt="Product image" class="product-image">
                         </a>
 
@@ -219,7 +218,7 @@
                         <div class="product-cat">
                             <a href="#">Cell Phone</a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">Google - Pixel 3 XL 128GB</a></h3>
+                        <h3 class="product-title"><a href="product.php">Google - Pixel 3 XL 128GB</a></h3>
                         <!-- End .product-title -->
                         <div class="product-price">
                             <span class="new-price">$350.00</span>
@@ -243,7 +242,7 @@
                 <div class="product text-center">
                     <figure class="product-media">
                         <span class="product-label label-top">Top</span>
-                        <a href="product.html">
+                        <a href="product.php">
                             <img src="assets/images/demos/demo-14/products/product-6.jpg" alt="Product image" class="product-image">
                         </a>
 
@@ -263,7 +262,7 @@
                         <div class="product-cat">
                             <a href="#">Laptops</a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">MacBook Pro 13" Display, i5</a></h3>
+                        <h3 class="product-title"><a href="product.php">MacBook Pro 13" Display, i5</a></h3>
                         <!-- End .product-title -->
                         <div class="product-price">
                             $1,199.99
@@ -349,7 +348,7 @@
                 <div class="product text-center">
                     <figure class="product-media">
                         <span class="product-label label-new">New</span>
-                        <a href="product.html">
+                        <a href="product.php">
                             <img src="assets/images/demos/demo-14/products/product-10.jpg" alt="Product image" class="product-image">
                         </a>
 
@@ -369,7 +368,7 @@
                         <div class="product-cat">
                             <a href="#">Tables</a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">Block Side Table/Trolley</a></h3>
+                        <h3 class="product-title"><a href="product.php">Block Side Table/Trolley</a></h3>
                         <!-- End .product-title -->
                         <div class="product-price">
                             $299.99
@@ -391,7 +390,7 @@
 
                 <div class="product text-center">
                     <figure class="product-media">
-                        <a href="product.html">
+                        <a href="product.php">
                             <img src="assets/images/demos/demo-14/products/product-11.jpg" alt="Product image" class="product-image">
                         </a>
 
@@ -411,7 +410,7 @@
                         <div class="product-cat">
                             <a href="#">Sofas</a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">Roots Sofa Bed</a></h3>
+                        <h3 class="product-title"><a href="product.php">Roots Sofa Bed</a></h3>
                         <!-- End .product-title -->
                         <div class="product-price">
                             $1,199.99
@@ -428,7 +427,7 @@
                 <div class="product text-center">
                     <figure class="product-media">
                         <span class="product-label label-sale">Sale</span>
-                        <a href="product.html">
+                        <a href="product.php">
                             <img src="assets/images/demos/demo-14/products/product-12.jpg" alt="Product image" class="product-image">
                         </a>
 
@@ -448,7 +447,7 @@
                         <div class="product-cat">
                             <a href="#">Lighting</a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">Carronade Large <br>Suspension Lamp</a></h3>
+                        <h3 class="product-title"><a href="product.php">Carronade Large <br>Suspension Lamp</a></h3>
                         <!-- End .product-title -->
                         <div class="product-price">
                             <span class="new-price">$892.99</span>
@@ -471,7 +470,7 @@
 
                 <div class="product text-center">
                     <figure class="product-media">
-                        <a href="product.html">
+                        <a href="product.php">
                             <img src="assets/images/demos/demo-14/products/product-13.jpg" alt="Product image" class="product-image">
                         </a>
 
@@ -491,7 +490,7 @@
                         <div class="product-cat">
                             <a href="#">Chairs</a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">Wingback Chair</a></h3>
+                        <h3 class="product-title"><a href="product.php">Wingback Chair</a></h3>
                         <!-- End .product-title -->
                         <div class="product-price">
                             $210.00
@@ -514,7 +513,7 @@
                 <div class="product text-center">
                     <figure class="product-media">
                         <span class="product-label label-new">New</span>
-                        <a href="product.html">
+                        <a href="product.php">
                             <img src="assets/images/demos/demo-14/products/product-10.jpg" alt="Product image" class="product-image">
                         </a>
 
@@ -534,7 +533,7 @@
                         <div class="product-cat">
                             <a href="#">Tables</a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">Block Side Table/Trolley</a></h3>
+                        <h3 class="product-title"><a href="product.php">Block Side Table/Trolley</a></h3>
                         <!-- End .product-title -->
                         <div class="product-price">
                             $299.99
@@ -661,7 +660,7 @@
                                     }'>
                 <div class="product text-center">
                     <figure class="product-media">
-                        <a href="product.html">
+                        <a href="product.php">
                             <img src="assets/images/demos/demo-14/products/product-14.jpg" alt="Product image" class="product-image">
                         </a>
 
@@ -681,7 +680,7 @@
                         <div class="product-cat">
                             <a href="#">Shoes</a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">Beige faux suede runner trainers</a></h3>
+                        <h3 class="product-title"><a href="product.php">Beige faux suede runner trainers</a></h3>
                         <!-- End .product-title -->
                         <div class="product-price">
                             $64.00
@@ -698,7 +697,7 @@
                 <div class="product text-center">
                     <figure class="product-media">
                         <span class="product-label label-new">New</span>
-                        <a href="product.html">
+                        <a href="product.php">
                             <img src="assets/images/demos/demo-14/products/product-15.jpg" alt="Product image" class="product-image">
                         </a>
 
@@ -718,7 +717,7 @@
                         <div class="product-cat">
                             <a href="#">Accessories</a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">Black boucle check scarf</a></h3>
+                        <h3 class="product-title"><a href="product.php">Black boucle check scarf</a></h3>
                         <!-- End .product-title -->
                         <div class="product-price">
                             $36.00
@@ -734,7 +733,7 @@
 
                 <div class="product text-center">
                     <figure class="product-media">
-                        <a href="product.html">
+                        <a href="product.php">
                             <img src="assets/images/demos/demo-14/products/product-16.jpg" alt="Product image" class="product-image">
                         </a>
 
@@ -754,7 +753,7 @@
                         <div class="product-cat">
                             <a href="#">T-Shirts</a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">Carronade Large <br>Suspension Lamp</a></h3>
+                        <h3 class="product-title"><a href="product.php">Carronade Large <br>Suspension Lamp</a></h3>
                         <!-- End .product-title -->
                         <div class="product-price">
                             $56.00
@@ -770,7 +769,7 @@
 
                 <div class="product text-center">
                     <figure class="product-media">
-                        <a href="product.html">
+                        <a href="product.php">
                             <img src="assets/images/demos/demo-14/products/product-17.jpg" alt="Product image" class="product-image">
                         </a>
 
@@ -790,7 +789,7 @@
                         <div class="product-cat">
                             <a href="#">Bags</a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">Triple compartment cross body bag</a></h3>
+                        <h3 class="product-title"><a href="product.php">Triple compartment cross body bag</a></h3>
                         <!-- End .product-title -->
                         <div class="product-price">
                             $64.00
@@ -812,7 +811,7 @@
 
                 <div class="product text-center">
                     <figure class="product-media">
-                        <a href="product.html">
+                        <a href="product.php">
                             <img src="assets/images/demos/demo-14/products/product-14.jpg" alt="Product image" class="product-image">
                         </a>
 
@@ -832,7 +831,7 @@
                         <div class="product-cat">
                             <a href="#">Shoes</a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">Beige faux suede runner trainers</a></h3>
+                        <h3 class="product-title"><a href="product.php">Beige faux suede runner trainers</a></h3>
                         <!-- End .product-title -->
                         <div class="product-price">
                             $64.00
@@ -918,7 +917,7 @@
                 <div class="product text-center">
                     <figure class="product-media">
                         <span class="product-label label-sale">Sale</span>
-                        <a href="product.html">
+                        <a href="product.php">
                             <img src="assets/images/demos/demo-14/products/product-18.jpg" alt="Product image" class="product-image">
                         </a>
 
@@ -938,7 +937,7 @@
                         <div class="product-cat">
                             <a href="#">Cooking Appliances</a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">KitchenAid Professional 500 Series Stand
+                        <h3 class="product-title"><a href="product.php">KitchenAid Professional 500 Series Stand
                                 Mixer</a></h3><!-- End .product-title -->
                         <div class="product-price">
                             <span class="new-price">$249.99</span>
@@ -955,7 +954,7 @@
 
                 <div class="product text-center">
                     <figure class="product-media">
-                        <a href="product.html">
+                        <a href="product.php">
                             <img src="assets/images/demos/demo-14/products/product-19.jpg" alt="Product image" class="product-image">
                         </a>
 
@@ -975,7 +974,7 @@
                         <div class="product-cat">
                             <a href="#">Dinnerware</a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">MoDRN Industrial 7 Piece</a></h3>
+                        <h3 class="product-title"><a href="product.php">MoDRN Industrial 7 Piece</a></h3>
                         <!-- End .product-title -->
                         <div class="product-price">
                             $40.00
@@ -991,7 +990,7 @@
 
                 <div class="product text-center">
                     <figure class="product-media">
-                        <a href="product.html">
+                        <a href="product.php">
                             <img src="assets/images/demos/demo-14/products/product-20.jpg" alt="Product image" class="product-image">
                         </a>
 
@@ -1011,7 +1010,7 @@
                         <div class="product-cat">
                             <a href="#">Cookware</a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">Cuisinart French Classic 3 Piece</a></h3>
+                        <h3 class="product-title"><a href="product.php">Cuisinart French Classic 3 Piece</a></h3>
                         <!-- End .product-title -->
                         <div class="product-price">
                             $44.99
@@ -1028,7 +1027,7 @@
                 <div class="product text-center">
                     <figure class="product-media">
                         <span class="product-label label-new">New</span>
-                        <a href="product.html">
+                        <a href="product.php">
                             <img src="assets/images/demos/demo-14/products/product-21.jpg" alt="Product image" class="product-image">
                         </a>
 
@@ -1048,7 +1047,7 @@
                         <div class="product-cat">
                             <a href="#">Cooking Appliances</a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">KitchenAid - KSB1570WH Classic 5-Speed
+                        <h3 class="product-title"><a href="product.php">KitchenAid - KSB1570WH Classic 5-Speed
                                 Blender</a></h3><!-- End .product-title -->
                         <div class="product-price">
                             $75.00
@@ -1071,7 +1070,7 @@
                 <div class="product text-center">
                     <figure class="product-media">
                         <span class="product-label label-sale">Sale</span>
-                        <a href="product.html">
+                        <a href="product.php">
                             <img src="assets/images/demos/demo-14/products/product-18.jpg" alt="Product image" class="product-image">
                         </a>
 
@@ -1091,7 +1090,7 @@
                         <div class="product-cat">
                             <a href="#">Cooking Appliances</a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">KitchenAid Professional 500 Series Stand
+                        <h3 class="product-title"><a href="product.php">KitchenAid Professional 500 Series Stand
                                 Mixer</a></h3><!-- End .product-title -->
                         <div class="product-price">
                             <span class="new-price">$249.99</span>

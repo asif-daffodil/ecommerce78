@@ -4,9 +4,6 @@ include_once("./db.php");
 <!DOCTYPE html>
 <html lang="en">
 
-
-<!-- molla/index-14.html  22 Nov 2019 09:59:31 GMT -->
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">

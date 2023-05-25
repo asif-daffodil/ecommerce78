@@ -12,9 +12,14 @@ include_once("./components/contact/header.php");
     <nav aria-label="breadcrumb" class="breadcrumb-nav border-0 mb-0">
         <div class="container">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                <li class="breadcrumb-item"><a href="#">Pages</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Contact us</li>
+                <style>
+                    .breadcrumb-item a.active {
+                        color: #bf8040 !important;
+                    }
+                </style>
+                <li class="breadcrumb-item"><a href="./">Home</a></li>
+                <li class="breadcrumb-item"><a href="javascript:void(0)">Pages</a></li>
+                <li class="breadcrumb-item"><a href="contact" class="<?= substr(basename($_SERVER['PHP_SELF']), 0, -4) == "contact" ? "active" : null ?>">Contact us</a></li>
             </ol>
         </div>
     </nav>

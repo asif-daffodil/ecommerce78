@@ -1,5 +1,5 @@
 <?php
-include_once("./header.php");
+include_once("./components/main/header.php");
 ?>
 
 <body>
@@ -42,5 +42,5 @@ include_once("./header.php");
             </div>
         </main>
         <?php
-        include_once("./footer.php")
+        include_once("./components/main/footer.php")
         ?>
