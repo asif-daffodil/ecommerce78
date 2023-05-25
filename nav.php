@@ -52,7 +52,7 @@
                         <span class="sr-only">Toggle mobile menu</span>
                         <i class="icon-bars"></i>
                     </button>
-                    <a href="index.html" class="logo">
+                    <a href="./" class="logo">
                         <img src="assets/images/demos/demo-14/logo.png" alt="Molla Logo" width="105" height="25">
                     </a>
                 </div><!-- End .col-xl-3 col-xxl-2 -->

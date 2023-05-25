@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 19, 2023 at 10:51 PM
+-- Generation Time: May 25, 2023 at 11:25 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -111,6 +111,80 @@ INSERT INTO `office` (`id`, `section`, `address`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `orders`
+--
+
+CREATE TABLE `orders` (
+  `id` int(11) NOT NULL,
+  `product_id` int(11) DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `quantity` int(11) DEFAULT NULL,
+  `total_price` decimal(10,2) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `products`
+--
+
+CREATE TABLE `products` (
+  `id` int(11) NOT NULL,
+  `title` varchar(255) DEFAULT NULL,
+  `regular_price` decimal(10,2) DEFAULT NULL,
+  `discount_price` decimal(10,2) DEFAULT NULL,
+  `short_description` text DEFAULT NULL,
+  `color` varchar(50) DEFAULT NULL,
+  `size` varchar(50) DEFAULT NULL,
+  `category_id` int(11) DEFAULT NULL,
+  `featured_img` varchar(255) DEFAULT NULL,
+  `gallery` text DEFAULT NULL,
+  `description` text DEFAULT NULL,
+  `additional_information` text DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `product_categories`
+--
+
+CREATE TABLE `product_categories` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `reviews`
+--
+
+CREATE TABLE `reviews` (
+  `id` int(11) NOT NULL,
+  `rating` int(11) DEFAULT NULL,
+  `comment` text DEFAULT NULL,
+  `product_id` int(11) DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `shipping_returns_rules`
+--
+
+CREATE TABLE `shipping_returns_rules` (
+  `id` int(11) NOT NULL,
+  `details` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `slides`
 --
 
@@ -157,6 +231,96 @@ CREATE TABLE `social_media` (
 INSERT INTO `social_media` (`id`, `section`, `facebook_link`, `twitter_link`, `instagram_link`, `youtube_link`, `pinterest_link`) VALUES
 (1, 'Social', 'https://www.facebook.com/ashraf.uzmahim/', 'javascript:void(0)', 'javascript:void(0)', 'javascript:void(0)', 'javascript:void(0)');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `statistics`
+--
+
+CREATE TABLE `statistics` (
+  `id` int(11) NOT NULL,
+  `title` varchar(255) DEFAULT NULL,
+  `count_value` int(11) DEFAULT NULL,
+  `unit` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `statistics`
+--
+
+INSERT INTO `statistics` (`id`, `title`, `count_value`, `unit`) VALUES
+(1, 'Happy Customer', 40, 'k+'),
+(2, 'Years in Business', 20, '+'),
+(3, 'Return Clients', 95, '%'),
+(4, 'Awards Won', 15, '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `team`
+--
+
+CREATE TABLE `team` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `designation` varchar(255) DEFAULT NULL,
+  `photo` varchar(255) DEFAULT NULL,
+  `facebook_url` varchar(255) DEFAULT NULL,
+  `twitter_url` varchar(255) DEFAULT NULL,
+  `instagram_url` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `team`
+--
+
+INSERT INTO `team` (`id`, `name`, `designation`, `photo`, `facebook_url`, `twitter_url`, `instagram_url`) VALUES
+(1, 'Samanta Grey', 'Founder & CEO', 'assets/images/team/about-2/member-1.jpg', '#', '#', '#'),
+(2, 'Bruce Sutton', 'Sales & Marketing Manager', 'assets/images/team/about-2/member-2.jpg', '#', '#', '#'),
+(3, 'Janet Joy', 'Product Manager', 'assets/images/team/about-2/member-3.jpg', '#', '#', '#'),
+(4, 'Mark Pocket', 'Product Manager', 'assets/images/team/about-2/member-4.jpg', '#', '#', '#'),
+(5, 'Damion Blue', 'Sales & Marketing Manager', 'assets/images/team/about-2/member-5.jpg', '#', '#', '#'),
+(6, 'Lenard Smith', 'Product Manager', 'assets/images/team/about-2/member-6.jpg', '#', '#', '#'),
+(7, 'Rachel Green', 'Product Manager', 'assets/images/team/about-2/member-7.jpg', '#', '#', '#'),
+(8, 'David Doe', 'Product Manager', 'assets/images/team/about-2/member-8.jpg', '#', '#', '#');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `first_name` varchar(50) DEFAULT NULL,
+  `last_name` varchar(50) DEFAULT NULL,
+  `company_name` varchar(100) DEFAULT NULL,
+  `street_address` varchar(255) DEFAULT NULL,
+  `house` varchar(50) DEFAULT NULL,
+  `country` varchar(50) DEFAULT NULL,
+  `city` varchar(50) DEFAULT NULL,
+  `state` varchar(50) DEFAULT NULL,
+  `zip` varchar(10) DEFAULT NULL,
+  `phone` varchar(20) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
+  `images` text DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `wishlist`
+--
+
+CREATE TABLE `wishlist` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `product_id` int(11) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 --
 -- Indexes for dumped tables
 --
@@ -186,6 +350,36 @@ ALTER TABLE `office`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `orders`
+--
+ALTER TABLE `orders`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `products`
+--
+ALTER TABLE `products`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `product_categories`
+--
+ALTER TABLE `product_categories`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `reviews`
+--
+ALTER TABLE `reviews`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `shipping_returns_rules`
+--
+ALTER TABLE `shipping_returns_rules`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `slides`
 --
 ALTER TABLE `slides`
@@ -195,6 +389,30 @@ ALTER TABLE `slides`
 -- Indexes for table `social_media`
 --
 ALTER TABLE `social_media`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `statistics`
+--
+ALTER TABLE `statistics`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `team`
+--
+ALTER TABLE `team`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `wishlist`
+--
+ALTER TABLE `wishlist`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -236,143 +454,12 @@ ALTER TABLE `slides`
 --
 ALTER TABLE `social_media`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-
--- yousuf vai-------
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Database: `ecommers78old`
---
-
--- --------------------------------------------------------
-
---
--- Table structure for table `statistics`
---
-
-CREATE TABLE `statistics` (
-  `id` int(11) NOT NULL,
-  `title` varchar(255) DEFAULT NULL,
-  `count_value` int(11) DEFAULT NULL,
-  `unit` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `statistics`
---
-
-INSERT INTO `statistics` (`id`, `title`, `count_value`, `unit`) VALUES
-(1, 'Happy Customer', 40, 'k+'),
-(2, 'Years in Business', 20, '+'),
-(3, 'Return Clients', 95, '%'),
-(4, 'Awards Won', 15, '');
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `statistics`
---
-ALTER TABLE `statistics`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
 
 --
 -- AUTO_INCREMENT for table `statistics`
 --
 ALTER TABLE `statistics`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-
-
--- phpMyAdmin SQL Dump
--- version 5.2.0
--- https://www.phpmyadmin.net/
---
--- Host: 127.0.0.1
--- Generation Time: May 24, 2023 at 07:59 PM
--- Server version: 10.4.25-MariaDB
--- PHP Version: 8.1.10
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Database: `ecommers78old`
---
-
--- --------------------------------------------------------
-
---
--- Table structure for table `team`
---
-
-CREATE TABLE `team` (
-  `id` int(11) NOT NULL,
-  `name` varchar(255) DEFAULT NULL,
-  `designation` varchar(255) DEFAULT NULL,
-  `photo` varchar(255) DEFAULT NULL,
-  `facebook_url` varchar(255) DEFAULT NULL,
-  `twitter_url` varchar(255) DEFAULT NULL,
-  `instagram_url` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `team`
---
-
-INSERT INTO `team` (`id`, `name`, `designation`, `photo`, `facebook_url`, `twitter_url`, `instagram_url`) VALUES
-(1, 'Samanta Grey', 'Founder & CEO', 'assets/images/team/about-2/member-1.jpg', '#', '#', '#'),
-(2, 'Bruce Sutton', 'Sales & Marketing Manager', 'assets/images/team/about-2/member-2.jpg', '#', '#', '#'),
-(3, 'Janet Joy', 'Product Manager', 'assets/images/team/about-2/member-3.jpg', '#', '#', '#'),
-(4, 'Mark Pocket', 'Product Manager', 'assets/images/team/about-2/member-4.jpg', '#', '#', '#'),
-(5, 'Damion Blue', 'Sales & Marketing Manager', 'assets/images/team/about-2/member-5.jpg', '#', '#', '#'),
-(6, 'Lenard Smith', 'Product Manager', 'assets/images/team/about-2/member-6.jpg', '#', '#', '#'),
-(7, 'Rachel Green', 'Product Manager', 'assets/images/team/about-2/member-7.jpg', '#', '#', '#'),
-(8, 'David Doe', 'Product Manager', 'assets/images/team/about-2/member-8.jpg', '#', '#', '#');
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `team`
---
-ALTER TABLE `team`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
 
 --
 -- AUTO_INCREMENT for table `team`
@@ -384,4 +471,3 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-
