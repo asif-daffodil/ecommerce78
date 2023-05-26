@@ -54,8 +54,8 @@
                                 <a href="#">Links</a>
                                 <ul>
                                     <li><a href="#signin-modal" data-toggle="modal"><i class="icon-user"></i>Login</a></li>
-                                    <li><a href="about">About Us</a></li>
-                                    <li><a href="contact">Contact Us</a></li>
+                                    <li class="d-none d-md-block"><a href="about">About Us</a></li>
+                                    <li class="d-none d-md-block"><a href="contact">Contact Us</a></li>
                                 </ul>
                             </li>
                         </ul><!-- End .top-menu -->

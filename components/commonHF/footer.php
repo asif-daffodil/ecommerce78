@@ -1,3 +1,6 @@
+<?php
+include_once("./db.php");
+?>
 <footer class="footer">
     <div class="footer-middle">
         <div class="container">
@@ -7,14 +10,25 @@
                         <img src="assets/images/logo.png" class="footer-logo" alt="Footer Logo" width="105" height="25">
                         <p>Praesent dapibus, neque id cursus ucibus, tortor neque egestas augue, eu vulputate
                             magna eros eu erat. </p>
+                        <?php
+                        $social_media_query = $conn->query("SELECT * FROM `social_media`");
+                        $exist = $social_media_query->num_rows;
+                        if ($exist !== 0 || $exist > 0 || $exist == 1) {
+                            $fetch = $social_media_query->fetch_assoc();
+                        ?>
+                            <div class="social-icons">
+                                <a href="<?= $fetch['facebook_link'] ?>" class="social-icon" target="_blank" title="Facebook"><i class="icon-facebook-f"></i></a>
+                                <a href="<?= $fetch['twitter_link'] ?>" class="social-icon" target="_blank" title="Twitter"><i class="icon-twitter"></i></a>
+                                <a href="<?= $fetch['instagram_link'] ?>" class="social-icon" target="_blank" title="Instagram"><i class="icon-instagram"></i></a>
+                                <a href="<?= $fetch['youtube_link'] ?>" class="social-icon" target="_blank" title="Youtube"><i class="icon-youtube"></i></a>
+                                <a href="<?= $fetch['pinterest_link'] ?>" class="social-icon" target="_blank" title="Pinterest"><i class="icon-pinterest"></i></a>
+                            </div>
+                        <?php
 
-                        <div class="social-icons">
-                            <a href="#" class="social-icon" target="_blank" title="Facebook"><i class="icon-facebook-f"></i></a>
-                            <a href="#" class="social-icon" target="_blank" title="Twitter"><i class="icon-twitter"></i></a>
-                            <a href="#" class="social-icon" target="_blank" title="Instagram"><i class="icon-instagram"></i></a>
-                            <a href="#" class="social-icon" target="_blank" title="Youtube"><i class="icon-youtube"></i></a>
-                            <a href="#" class="social-icon" target="_blank" title="Pinterest"><i class="icon-pinterest"></i></a>
-                        </div>
+                        }
+                        ?>
+
+
                     </div>
                 </div>
 
@@ -22,7 +36,7 @@
                     <div class="widget">
                         <h4 class="widget-title">Useful Links</h4>
                         <ul class="widget-list">
-                            <li><a href="about">About Molla</a></li>
+                            <li><a href="about">About Us</a></li>
                             <li><a href="faq">FAQ</a></li>
                             <li><a href="contact">Contact us</a></li>
                             <li><a href="login">Log in</a></li>
@@ -34,12 +48,12 @@
                         <h4 class="widget-title">Customer Service</h4>
 
                         <ul class="widget-list">
-                            <li><a href="#">Payment Methods</a></li>
-                            <li><a href="#">Money-back guarantee!</a></li>
-                            <li><a href="#">Returns</a></li>
-                            <li><a href="#">Shipping</a></li>
-                            <li><a href="#">Terms and conditions</a></li>
-                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="javascript:void(0)">Payment Methods</a></li>
+                            <li><a href="javascript:void(0)">Money-back guarantee!</a></li>
+                            <li><a href="javascript:void(0)">Returns</a></li>
+                            <li><a href="javascript:void(0)">Shipping</a></li>
+                            <li><a href="javascript:void(0)">Terms and conditions</a></li>
+                            <li><a href="javascript:void(0)">Privacy Policy</a></li>
                         </ul>
                     </div>
                 </div>
@@ -122,13 +136,22 @@
                 </li>
             </ul>
         </nav>
+        <?php
+        $social_media_query = $conn->query("SELECT * FROM `social_media`");
+        $exist = $social_media_query->num_rows;
+        if ($exist !== 0 || $exist > 0 || $exist == 1) {
+            $fetch = $social_media_query->fetch_assoc();
+        ?>
+            <div class="social-icons">
+                <a href="<?= $fetch['facebook_link'] ?>" class="social-icon" target="_blank" title="Facebook"><i class="icon-facebook-f"></i></a>
+                <a href="<?= $fetch['twitter_link'] ?>" class="social-icon" target="_blank" title="Twitter"><i class="icon-twitter"></i></a>
+                <a href="<?= $fetch['instagram_link'] ?>" class="social-icon" target="_blank" title="Instagram"><i class="icon-instagram"></i></a>
+                <a href="<?= $fetch['youtube_link'] ?>" class="social-icon" target="_blank" title="Youtube"><i class="icon-youtube"></i></a>
+            </div>
+        <?php
 
-        <div class="social-icons">
-            <a href="#" class="social-icon" target="_blank" title="Facebook"><i class="icon-facebook-f"></i></a>
-            <a href="#" class="social-icon" target="_blank" title="Twitter"><i class="icon-twitter"></i></a>
-            <a href="#" class="social-icon" target="_blank" title="Instagram"><i class="icon-instagram"></i></a>
-            <a href="#" class="social-icon" target="_blank" title="Youtube"><i class="icon-youtube"></i></a>
-        </div>
+        }
+        ?>
     </div>
 </div>
 
@@ -247,230 +270,3 @@
         </div>
     </div>
 </div>
-
-
-<!-- jquery cdn -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
-
-
-<script>
-    $(document).ready(function() {
-
-        // name click up validation function
-        $(function() {
-            $('#cname').on("blur keyup", function() {
-                checkName();
-            });
-            $("#cname").click(function() {
-                $(document).on("click", function(e) {
-                    if ($(e.target).is("#cname") === false) {
-                        checkName();
-                    }
-                });
-            });
-        })
-
-        // email click up validation function
-        $(function() {
-            $('#cemail').on("blur keyup", function() {
-                checkEmail();
-            });
-            $("#cemail").click(function() {
-                $(document).on("click", function(e) {
-                    if ($(e.target).is("#cemail") === false) {
-                        checkEmail();
-                    }
-                });
-            });
-        })
-
-        // phone number click up validation function
-        $(function() {
-            $('#cphone').on("blur keyup", function() {
-                checkPhone();
-            });
-            $("#cphone").click(function() {
-                $(document).on("click", function(e) {
-                    if ($(e.target).is("#cphone") === false) {
-                        checkPhone();
-                    }
-                });
-            });
-        })
-
-        // subject click up validation function
-        $(function() {
-            $('#csubject').on("blur keyup", function() {
-                checkSubject();
-            });
-            $("#csubject").click(function() {
-                $(document).on("click", function(e) {
-                    if ($(e.target).is("#csubject") === false) {
-                        checkSubject();
-                    }
-                });
-            });
-        })
-
-
-        // text area / messege area click up validation function
-        $(function() {
-            $('#cmessage').on("blur keyup", function() {
-                checkMsg();
-            });
-            $("#cmessage").click(function() {
-                $(document).on("click", function(e) {
-                    if ($(e.target).is("#cmessage") === false) {
-                        checkMsg();
-                    }
-                });
-            });
-        })
-
-
-        function checkName() {
-            var name = $("#cname").val();
-
-            if (name === "") {
-                $("#cname").addClass("error-border");
-                $(".error-name").text("*Required");
-
-            } else if (name.length < 4) {
-                $("#cname").addClass("error-border");
-                $(".error-name").text("*Minimum 4 characters");
-
-            } else {
-                $("#cname").removeClass("error-border");
-                $(".error-name").text("");
-            }
-        }
-
-        function checkEmail() {
-            var email = $("#cemail").val();
-
-            function validateEmail($email) {
-                var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
-                return emailReg.test($email);
-            }
-
-            if (email === "") {
-                $("#cemail").addClass("error-border");
-                $(".error-email").text("*Required");
-
-            } else if (!validateEmail(email)) {
-                $("#cemail").addClass("error-border");
-                $(".error-email").text("*Incorrect email");
-
-            } else {
-                $("#cemail").removeClass("error-border");
-                $(".error-email").text("");
-            }
-        }
-
-        function checkPhone() {
-            var phone = $("#cphone").val();
-
-            if (phone === "") {
-                $("#cphone").addClass("error-border");
-                $(".error-phone").text("*Required");
-            } else {
-                $("#cphone").removeClass("error-border");
-                $(".error-phone").text("");
-            }
-        }
-
-
-        function checkSubject() {
-            var subject = $("#csubject").val();
-
-            if (subject === "") {
-                $("#csubject").addClass("error-border");
-                $(".error-subject").text("*Required");
-            } else if (subject.length < 5) {
-                $("#csubject").addClass("error-border");
-                $(".error-subject").text("*Minimum 5 characters");
-            } else {
-                $("#csubject").removeClass("error-border");
-                $(".error-subject").text("");
-            }
-        }
-
-        function checkMsg() {
-            var message = $("#cmessage").val();
-
-            if (message === "") {
-                $("#cmessage").addClass("error-border");
-                $(".error-msg").text("*Required");
-            } else if (message.length < 12) {
-                $("#cmessage").addClass("error-border");
-                $(".error-msg").text("*Minimum 12 characters");
-            } else {
-                $("#cmessage").removeClass("error-border");
-                $(".error-msg").text("");
-            }
-        }
-    })
-</script>
-<!-- Google Map -->
-<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDc3LRykbLB-y8MuomRUIY0qH5S6xgBLX4"></script>
-
-<!-- Plugins JS File -->
-<script src="assets/js/jquery.min.js"></script>
-<script src="assets/js/bootstrap.bundle.min.js"></script>
-<script src="assets/js/jquery.hoverIntent.min.js"></script>
-<script src="assets/js/jquery.waypoints.min.js"></script>
-<script src="assets/js/superfish.min.js"></script>
-<script src="assets/js/owl.carousel.min.js"></script>
-<!-- Main JS File -->
-<script src="assets/js/main.js"></script>
-<!-- sweet alert -->
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-<script type="text/javascript">
-    $('#mailSend').click(function() {
-        $('#mailSend').html('<i style="font-size:30px;" class="fa-solid fa-spinner fa-spin"></i>');
-        setTimeout(function() {
-            $('#mailSend').html('<span>Sumbit</span><i class="icon-long-arrow-right"></i>');
-        }, 3300);
-        var cname = $('#cname').val();
-        var cemail = $('#cemail').val();
-        var cphone = $('#cphone').val();
-        var csubject = $('#csubject').val();
-        var cmessage = $('#cmessage').val();
-        $.ajax({
-            type: "POST",
-            url: "components/contact/get_in_touch.php",
-            data: {
-                "mailSend": "mailSend",
-                "cname": cname,
-                "cemail": cemail,
-                "cphone": cphone,
-                "csubject": csubject,
-                "cmessage": cmessage
-            },
-            success: function(data) {
-                var data = JSON.parse(data);
-
-                if (data != null) {
-                    var status = data.status;
-                    var status_code = data.status_code;
-                    var status_text = data.status_text;
-
-                    swal({
-                        title: status,
-                        text: status_text,
-                        icon: status_code,
-                        button: "Ok",
-                    });
-
-                    if (status_code == "success") {
-                        $('#mailsenderForm')[0].reset();
-                    }
-                }
-            }
-        });
-    });
-</script>
-
-</body>
-
-</html>

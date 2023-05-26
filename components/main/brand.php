@@ -29,7 +29,7 @@
     while ($row = $result->fetch_object()) {
         $imageSrc = $row->image_src;
         $imageAlt = $row->image_alt;
-        echo '<a href="#" class="brand">';
+        echo '<a href="javascript:void(0)" class="brand">';
         echo '<img src="' . $imageSrc . '" alt="' . $imageAlt . '">';
         echo '</a>';
     }

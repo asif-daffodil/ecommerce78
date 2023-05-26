@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 25, 2023 at 11:25 AM
+-- Generation Time: May 26, 2023 at 06:19 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -41,8 +41,8 @@ CREATE TABLE `banners` (
 --
 
 INSERT INTO `banners` (`banner_id`, `image_src`, `image_alt`, `subtitle`, `title`, `link`) VALUES
-(1, 'assets/images/demos/demo-14/banners/banner-2.jpg', 'Banner img desc', 'Hottest Deals', 'Detox And Beautify For Spring Up To 20% Off', '#'),
-(2, 'assets/images/demos/demo-14/banners/banner-3.png', 'Banner img desc', 'Deal of the Day', 'Headphones Up To 30% Off', '#');
+(0, 'assets/images/demos/demo-14/banners/banner-2.jpg', 'Banner img desc', 'Hottest Deals', 'Detox And Beautify For Spring Up To 20% Off', '#'),
+(5, 'assets/images/demos/demo-14/banners/banner-3.png', 'Banner img desc', 'Deal of the Day', 'Headphones Up To 30% Off', '#');
 
 -- --------------------------------------------------------
 
@@ -229,7 +229,7 @@ CREATE TABLE `social_media` (
 --
 
 INSERT INTO `social_media` (`id`, `section`, `facebook_link`, `twitter_link`, `instagram_link`, `youtube_link`, `pinterest_link`) VALUES
-(1, 'Social', 'https://www.facebook.com/ashraf.uzmahim/', 'javascript:void(0)', 'javascript:void(0)', 'javascript:void(0)', 'javascript:void(0)');
+(1, 'Social', 'https://www.facebook.com/ashraf.uzmahim/', 'https://twitter.com/ashraf_uz_mahim', 'https://www.instagram.com/ashrafuzzaman04/', 'https://www.youtube.com/@webcoderashraf', 'https://www.pinterest.com/AshrafUzzaman04/');
 
 -- --------------------------------------------------------
 
@@ -423,7 +423,7 @@ ALTER TABLE `wishlist`
 -- AUTO_INCREMENT for table `banners`
 --
 ALTER TABLE `banners`
-  MODIFY `banner_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `banner_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `brands`
