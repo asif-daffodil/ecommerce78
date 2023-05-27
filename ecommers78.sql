@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 26, 2023 at 06:19 PM
+-- Generation Time: May 27, 2023 at 11:41 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -142,8 +142,22 @@ CREATE TABLE `products` (
   `gallery` text DEFAULT NULL,
   `description` text DEFAULT NULL,
   `additional_information` text DEFAULT NULL,
+  `sale` tinyint(1) NOT NULL,
+  `offer` tinyint(1) NOT NULL DEFAULT 0,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `products`
+--
+
+INSERT INTO `products` (`id`, `title`, `regular_price`, `discount_price`, `short_description`, `color`, `size`, `category_id`, `featured_img`, `gallery`, `description`, `additional_information`, `sale`, `offer`, `created_at`) VALUES
+(1, 'Butler Stool Ladder', '290.00', '251.99', 'Sed egestas, ante et vulputate volutpat, eros semper est, vitae luctus metus libero eu augue.', NULL, NULL, 1, 'assets/images/demos/demo-14/products/product-1.jpg', NULL, '<h3>Product Information</h3>\n                                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna viverra non, semper suscipit, posuere a, pede. Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. Aenean dignissim pellentesque felis. Phasellus ultrices nulla quis nibh. Quisque a lectus. Donec consectetuer ligula vulputate sem tristique cursus. </p>\n                                            <ul>\n                                                <li>Nunc nec porttitor turpis. In eu risus enim. In vitae mollis elit. </li>\n                                                <li>Vivamus finibus vel mauris ut vehicula.</li>\n                                                <li>Nullam a magna porttitor, dictum risus nec, faucibus sapien.</li>\n                                            </ul>\n\n                                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna viverra non, semper suscipit, posuere a, pede. Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. Aenean dignissim pellentesque felis. Phasellus ultrices nulla quis nibh. Quisque a lectus. Donec consectetuer ligula vulputate sem tristique cursus. </p>', '<h3>Information</h3><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna viverra non, semper suscipit, posuere a, pede. Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. </p>\n\n                                            <h3>Fabric &amp; care</h3>\n                                            <ul>\n                                                <li>Faux suede fabric</li>\n                                                <li>Gold tone metal hoop handles.</li>\n                                                <li>RI branding</li>\n                                                <li>Snake print trim interior </li>\n                                                <li>Adjustable cross body strap</li>\n                                                <li> Height: 31cm; Width: 32cm; Depth: 12cm; Handle Drop: 61cm</li>\n                                            </ul>\n\n                                            <h3>Size</h3>\n                                            <p>one size</p>', 1, 1, '2023-05-27 09:18:50'),
+(2, 'Bose - SoundSport wireless headphones', '179.99', '199.00', 'Sed egestas, vitae luctus metus libero eu augue.', NULL, NULL, 3, 'assets/images/demos/demo-14/products/product-2.jpg', NULL, '<h3>Product Information</h3>\n', '<h3>Information</h3><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna viverra non, semper suscipit, posuere a, pede. Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. </p>\n', 1, 0, '2023-05-27 08:18:55'),
+(3, 'Can 2-Seater Sofa frame charcoal', '300.00', NULL, 'Vitae luctus metus libero eu augue.', NULL, NULL, 1, 'assets/images/demos/demo-14/products/product-3.jpg', NULL, '<h3>Product Information</h3>\n', '<h3>Information</h3><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna viverra non, semper suscipit, posuere a, pede. Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. </p>\n', 0, 0, '2023-05-27 08:33:55'),
+(4, 'Tan suede biker jacket', '240.00', NULL, 'Sed egestas, ante et vulputate volutpat, eros semper est, vitae luctus metus libero eu augue.', NULL, NULL, 2, 'assets/images/demos/demo-14/products/product-4.jpg', NULL, '<h3>Product Information</h3>\n', '<h3>Information</h3><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna viverra non, semper suscipit, posuere a, pede. Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. </p>\n', 0, 0, '2023-05-27 08:25:51'),
+(5, 'MacBook Pro 13\" Display, i5', '1982.00', NULL, 'Sed egestas, vitae luctus metus libero eu augue.', NULL, NULL, 4, 'assets/images/demos/demo-14/products/product-6.jpg', NULL, '<h3>Product Information</h3>\n', '<h3>Information</h3><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna viverra non, semper suscipit, posuere a, pede. Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. </p>\n', 2, 0, '2023-05-27 08:38:22'),
+(6, 'Sony - Class LED 2160p Smart <br>4K Ultra HD', '1699.99', NULL, 'Luctus metus libero eu augue.', NULL, NULL, 3, 'assets/images/demos/demo-14/products/product-5.jpg', NULL, '<h3>Product Information</h3>\n', '<h3>Information</h3><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna viverra non, semper suscipit, posuere a, pede. Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. </p>\n', 2, 0, '2023-05-27 08:38:44');
 
 -- --------------------------------------------------------
 
@@ -155,6 +169,16 @@ CREATE TABLE `product_categories` (
   `id` int(11) NOT NULL,
   `name` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `product_categories`
+--
+
+INSERT INTO `product_categories` (`id`, `name`) VALUES
+(1, 'Furniture'),
+(2, 'Clothes'),
+(3, 'Electronics'),
+(4, 'Accessories');
 
 -- --------------------------------------------------------
 
@@ -170,6 +194,15 @@ CREATE TABLE `reviews` (
   `user_id` int(11) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `reviews`
+--
+
+INSERT INTO `reviews` (`id`, `rating`, `comment`, `product_id`, `user_id`, `created_at`) VALUES
+(1, 4, 'Valo hoise kintu problem ase!', 1, 1, '2023-05-27 07:48:18'),
+(2, 5, 'Oshadhado hoise! bakita thi thaklei hoy!', 1, 2, '2023-05-27 08:02:01'),
+(3, 2, 'good product', 5, 2, '2023-05-27 09:22:26');
 
 -- --------------------------------------------------------
 
@@ -308,6 +341,14 @@ CREATE TABLE `users` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `first_name`, `last_name`, `company_name`, `street_address`, `house`, `country`, `city`, `state`, `zip`, `phone`, `email`, `password`, `images`, `created_at`) VALUES
+(1, 'Yousuf', 'Molla', 'Khan', NULL, NULL, NULL, NULL, NULL, NULL, '01712121212', 'yousuf@molla.com', '123456', NULL, '2023-05-27 07:47:01'),
+(2, 'Siam', 'Chattapaddhay', 'Niyamot', NULL, NULL, NULL, NULL, NULL, NULL, '01946464646', NULL, NULL, NULL, '2023-05-27 08:00:42');
+
 -- --------------------------------------------------------
 
 --
@@ -359,7 +400,8 @@ ALTER TABLE `orders`
 -- Indexes for table `products`
 --
 ALTER TABLE `products`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `category_id` (`category_id`);
 
 --
 -- Indexes for table `product_categories`
@@ -371,7 +413,9 @@ ALTER TABLE `product_categories`
 -- Indexes for table `reviews`
 --
 ALTER TABLE `reviews`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `product_id` (`product_id`),
+  ADD KEY `user_id` (`user_id`);
 
 --
 -- Indexes for table `shipping_returns_rules`
@@ -444,6 +488,24 @@ ALTER TABLE `office`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `products`
+--
+ALTER TABLE `products`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `product_categories`
+--
+ALTER TABLE `product_categories`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `reviews`
+--
+ALTER TABLE `reviews`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `slides`
 --
 ALTER TABLE `slides`
@@ -466,6 +528,29 @@ ALTER TABLE `statistics`
 --
 ALTER TABLE `team`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `products`
+--
+ALTER TABLE `products`
+  ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `product_categories` (`id`);
+
+--
+-- Constraints for table `reviews`
+--
+ALTER TABLE `reviews`
+  ADD CONSTRAINT `reviews_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`),
+  ADD CONSTRAINT `reviews_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
