@@ -102,92 +102,94 @@
             <div class="col-12">
                 <div class="widget widget-deals">
                     <h4 class="widget-title"><span>Special Offer</span></h4><!-- End .widget-title -->
-
                     <div class="row">
-                        <div class="col-sm-6 col-xl-12">
-                            <div class="product text-center">
-                                <figure class="product-media">
-                                    <span class="product-label label-sale">Deal of the week</span>
-                                    <a href="product.html">
-                                        <img src="assets/images/demos/demo-14/products/deals/product-1.jpg" alt="Product image" class="product-image">
-                                    </a>
+                        <?php
+                        $select = $conn->query("SELECT p.name, p.title, p.regular_price, p.discount_price, p.featured_img, p.type ,p.offer_time, c.name AS category_name, AVG(r.rating) AS average_rating, COUNT(r.id) AS review_count
+                        FROM Products p 
+                        INNER JOIN Product_Categories c ON p.category_id = c.id
+                        LEFT JOIN Reviews r ON p.id = r.product_id
+                        GROUP BY p.id ORDER BY RAND()");
+                        while ($data = $select->fetch_object()) {
+                            if ($data->type == "Deal of the week") {
+                        ?>
+                                <div class="col-sm-6 col-xl-12">
 
-                                    <div class="product-action-vertical">
-                                        <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><span>add to wishlist</span></a>
-                                        <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-                                        <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
-                                    </div><!-- End .product-action-vertical -->
+                                    <div class="product text-center">
+                                        <figure class="product-media">
 
-                                    <div class="product-action">
-                                        <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
-                                    </div><!-- End .product-action -->
-                                </figure><!-- End .product-media -->
+                                            <?php
+                                            if (($data->type !== null && $data->type !== "") && ($data->type !== "Deal of the week")) {
+                                            ?>
+                                                <span style="text-transform: capitalize;" class="product-label label-<?= $data->type ?>"><?= $data->type ?></span>
+                                            <?php
+                                            } elseif ($data->type == "Deal of the week") {
+                                            ?>
+                                                <span style="text-transform: capitalize;" class="product-label label-sale"><?= $data->type ?></span>
+                                            <?php
+                                            }
+                                            ?>
 
-                                <div class="product-body">
-                                    <div class="product-cat">
-                                        <a href="#">Audio</a>
-                                    </div><!-- End .product-cat -->
-                                    <h3 class="product-title"><a href="product.html">Bose SoundLink Micro speaker</a></h3><!-- End .product-title -->
-                                    <div class="product-price">
-                                        <span class="new-price">$99.99</span>
-                                        <span class="old-price">Was $110.99</span>
-                                    </div><!-- End .product-price -->
-                                    <div class="ratings-container">
-                                        <div class="ratings">
-                                            <div class="ratings-val" style="width: 100%;"></div><!-- End .ratings-val -->
-                                        </div><!-- End .ratings -->
-                                        <span class="ratings-text">( 4 Reviews )</span>
-                                    </div><!-- End .rating-container -->
+                                            <a href="product">
+                                                <img src="<?= $data->featured_img ?>" alt="Product image" class="product-image">
+                                            </a>
 
-                                    <div class="product-nav product-nav-dots">
-                                        <a href="#" class="active" style="background: #f3815f;"><span class="sr-only">Color name</span></a>
-                                        <a href="#" style="background: #333333;"><span class="sr-only">Color name</span></a>
-                                    </div><!-- End .product-nav -->
-                                </div><!-- End .product-body -->
+                                            <?php
+                                            if ($data->offer_time == 1) {
+                                            ?>
+                                                <div class="product-countdown" data-until="+55h" data-relative="true" data-labels-short="true"></div>
+                                            <?php
+                                            }
+                                            ?>
 
-                                <div class="product-countdown" data-until="+44h" data-relative="true" data-labels-short="true"></div><!-- End .product-countdown -->
-                            </div><!-- End .product -->
-                        </div><!-- End .col-sm-6 col-xl-12 -->
+                                            <div class="product-action-vertical">
+                                                <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><span>add to wishlist</span></a>
+                                                <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
+                                                <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
+                                            </div>
 
-                        <div class="col-sm-6 col-xl-12">
-                            <div class="product text-center">
-                                <figure class="product-media">
-                                    <span class="product-label label-sale">Deal of the week</span>
-                                    <a href="product.html">
-                                        <img src="assets/images/demos/demo-14/products/deals/product-2.jpg" alt="Product image" class="product-image">
-                                    </a>
+                                            <div class="product-action">
+                                                <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
+                                            </div>
+                                        </figure>
 
-                                    <div class="product-action-vertical">
-                                        <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><span>add to wishlist</span></a>
-                                        <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-                                        <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
-                                    </div><!-- End .product-action-vertical -->
+                                        <div class="product-body">
+                                            <div class="product-cat">
+                                                <a href="#"><?= $data->name; ?></a>
+                                            </div>
+                                            <h3 class="product-title"><a href="product.html"><?= $data->title ?></a></h3>
+                                            <div class="product-price">
+                                                <?php
+                                                if ($data->discount_price !== null) {
+                                                ?>
+                                                    <span class="new-price" style="color: green;">$<?= $data->discount_price ?></span>
+                                                <?php
+                                                }
+                                                ?>
+                                                <?php
+                                                if ($data->discount_price !== null) {
+                                                ?>
+                                                    <span class="old-price">Was <span class="text-danger" style="text-decoration: line-through;">$<?= $data->regular_price ?></span>
+                                                    <?php
+                                                } else {
+                                                    ?>
+                                                        <span>$<?= $data->regular_price ?></span>
+                                                    <?php
+                                                }
+                                                    ?>
 
-                                    <div class="product-action">
-                                        <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
-                                    </div><!-- End .product-action -->
-                                </figure><!-- End .product-media -->
-
-                                <div class="product-body">
-                                    <div class="product-cat">
-                                        <a href="#">Cameras</a>
-                                    </div><!-- End .product-cat -->
-                                    <h3 class="product-title"><a href="product.html">GoPro HERO Session Waterproof HD Action Camera</a></h3><!-- End .product-title -->
-                                    <div class="product-price">
-                                        <span class="new-price">$196.99</span>
-                                        <span class="old-price">Was $210.99</span>
-                                    </div><!-- End .product-price -->
-                                    <div class="ratings-container">
-                                        <div class="ratings">
-                                            <div class="ratings-val" style="width: 100%;"></div><!-- End .ratings-val -->
-                                        </div><!-- End .ratings -->
-                                        <span class="ratings-text">( 19 Reviews )</span>
-                                    </div><!-- End .rating-container -->
-                                </div><!-- End .product-body -->
-
-                                <div class="product-countdown" data-until="+52h" data-relative="true" data-labels-short="true"></div><!-- End .product-countdown -->
-                            </div><!-- End .product -->
-                        </div><!-- End .col-sm-6 col-xl-12 -->
+                                            </div>
+                                            <div class="ratings-container">
+                                                <div class="ratings">
+                                                    <div class="ratings-val" style="width: <?php echo ($data->average_rating * 20); ?>%;"></div>
+                                                </div>
+                                                <span class="ratings-text">( <?= $data->review_count ?? 0 ?> Reviews )</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div><!-- End .col-sm-6 col-xl-12 -->
+                        <?php }
+                        }
+                        ?>
                     </div><!-- End .row -->
                 </div><!-- End .widget widget-deals -->
             </div><!-- End .col-sm-6 col-lg-xl -->
