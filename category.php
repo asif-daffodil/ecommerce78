@@ -1,5 +1,4 @@
 <?php
-
 include_once("./components/category/header.php");
 ?>
 <main class="main">
@@ -10,8 +9,8 @@ include_once("./components/category/header.php");
                 <li class="breadcrumb-item"><a href="#">Shop</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Electronics</li>
             </ol>
-        </div><!-- End .container -->
-    </nav><!-- End .breadcrumb-nav -->
+        </div>
+    </nav>
 
     <div class="page-content">
         <div class="container">
@@ -32,11 +31,11 @@ include_once("./components/category/header.php");
                             </a>
 
                             <div class="banner-content banner-content-right">
-                                <h3 class="banner-subtitle"><a href="#">Amazing Value</a></h3><!-- End .banner-subtitle -->
-                                <h2 class="banner-title"><a href="#">High Performance 4K TVs</a></h2><!-- End .banner-title -->
+                                <h3 class="banner-subtitle"><a href="#">Amazing Value</a></h3>
+                                <h2 class="banner-title"><a href="#">High Performance 4K TVs</a></h2>
                                 <a href="#" class="banner-link">Shop Now <i class="icon-long-arrow-right"></i></a>
-                            </div><!-- End .banner-content -->
-                        </div><!-- End .banner -->
+                            </div>
+                        </div>
 
                         <div class="banner banner-poster">
                             <a href="#">
@@ -44,14 +43,14 @@ include_once("./components/category/header.php");
                             </a>
 
                             <div class="banner-content">
-                                <h3 class="banner-subtitle"><a href="#">Weekend Deal</a></h3><!-- End .banner-subtitle -->
-                                <h2 class="banner-title"><a href="#">Apple & Accessories</a></h2><!-- End .banner-title -->
+                                <h3 class="banner-subtitle"><a href="#">Weekend Deal</a></h3>
+                                <h2 class="banner-title"><a href="#">Apple & Accessories</a></h2>
                                 <a href="#" class="banner-link">Shop Now <i class="icon-long-arrow-right"></i></a>
-                            </div><!-- End .banner-content -->
-                        </div><!-- End .banner -->
-                    </div><!-- End .owl-carousel -->
+                            </div>
+                        </div>
+                    </div>
 
-                    <div class="mb-3"></div><!-- End .mb-3 -->
+                    <div class="mb-3"></div>
 
                     <div class="owl-carousel owl-simple owl-nav-align" data-toggle="owl" data-owl-options='{
                                     "nav": false, 
@@ -78,36 +77,21 @@ include_once("./components/category/header.php");
                                         }
                                     }
                                 }'>
-                        <a href="#" class="brand">
-                            <img src="assets/images/brands/2.png" alt="Brand Name">
-                        </a>
 
-                        <a href="#" class="brand">
-                            <img src="assets/images/brands/3.png" alt="Brand Name">
-                        </a>
+                        <?php
+                        $select = $conn->query("SELECT * FROM `brands`");
+                        while ($data = $select->fetch_object()) {
+                        ?>
+                            <a href="javascript:void(0)" class="brand">
+                                <img src="<?= $data->image_src ?>" alt="<?= $data->image_alt ?>">
+                            </a>
 
-                        <a href="#" class="brand">
-                            <img src="assets/images/brands/4.png" alt="Brand Name">
-                        </a>
+                        <?php
+                        }
+                        ?>
+                    </div>
 
-                        <a href="#" class="brand">
-                            <img src="assets/images/brands/5.png" alt="Brand Name">
-                        </a>
-
-                        <a href="#" class="brand">
-                            <img src="assets/images/brands/6.png" alt="Brand Name">
-                        </a>
-
-                        <a href="#" class="brand">
-                            <img src="assets/images/brands/1.png" alt="Brand Name">
-                        </a>
-
-                        <a href="#" class="brand">
-                            <img src="assets/images/brands/2.png" alt="Brand Name">
-                        </a>
-                    </div><!-- End .owl-carousel -->
-
-                    <div class="mb-3 mb-lg-5"></div><!-- End .mb-3 mb-lg-5 -->
+                    <div class="mb-3 mb-lg-5"></div>
 
                     <div class="cat-blocks-container">
                         <div class="row">
@@ -119,9 +103,9 @@ include_once("./components/category/header.php");
                                         </span>
                                     </figure>
 
-                                    <h3 class="cat-block-title">Desktop Computers</h3><!-- End .cat-block-title -->
+                                    <h3 class="cat-block-title">Desktop Computers</h3>
                                 </a>
-                            </div><!-- End .col-6 col-md-4 col-lg-3 -->
+                            </div>
 
                             <div class="col-6 col-md-4 col-lg-3">
                                 <a href="category.html" class="cat-block">
@@ -131,9 +115,9 @@ include_once("./components/category/header.php");
                                         </span>
                                     </figure>
 
-                                    <h3 class="cat-block-title">Monitors</h3><!-- End .cat-block-title -->
+                                    <h3 class="cat-block-title">Monitors</h3>
                                 </a>
-                            </div><!-- End .col-6 col-md-4 col-lg-3 -->
+                            </div>
 
                             <div class="col-6 col-md-4 col-lg-3">
                                 <a href="category.html" class="cat-block">
@@ -143,9 +127,9 @@ include_once("./components/category/header.php");
                                         </span>
                                     </figure>
 
-                                    <h3 class="cat-block-title">Laptops</h3><!-- End .cat-block-title -->
+                                    <h3 class="cat-block-title">Laptops</h3>
                                 </a>
-                            </div><!-- End .col-6 col-md-4 col-lg-3 -->
+                            </div>
 
                             <div class="col-6 col-md-4 col-lg-3">
                                 <a href="category.html" class="cat-block">
@@ -155,9 +139,9 @@ include_once("./components/category/header.php");
                                         </span>
                                     </figure>
 
-                                    <h3 class="cat-block-title">iPads & Tablets</h3><!-- End .cat-block-title -->
+                                    <h3 class="cat-block-title">iPads & Tablets</h3>
                                 </a>
-                            </div><!-- End .col-6 col-md-4 col-lg-3 -->
+                            </div>
 
                             <div class="col-6 col-md-4 col-lg-3">
                                 <a href="category.html" class="cat-block">
@@ -167,9 +151,9 @@ include_once("./components/category/header.php");
                                         </span>
                                     </figure>
 
-                                    <h3 class="cat-block-title">Hard Drives & Storage</h3><!-- End .cat-block-title -->
+                                    <h3 class="cat-block-title">Hard Drives & Storage</h3>
                                 </a>
-                            </div><!-- End .col-6 col-md-4 col-lg-3 -->
+                            </div>
 
                             <div class="col-6 col-md-4 col-lg-3">
                                 <a href="category.html" class="cat-block">
@@ -179,9 +163,9 @@ include_once("./components/category/header.php");
                                         </span>
                                     </figure>
 
-                                    <h3 class="cat-block-title">Printers & Supplies</h3><!-- End .cat-block-title -->
+                                    <h3 class="cat-block-title">Printers & Supplies</h3>
                                 </a>
-                            </div><!-- End .col-6 col-md-4 col-lg-3 -->
+                            </div>
 
                             <div class="col-6 col-md-4 col-lg-3">
                                 <a href="category.html" class="cat-block">
@@ -191,15 +175,15 @@ include_once("./components/category/header.php");
                                         </span>
                                     </figure>
 
-                                    <h3 class="cat-block-title">Computer Accessories</h3><!-- End .cat-block-title -->
+                                    <h3 class="cat-block-title">Computer Accessories</h3>
                                 </a>
-                            </div><!-- End .col-6 col-md-4 col-lg-3 -->
-                        </div><!-- End .row -->
-                    </div><!-- End .cat-blocks-container -->
+                            </div>
+                        </div>
+                    </div>
 
-                    <div class="mb-2"></div><!-- End .mb-2 -->
+                    <div class="mb-2"></div>
 
-                    <h2 class="title title-border">Featured Items</h2><!-- End .title -->
+                    <h2 class="title title-border">Featured Items</h2>
 
                     <div class="owl-carousel owl-simple owl-nav-top carousel-equal-height carousel-with-shadow" data-toggle="owl" data-owl-options='{
                                     "nav": true, 
@@ -232,29 +216,29 @@ include_once("./components/category/header.php");
                                     <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
                                     <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
                                     <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-                                </div><!-- End .product-action-vertical -->
+                                </div>
 
                                 <div class="product-action">
                                     <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
-                                </div><!-- End .product-action -->
-                            </figure><!-- End .product-media -->
+                                </div>
+                            </figure>
 
                             <div class="product-body">
                                 <div class="product-cat">
                                     <a href="#">Laptops</a>
-                                </div><!-- End .product-cat -->
-                                <h3 class="product-title"><a href="product.html">MacBook Pro 13" Display, i5</a></h3><!-- End .product-title -->
+                                </div>
+                                <h3 class="product-title"><a href="product.html">MacBook Pro 13" Display, i5</a></h3>
                                 <div class="product-price">
                                     $1,199.00
-                                </div><!-- End .product-price -->
+                                </div>
                                 <div class="ratings-container">
                                     <div class="ratings">
-                                        <div class="ratings-val" style="width: 100%;"></div><!-- End .ratings-val -->
-                                    </div><!-- End .ratings -->
+                                        <div class="ratings-val" style="width: 100%;"></div>
+                                    </div>
                                     <span class="ratings-text">( 4 Reviews )</span>
-                                </div><!-- End .rating-container -->
-                            </div><!-- End .product-body -->
-                        </div><!-- End .product -->
+                                </div>
+                            </div>
+                        </div>
 
                         <div class="product">
                             <figure class="product-media">
@@ -266,29 +250,29 @@ include_once("./components/category/header.php");
                                     <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
                                     <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
                                     <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-                                </div><!-- End .product-action-vertical -->
+                                </div>
 
                                 <div class="product-action">
                                     <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
-                                </div><!-- End .product-action -->
-                            </figure><!-- End .product-media -->
+                                </div>
+                            </figure>
 
                             <div class="product-body">
                                 <div class="product-cat">
                                     <a href="#">Audio</a>
-                                </div><!-- End .product-cat -->
-                                <h3 class="product-title"><a href="product.html">Bose - SoundLink Bluetooth Speaker</a></h3><!-- End .product-title -->
+                                </div>
+                                <h3 class="product-title"><a href="product.html">Bose - SoundLink Bluetooth Speaker</a></h3>
                                 <div class="product-price">
                                     $79.99
-                                </div><!-- End .product-price -->
+                                </div>
                                 <div class="ratings-container">
                                     <div class="ratings">
-                                        <div class="ratings-val" style="width: 60%;"></div><!-- End .ratings-val -->
-                                    </div><!-- End .ratings -->
+                                        <div class="ratings-val" style="width: 60%;"></div>
+                                    </div>
                                     <span class="ratings-text">( 6 Reviews )</span>
-                                </div><!-- End .rating-container -->
-                            </div><!-- End .product-body -->
-                        </div><!-- End .product -->
+                                </div>
+                            </div>
+                        </div>
 
                         <div class="product">
                             <figure class="product-media">
@@ -301,35 +285,35 @@ include_once("./components/category/header.php");
                                     <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
                                     <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
                                     <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-                                </div><!-- End .product-action-vertical -->
+                                </div>
 
                                 <div class="product-action">
                                     <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
-                                </div><!-- End .product-action -->
-                            </figure><!-- End .product-media -->
+                                </div>
+                            </figure>
 
                             <div class="product-body">
                                 <div class="product-cat">
                                     <a href="#">Tablets</a>
-                                </div><!-- End .product-cat -->
-                                <h3 class="product-title"><a href="product.html">Apple - 11 Inch iPad Pro with Wi-Fi 256GB </a></h3><!-- End .product-title -->
+                                </div>
+                                <h3 class="product-title"><a href="product.html">Apple - 11 Inch iPad Pro with Wi-Fi 256GB </a></h3>
                                 <div class="product-price">
                                     $899.99
-                                </div><!-- End .product-price -->
+                                </div>
                                 <div class="ratings-container">
                                     <div class="ratings">
-                                        <div class="ratings-val" style="width: 80%;"></div><!-- End .ratings-val -->
-                                    </div><!-- End .ratings -->
+                                        <div class="ratings-val" style="width: 80%;"></div>
+                                    </div>
                                     <span class="ratings-text">( 4 Reviews )</span>
-                                </div><!-- End .rating-container -->
+                                </div>
 
                                 <div class="product-nav product-nav-dots">
                                     <a href="#" class="active" style="background: #edd2c8;"><span class="sr-only">Color name</span></a>
                                     <a href="#" style="background: #eaeaec;"><span class="sr-only">Color name</span></a>
                                     <a href="#" style="background: #333333;"><span class="sr-only">Color name</span></a>
-                                </div><!-- End .product-nav -->
-                            </div><!-- End .product-body -->
-                        </div><!-- End .product -->
+                                </div>
+                            </div>
+                        </div>
 
                         <div class="product">
                             <figure class="product-media">
@@ -342,31 +326,31 @@ include_once("./components/category/header.php");
                                     <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
                                     <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
                                     <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-                                </div><!-- End .product-action-vertical -->
+                                </div>
 
                                 <div class="product-action">
                                     <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
-                                </div><!-- End .product-action -->
-                            </figure><!-- End .product-media -->
+                                </div>
+                            </figure>
 
                             <div class="product-body">
                                 <div class="product-cat">
                                     <a href="#">Cell Phone</a>
-                                </div><!-- End .product-cat -->
-                                <h3 class="product-title"><a href="product.html">Google - Pixel 3 XL 128GB</a></h3><!-- End .product-title -->
+                                </div>
+                                <h3 class="product-title"><a href="product.html">Google - Pixel 3 XL 128GB</a></h3>
                                 <div class="product-price">
                                     $899.99
                                     <span class="new-price">$350.00</span>
                                     <span class="old-price">Was $410.00</span>
-                                </div><!-- End .product-price -->
+                                </div>
                                 <div class="ratings-container">
                                     <div class="ratings">
-                                        <div class="ratings-val" style="width: 80%;"></div><!-- End .ratings-val -->
-                                    </div><!-- End .ratings -->
+                                        <div class="ratings-val" style="width: 80%;"></div>
+                                    </div>
                                     <span class="ratings-text">( 10 Reviews )</span>
-                                </div><!-- End .rating-container -->
-                            </div><!-- End .product-body -->
-                        </div><!-- End .product -->
+                                </div>
+                            </div>
+                        </div>
 
                         <div class="product">
                             <figure class="product-media">
@@ -379,39 +363,39 @@ include_once("./components/category/header.php");
                                     <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
                                     <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
                                     <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-                                </div><!-- End .product-action-vertical -->
+                                </div>
 
                                 <div class="product-action">
                                     <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
-                                </div><!-- End .product-action -->
-                            </figure><!-- End .product-media -->
+                                </div>
+                            </figure>
 
                             <div class="product-body">
                                 <div class="product-cat">
                                     <a href="#">Appliances</a>
-                                </div><!-- End .product-cat -->
-                                <h3 class="product-title"><a href="product.html">Neato Robotics</a></h3><!-- End .product-title -->
+                                </div>
+                                <h3 class="product-title"><a href="product.html">Neato Robotics</a></h3>
                                 <div class="product-price">
                                     $399.00
-                                </div><!-- End .product-price -->
+                                </div>
                                 <div class="ratings-container">
                                     <div class="ratings">
-                                        <div class="ratings-val" style="width: 80%;"></div><!-- End .ratings-val -->
-                                    </div><!-- End .ratings -->
+                                        <div class="ratings-val" style="width: 80%;"></div>
+                                    </div>
                                     <span class="ratings-text">( 12 Reviews )</span>
-                                </div><!-- End .rating-container -->
-                            </div><!-- End .product-body -->
-                        </div><!-- End .product -->
-                    </div><!-- End .owl-carousel -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-                    <div class="mb-4"></div><!-- End .mb-4 -->
+                    <div class="mb-4"></div>
 
                     <div class="toolbox">
                         <div class="toolbox-left">
                             <div class="toolbox-info">
                                 10 Products found
-                            </div><!-- End .toolbox-info -->
-                        </div><!-- End .toolbox-left -->
+                            </div>
+                        </div>
 
                         <div class="toolbox-right">
                             <div class="toolbox-sort">
@@ -423,9 +407,9 @@ include_once("./components/category/header.php");
                                         <option value="date">Date</option>
                                     </select>
                                 </div>
-                            </div><!-- End .toolbox-sort -->
-                        </div><!-- End .toolbox-right -->
-                    </div><!-- End .toolbox -->
+                            </div>
+                        </div>
+                    </div>
 
                     <div class="products mb-3">
                         <div class="row">
@@ -441,30 +425,30 @@ include_once("./components/category/header.php");
                                             <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
                                             <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
                                             <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-                                        </div><!-- End .product-action-vertical -->
+                                        </div>
 
                                         <div class="product-action">
                                             <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
-                                        </div><!-- End .product-action -->
-                                    </figure><!-- End .product-media -->
+                                        </div>
+                                    </figure>
 
                                     <div class="product-body">
                                         <div class="product-cat">
                                             <a href="#">Appliances</a>
-                                        </div><!-- End .product-cat -->
-                                        <h3 class="product-title"><a href="product.html">Neato Robotics</a></h3><!-- End .product-title -->
+                                        </div>
+                                        <h3 class="product-title"><a href="product.html">Neato Robotics</a></h3>
                                         <div class="product-price">
                                             $399.00
-                                        </div><!-- End .product-price -->
+                                        </div>
                                         <div class="ratings-container">
                                             <div class="ratings">
-                                                <div class="ratings-val" style="width: 80%;"></div><!-- End .ratings-val -->
-                                            </div><!-- End .ratings -->
+                                                <div class="ratings-val" style="width: 80%;"></div>
+                                            </div>
                                             <span class="ratings-text">( 12 Reviews )</span>
-                                        </div><!-- End .rating-container -->
-                                    </div><!-- End .product-body -->
-                                </div><!-- End .product -->
-                            </div><!-- End .col-sm-6 col-md-4 col-xl-3 -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
                             <div class="col-6 col-md-4 col-xl-3">
                                 <div class="product">
@@ -478,30 +462,30 @@ include_once("./components/category/header.php");
                                             <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
                                             <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
                                             <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-                                        </div><!-- End .product-action-vertical -->
+                                        </div>
 
                                         <div class="product-action">
                                             <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
-                                        </div><!-- End .product-action -->
-                                    </figure><!-- End .product-media -->
+                                        </div>
+                                    </figure>
 
                                     <div class="product-body">
                                         <div class="product-cat">
                                             <a href="#">Laptops</a>
-                                        </div><!-- End .product-cat -->
-                                        <h3 class="product-title"><a href="product.html">MacBook Pro 13" Display, i5</a></h3><!-- End .product-title -->
+                                        </div>
+                                        <h3 class="product-title"><a href="product.html">MacBook Pro 13" Display, i5</a></h3>
                                         <div class="product-price">
                                             $1,199.00
-                                        </div><!-- End .product-price -->
+                                        </div>
                                         <div class="ratings-container">
                                             <div class="ratings">
-                                                <div class="ratings-val" style="width: 100%;"></div><!-- End .ratings-val -->
-                                            </div><!-- End .ratings -->
+                                                <div class="ratings-val" style="width: 100%;"></div>
+                                            </div>
                                             <span class="ratings-text">( 4 Reviews )</span>
-                                        </div><!-- End .rating-container -->
-                                    </div><!-- End .product-body -->
-                                </div><!-- End .product -->
-                            </div><!-- End .col-sm-6 col-md-4 col-xl-3 -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
                             <div class="col-6 col-md-4 col-xl-3">
                                 <div class="product">
@@ -514,30 +498,30 @@ include_once("./components/category/header.php");
                                             <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
                                             <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
                                             <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-                                        </div><!-- End .product-action-vertical -->
+                                        </div>
 
                                         <div class="product-action">
                                             <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
-                                        </div><!-- End .product-action -->
-                                    </figure><!-- End .product-media -->
+                                        </div>
+                                    </figure>
 
                                     <div class="product-body">
                                         <div class="product-cat">
                                             <a href="#">Audio</a>
-                                        </div><!-- End .product-cat -->
-                                        <h3 class="product-title"><a href="product.html">Bose - SoundLink Bluetooth Speaker</a></h3><!-- End .product-title -->
+                                        </div>
+                                        <h3 class="product-title"><a href="product.html">Bose - SoundLink Bluetooth Speaker</a></h3>
                                         <div class="product-price">
                                             $79.99
-                                        </div><!-- End .product-price -->
+                                        </div>
                                         <div class="ratings-container">
                                             <div class="ratings">
-                                                <div class="ratings-val" style="width: 60%;"></div><!-- End .ratings-val -->
-                                            </div><!-- End .ratings -->
+                                                <div class="ratings-val" style="width: 60%;"></div>
+                                            </div>
                                             <span class="ratings-text">( 6 Reviews )</span>
-                                        </div><!-- End .rating-container -->
-                                    </div><!-- End .product-body -->
-                                </div><!-- End .product -->
-                            </div><!-- End .col-sm-6 col-md-4 col-xl-3 -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
                             <div class="col-6 col-md-4 col-xl-3">
                                 <div class="product">
@@ -551,36 +535,36 @@ include_once("./components/category/header.php");
                                             <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
                                             <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
                                             <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-                                        </div><!-- End .product-action-vertical -->
+                                        </div>
 
                                         <div class="product-action">
                                             <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
-                                        </div><!-- End .product-action -->
-                                    </figure><!-- End .product-media -->
+                                        </div>
+                                    </figure>
 
                                     <div class="product-body">
                                         <div class="product-cat">
                                             <a href="#">Tablets</a>
-                                        </div><!-- End .product-cat -->
-                                        <h3 class="product-title"><a href="product.html">Apple - 11 Inch iPad Pro with Wi-Fi 256GB </a></h3><!-- End .product-title -->
+                                        </div>
+                                        <h3 class="product-title"><a href="product.html">Apple - 11 Inch iPad Pro with Wi-Fi 256GB </a></h3>
                                         <div class="product-price">
                                             $899.99
-                                        </div><!-- End .product-price -->
+                                        </div>
                                         <div class="ratings-container">
                                             <div class="ratings">
-                                                <div class="ratings-val" style="width: 80%;"></div><!-- End .ratings-val -->
-                                            </div><!-- End .ratings -->
+                                                <div class="ratings-val" style="width: 80%;"></div>
+                                            </div>
                                             <span class="ratings-text">( 4 Reviews )</span>
-                                        </div><!-- End .rating-container -->
+                                        </div>
 
                                         <div class="product-nav product-nav-dots">
                                             <a href="#" class="active" style="background: #edd2c8;"><span class="sr-only">Color name</span></a>
                                             <a href="#" style="background: #eaeaec;"><span class="sr-only">Color name</span></a>
                                             <a href="#" style="background: #333333;"><span class="sr-only">Color name</span></a>
-                                        </div><!-- End .product-nav -->
-                                    </div><!-- End .product-body -->
-                                </div><!-- End .product -->
-                            </div><!-- End .col-sm-6 col-md-4 col-xl-3 -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
                             <div class="col-6 col-md-4 col-xl-3">
                                 <div class="product">
@@ -594,37 +578,37 @@ include_once("./components/category/header.php");
                                             <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
                                             <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
                                             <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-                                        </div><!-- End .product-action-vertical -->
+                                        </div>
 
                                         <div class="product-action">
                                             <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
-                                        </div><!-- End .product-action -->
-                                    </figure><!-- End .product-media -->
+                                        </div>
+                                    </figure>
 
                                     <div class="product-body">
                                         <div class="product-cat">
                                             <a href="#">Cell Phone</a>
-                                        </div><!-- End .product-cat -->
-                                        <h3 class="product-title"><a href="product.html">Google - Pixel 3 XL 128GB</a></h3><!-- End .product-title -->
+                                        </div>
+                                        <h3 class="product-title"><a href="product.html">Google - Pixel 3 XL 128GB</a></h3>
                                         <div class="product-price">
                                             $899.99
                                             <span class="new-price">$350.00</span>
                                             <span class="old-price">Was $410.00</span>
-                                        </div><!-- End .product-price -->
+                                        </div>
                                         <div class="ratings-container">
                                             <div class="ratings">
-                                                <div class="ratings-val" style="width: 80%;"></div><!-- End .ratings-val -->
-                                            </div><!-- End .ratings -->
+                                                <div class="ratings-val" style="width: 80%;"></div>
+                                            </div>
                                             <span class="ratings-text">( 10 Reviews )</span>
-                                        </div><!-- End .rating-container -->
+                                        </div>
 
                                         <div class="product-nav product-nav-dots">
                                             <a href="#" class="active" style="background: #333333;"><span class="sr-only">Color name</span></a>
                                             <a href="#" style="background: #eaeaec;"><span class="sr-only">Color name</span></a>
-                                        </div><!-- End .product-nav -->
-                                    </div><!-- End .product-body -->
-                                </div><!-- End .product -->
-                            </div><!-- End .col-sm-6 col-md-4 col-xl-3 -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
                             <div class="col-6 col-md-4 col-xl-3">
                                 <div class="product">
@@ -638,35 +622,35 @@ include_once("./components/category/header.php");
                                             <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
                                             <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
                                             <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-                                        </div><!-- End .product-action-vertical -->
+                                        </div>
 
                                         <div class="product-action">
                                             <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
-                                        </div><!-- End .product-action -->
-                                    </figure><!-- End .product-media -->
+                                        </div>
+                                    </figure>
 
                                     <div class="product-body">
                                         <div class="product-cat">
                                             <a href="#">Tables</a>
-                                        </div><!-- End .product-cat -->
-                                        <h3 class="product-title"><a href="product.html">Block Side Table/Trolley</a></h3><!-- End .product-title -->
+                                        </div>
+                                        <h3 class="product-title"><a href="product.html">Block Side Table/Trolley</a></h3>
                                         <div class="product-price">
                                             $229.00
-                                        </div><!-- End .product-price -->
+                                        </div>
                                         <div class="ratings-container">
                                             <div class="ratings">
-                                                <div class="ratings-val" style="width: 80%;"></div><!-- End .ratings-val -->
-                                            </div><!-- End .ratings -->
+                                                <div class="ratings-val" style="width: 80%;"></div>
+                                            </div>
                                             <span class="ratings-text">( 12 Reviews )</span>
-                                        </div><!-- End .rating-container -->
+                                        </div>
 
                                         <div class="product-nav product-nav-dots">
                                             <a href="#" class="active" style="background: #333333;"><span class="sr-only">Color name</span></a>
                                             <a href="#" style="background: #e2e2e2;"><span class="sr-only">Color name</span></a>
-                                        </div><!-- End .product-nav -->
-                                    </div><!-- End .product-body -->
-                                </div><!-- End .product -->
-                            </div><!-- End .col-sm-6 col-md-4 col-xl-3 -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
                             <div class="col-6 col-md-4 col-xl-3">
                                 <div class="product">
@@ -679,30 +663,30 @@ include_once("./components/category/header.php");
                                             <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
                                             <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
                                             <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-                                        </div><!-- End .product-action-vertical -->
+                                        </div>
 
                                         <div class="product-action">
                                             <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
-                                        </div><!-- End .product-action -->
-                                    </figure><!-- End .product-media -->
+                                        </div>
+                                    </figure>
 
                                     <div class="product-body">
                                         <div class="product-cat">
                                             <a href="#">Sofas</a>
-                                        </div><!-- End .product-cat -->
-                                        <h3 class="product-title"><a href="product.html">Roots Sofa Bed</a></h3><!-- End .product-title -->
+                                        </div>
+                                        <h3 class="product-title"><a href="product.html">Roots Sofa Bed</a></h3>
                                         <div class="product-price">
                                             $1,199.99
-                                        </div><!-- End .product-price -->
+                                        </div>
                                         <div class="ratings-container">
                                             <div class="ratings">
-                                                <div class="ratings-val" style="width: 100%;"></div><!-- End .ratings-val -->
-                                            </div><!-- End .ratings -->
+                                                <div class="ratings-val" style="width: 100%;"></div>
+                                            </div>
                                             <span class="ratings-text">( 4 Reviews )</span>
-                                        </div><!-- End .rating-container -->
-                                    </div><!-- End .product-body -->
-                                </div><!-- End .product -->
-                            </div><!-- End .col-sm-6 col-md-4 col-xl-3 -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
                             <div class="col-6 col-md-4 col-xl-3">
                                 <div class="product">
@@ -716,38 +700,38 @@ include_once("./components/category/header.php");
                                             <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
                                             <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
                                             <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-                                        </div><!-- End .product-action-vertical -->
+                                        </div>
 
                                         <div class="product-action">
                                             <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
-                                        </div><!-- End .product-action -->
-                                    </figure><!-- End .product-media -->
+                                        </div>
+                                    </figure>
 
                                     <div class="product-body">
                                         <div class="product-cat">
                                             <a href="#">Lighting</a>
-                                        </div><!-- End .product-cat -->
-                                        <h3 class="product-title"><a href="product.html">Carronade Large Suspension Lamp</a></h3><!-- End .product-title -->
+                                        </div>
+                                        <h3 class="product-title"><a href="product.html">Carronade Large Suspension Lamp</a></h3>
                                         <div class="product-price">
                                             <span class="new-price">$892.00</span>
                                             <span class="old-price">Was $939.00</span>
-                                        </div><!-- End .product-price -->
+                                        </div>
                                         <div class="ratings-container">
                                             <div class="ratings">
-                                                <div class="ratings-val" style="width: 60%;"></div><!-- End .ratings-val -->
-                                            </div><!-- End .ratings -->
+                                                <div class="ratings-val" style="width: 60%;"></div>
+                                            </div>
                                             <span class="ratings-text">( 6 Reviews )</span>
-                                        </div><!-- End .rating-container -->
+                                        </div>
 
                                         <div class="product-nav product-nav-dots">
                                             <a href="#" class="active" style="background: #dddad5;"><span class="sr-only">Color name</span></a>
                                             <a href="#" style="background: #825a45;"><span class="sr-only">Color name</span></a>
-                                        </div><!-- End .product-nav -->
-                                    </div><!-- End .product-body -->
-                                </div><!-- End .product -->
-                            </div><!-- End .col-sm-6 col-md-4 col-xl-3 -->
-                        </div><!-- End .row -->
-                    </div><!-- End .products -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
                     <nav aria-label="Page navigation">
                         <ul class="pagination">
@@ -766,12 +750,12 @@ include_once("./components/category/header.php");
                             </li>
                         </ul>
                     </nav>
-                </div><!-- End .col-lg-9 -->
+                </div>
 
                 <aside class="col-lg-3 col-xl-5col order-lg-first">
                     <div class="sidebar sidebar-shop">
                         <div class="widget widget-categories">
-                            <h3 class="widget-title">Electronics</h3><!-- End .widget-title -->
+                            <h3 class="widget-title">Electronics</h3>
 
                             <div class="widget-body">
                                 <div class="accordion" id="widget-cat-acc">
@@ -792,9 +776,9 @@ include_once("./components/category/header.php");
                                                     <li><a href="#">Printers & Supplies</a></li>
                                                     <li><a href="#">Computer Accessories</a></li>
                                                 </ul>
-                                            </div><!-- End .collapse-wrap -->
-                                        </div><!-- End .collapse -->
-                                    </div><!-- End .acc-item -->
+                                            </div>
+                                        </div>
+                                    </div>
 
                                     <div class="acc-item">
                                         <h5>
@@ -817,9 +801,9 @@ include_once("./components/category/header.php");
                                                     <li><a href="#">TV-DVD Combos</a></li>
                                                     <li><a href="#">Streaming Media Players</a></li>
                                                 </ul>
-                                            </div><!-- End .collapse-wrap -->
-                                        </div><!-- End .collapse -->
-                                    </div><!-- End .acc-item -->
+                                            </div>
+                                        </div>
+                                    </div>
 
                                     <div class="acc-item">
                                         <h5>
@@ -836,9 +820,9 @@ include_once("./components/category/header.php");
                                                     <li><a href="#">Accessories</a></li>
                                                     <li><a href="#">Cases, Holsters & Clips</a></li>
                                                 </ul>
-                                            </div><!-- End .collapse-wrap -->
-                                        </div><!-- End .collapse -->
-                                    </div><!-- End .acc-item -->
+                                            </div>
+                                        </div>
+                                    </div>
 
                                     <div class="acc-item">
                                         <h5>
@@ -859,15 +843,15 @@ include_once("./components/category/header.php");
                                                     <li><a href="#">Tripods & Monopods</a></li>
                                                     <li><a href="#">Underwater Photography</a></li>
                                                 </ul>
-                                            </div><!-- End .collapse-wrap -->
-                                        </div><!-- End .collapse -->
-                                    </div><!-- End .acc-item -->
-                                </div><!-- End .accordion -->
-                            </div><!-- End .widget-body -->
-                        </div><!-- End .widget -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
                         <div class="widget">
-                            <h3 class="widget-title">Brands</h3><!-- End .widget-title -->
+                            <h3 class="widget-title">Brands</h3>
 
                             <div class="widget-body">
                                 <div class="filter-items">
@@ -875,57 +859,57 @@ include_once("./components/category/header.php");
                                         <div class="custom-control custom-checkbox">
                                             <input type="checkbox" class="custom-control-input" id="brand-1">
                                             <label class="custom-control-label" for="brand-1">Next</label>
-                                        </div><!-- End .custom-checkbox -->
-                                    </div><!-- End .filter-item -->
+                                        </div>
+                                    </div>
 
                                     <div class="filter-item">
                                         <div class="custom-control custom-checkbox">
                                             <input type="checkbox" class="custom-control-input" id="brand-2">
                                             <label class="custom-control-label" for="brand-2">River Island</label>
-                                        </div><!-- End .custom-checkbox -->
-                                    </div><!-- End .filter-item -->
+                                        </div>
+                                    </div>
 
                                     <div class="filter-item">
                                         <div class="custom-control custom-checkbox">
                                             <input type="checkbox" class="custom-control-input" id="brand-3">
                                             <label class="custom-control-label" for="brand-3">Geox</label>
-                                        </div><!-- End .custom-checkbox -->
-                                    </div><!-- End .filter-item -->
+                                        </div>
+                                    </div>
 
                                     <div class="filter-item">
                                         <div class="custom-control custom-checkbox">
                                             <input type="checkbox" class="custom-control-input" id="brand-4">
                                             <label class="custom-control-label" for="brand-4">New Balance</label>
-                                        </div><!-- End .custom-checkbox -->
-                                    </div><!-- End .filter-item -->
+                                        </div>
+                                    </div>
 
                                     <div class="filter-item">
                                         <div class="custom-control custom-checkbox">
                                             <input type="checkbox" class="custom-control-input" id="brand-5">
                                             <label class="custom-control-label" for="brand-5">UGG</label>
-                                        </div><!-- End .custom-checkbox -->
-                                    </div><!-- End .filter-item -->
+                                        </div>
+                                    </div>
 
                                     <div class="filter-item">
                                         <div class="custom-control custom-checkbox">
                                             <input type="checkbox" class="custom-control-input" id="brand-6">
                                             <label class="custom-control-label" for="brand-6">F&F</label>
-                                        </div><!-- End .custom-checkbox -->
-                                    </div><!-- End .filter-item -->
+                                        </div>
+                                    </div>
 
                                     <div class="filter-item">
                                         <div class="custom-control custom-checkbox">
                                             <input type="checkbox" class="custom-control-input" id="brand-7">
                                             <label class="custom-control-label" for="brand-7">Nike</label>
-                                        </div><!-- End .custom-checkbox -->
-                                    </div><!-- End .filter-item -->
+                                        </div>
+                                    </div>
 
-                                </div><!-- End .filter-items -->
-                            </div><!-- End .widget-body -->
-                        </div><!-- End .widget -->
+                                </div>
+                            </div>
+                        </div>
 
                         <div class="widget">
-                            <h3 class="widget-title">Price</h3><!-- End .widget-title -->
+                            <h3 class="widget-title">Price</h3>
 
                             <div class="widget-body">
                                 <div class="filter-items">
@@ -933,42 +917,42 @@ include_once("./components/category/header.php");
                                         <div class="custom-control custom-radio">
                                             <input type="radio" class="custom-control-input" id="price-1" name="filter-price">
                                             <label class="custom-control-label" for="price-1">Under $25</label>
-                                        </div><!-- End .custom-checkbox -->
-                                    </div><!-- End .filter-item -->
+                                        </div>
+                                    </div>
 
                                     <div class="filter-item">
                                         <div class="custom-control custom-radio">
                                             <input type="radio" class="custom-control-input" id="price-2" name="filter-price">
                                             <label class="custom-control-label" for="price-2">$25 to $50</label>
-                                        </div><!-- End .custom-checkbox -->
-                                    </div><!-- End .filter-item -->
+                                        </div>
+                                    </div>
 
                                     <div class="filter-item">
                                         <div class="custom-control custom-radio">
                                             <input type="radio" class="custom-control-input" id="price-3" name="filter-price">
                                             <label class="custom-control-label" for="price-3">$50 to $100</label>
-                                        </div><!-- End .custom-checkbox -->
-                                    </div><!-- End .filter-item -->
+                                        </div>
+                                    </div>
 
                                     <div class="filter-item">
                                         <div class="custom-control custom-radio">
                                             <input type="radio" class="custom-control-input" id="price-4" name="filter-price">
                                             <label class="custom-control-label" for="price-4">$100 to $200</label>
-                                        </div><!-- End .custom-checkbox -->
-                                    </div><!-- End .filter-item -->
+                                        </div>
+                                    </div>
 
                                     <div class="filter-item">
                                         <div class="custom-control custom-radio">
                                             <input type="radio" class="custom-control-input" id="price-5" name="filter-price">
                                             <label class="custom-control-label" for="price-5">$200 & Above</label>
-                                        </div><!-- End .custom-checkbox -->
-                                    </div><!-- End .filter-item -->
-                                </div><!-- End .filter-items -->
-                            </div><!-- End .widget-body -->
-                        </div><!-- End .widget -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
                         <div class="widget">
-                            <h3 class="widget-title">Customer Rating</h3><!-- End .widget-title -->
+                            <h3 class="widget-title">Customer Rating</h3>
 
                             <div class="widget-body">
                                 <div class="filter-items">
@@ -978,13 +962,13 @@ include_once("./components/category/header.php");
                                             <label class="custom-control-label" for="cus-rating-1">
                                                 <span class="ratings-container">
                                                     <span class="ratings">
-                                                        <span class="ratings-val" style="width: 100%;"></span><!-- End .ratings-val -->
-                                                    </span><!-- End .ratings -->
+                                                        <span class="ratings-val" style="width: 100%;"></span>
+                                                    </span>
                                                     <span class="ratings-text">( 24 )</span>
-                                                </span><!-- End .rating-container -->
+                                                </span>
                                             </label>
-                                        </div><!-- End .custom-checkbox -->
-                                    </div><!-- End .filter-item -->
+                                        </div>
+                                    </div>
 
                                     <div class="filter-item">
                                         <div class="custom-control custom-checkbox">
@@ -992,13 +976,13 @@ include_once("./components/category/header.php");
                                             <label class="custom-control-label" for="cus-rating-2">
                                                 <span class="ratings-container">
                                                     <span class="ratings">
-                                                        <span class="ratings-val" style="width: 80%;"></span><!-- End .ratings-val -->
-                                                    </span><!-- End .ratings -->
+                                                        <span class="ratings-val" style="width: 80%;"></span>
+                                                    </span>
                                                     <span class="ratings-text">( 8 )</span>
-                                                </span><!-- End .rating-container -->
+                                                </span>
                                             </label>
-                                        </div><!-- End .custom-checkbox -->
-                                    </div><!-- End .filter-item -->
+                                        </div>
+                                    </div>
 
                                     <div class="filter-item">
                                         <div class="custom-control custom-checkbox">
@@ -1006,13 +990,13 @@ include_once("./components/category/header.php");
                                             <label class="custom-control-label" for="cus-rating-3">
                                                 <span class="ratings-container">
                                                     <span class="ratings">
-                                                        <span class="ratings-val" style="width: 60%;"></span><!-- End .ratings-val -->
-                                                    </span><!-- End .ratings -->
+                                                        <span class="ratings-val" style="width: 60%;"></span>
+                                                    </span>
                                                     <span class="ratings-text">( 5 )</span>
-                                                </span><!-- End .rating-container -->
+                                                </span>
                                             </label>
-                                        </div><!-- End .custom-checkbox -->
-                                    </div><!-- End .filter-item -->
+                                        </div>
+                                    </div>
 
                                     <div class="filter-item">
                                         <div class="custom-control custom-checkbox">
@@ -1020,13 +1004,13 @@ include_once("./components/category/header.php");
                                             <label class="custom-control-label" for="cus-rating-4">
                                                 <span class="ratings-container">
                                                     <span class="ratings">
-                                                        <span class="ratings-val" style="width: 40%;"></span><!-- End .ratings-val -->
-                                                    </span><!-- End .ratings -->
+                                                        <span class="ratings-val" style="width: 40%;"></span>
+                                                    </span>
                                                     <span class="ratings-text">( 1 )</span>
-                                                </span><!-- End .rating-container -->
+                                                </span>
                                             </label>
-                                        </div><!-- End .custom-checkbox -->
-                                    </div><!-- End .filter-item -->
+                                        </div>
+                                    </div>
 
                                     <div class="filter-item">
                                         <div class="custom-control custom-checkbox">
@@ -1034,20 +1018,20 @@ include_once("./components/category/header.php");
                                             <label class="custom-control-label" for="cus-rating-5">
                                                 <span class="ratings-container">
                                                     <span class="ratings">
-                                                        <span class="ratings-val" style="width: 20%;"></span><!-- End .ratings-val -->
-                                                    </span><!-- End .ratings -->
+                                                        <span class="ratings-val" style="width: 20%;"></span>
+                                                    </span>
                                                     <span class="ratings-text">( 3 )</span>
-                                                </span><!-- End .rating-container -->
+                                                </span>
                                             </label>
-                                        </div><!-- End .custom-checkbox -->
-                                    </div><!-- End .filter-item -->
+                                        </div>
+                                    </div>
 
-                                </div><!-- End .filter-items -->
-                            </div><!-- End .widget-body -->
-                        </div><!-- End .widget -->
+                                </div>
+                            </div>
+                        </div>
 
                         <div class="widget">
-                            <h3 class="widget-title">Colour</h3><!-- End .widget-title -->
+                            <h3 class="widget-title">Colour</h3>
 
                             <div class="widget-body">
                                 <div class="filter-colors">
@@ -1059,32 +1043,32 @@ include_once("./components/category/header.php");
                                     <a href="#" style="background: #669933;"><span class="sr-only">Color Name</span></a>
                                     <a href="#" style="background: #f2719c;"><span class="sr-only">Color Name</span></a>
                                     <a href="#" style="background: #ebebeb;"><span class="sr-only">Color Name</span></a>
-                                </div><!-- End .filter-colors -->
-                            </div><!-- End .widget-body -->
-                        </div><!-- End .widget -->
+                                </div>
+                            </div>
+                        </div>
 
                         <div class="widget widget-banner-sidebar">
-                            <div class="banner-sidebar-title">ad banner 218 x 430px</div><!-- End .ad-title -->
+                            <div class="banner-sidebar-title">ad banner 218 x 430px</div>
 
                             <div class="banner-sidebar banner-overlay">
                                 <a href="#">
                                     <img src="assets/images/demos/demo-13/banners/banner-6.jpg" alt="banner">
                                 </a>
-                            </div><!-- End .banner-ad -->
-                        </div><!-- End .widget -->
-                    </div><!-- End .sidebar sidebar-shop -->
-                </aside><!-- End .col-lg-3 -->
-            </div><!-- End .row -->
-        </div><!-- End .container -->
-    </div><!-- End .page-content -->
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </div>
 
     <div class="cta cta-horizontal cta-horizontal-box bg-primary">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-5">
-                    <h3 class="cta-title text-white">Join Our Newsletter</h3><!-- End .cta-title -->
-                    <p class="cta-desc text-white">Subcribe to get information about products and coupons</p><!-- End .cta-desc -->
-                </div><!-- End .col-lg-5 -->
+                    <h3 class="cta-title text-white">Join Our Newsletter</h3>
+                    <p class="cta-desc text-white">Subcribe to get information about products and coupons</p>
+                </div>
 
                 <div class="col-lg-7">
                     <form action="#">
@@ -1092,14 +1076,14 @@ include_once("./components/category/header.php");
                             <input type="email" class="form-control form-control-white" placeholder="Enter your Email Address" aria-label="Email Adress" required>
                             <div class="input-group-append">
                                 <button class="btn btn-outline-white-2" type="submit"><span>Subscribe</span><i class="icon-long-arrow-right"></i></button>
-                            </div><!-- .End .input-group-append -->
-                        </div><!-- .End .input-group -->
+                            </div>
+                        </div>
                     </form>
-                </div><!-- End .col-lg-7 -->
-            </div><!-- End .row -->
-        </div><!-- End .container -->
-    </div><!-- End .cta -->
-</main><!-- End .main -->
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
 <?php
 
 include_once("./components/category/footer.php");

@@ -327,38 +327,51 @@
 
     <div class="mb-3"></div>
 
+    <!-- banners section -->
     <div class="row">
-        <div class="col-md-6">
-            <div class="banner banner-overlay">
-                <a href="#">
-                    <img src="assets/images/demos/demo-14/banners/banner-7.jpg" alt="Banner img desc">
-                </a>
+        <?php
+        $select = $conn->query("SELECT * FROM `banners`");
+        if ($select->num_rows > 0) {
+            // Fetching only 2 rows of data
+            $count = 0;
+            while ($banner = $select->fetch_object()) {
+                if ($banner->subtitle != "Hottest Deals" && $banner->subtitle != "Deal of the Day") {
+        ?>
+                    <div class="col-md-6">
+                        <div class="banner banner-overlay">
+                            <a href="javascript:void(0)">
+                                <img src="<?= $banner->image_src ?>" alt="<?= $banner->image_alt ?>">
+                            </a>
 
-                <div class="banner-content">
-                    <h4 class="banner-subtitle text-white d-none d-sm-block"><a href="#">Spring Sale is Coming</a></h4>
+                            <div class="banner-content">
+                                <h4 class="banner-subtitle text-white d-none d-sm-block"><a href="javascrit:void(0)"><?= $banner->subtitle ?></a></h4>
 
-                    <h3 class="banner-title text-white"><a href="#">Floral T-shirts and Vests <br><span>Spring
-                                Sale</span></a></h3>
-                    <a href="#" class="banner-link">Shop Now <i class="icon-long-arrow-right"></i></a>
-                </div>
-            </div>
-        </div>
+                                <h3 class="banner-title text-white"><a href="javascrit:void(0)">
+                                        <?php
+                                        // make the text into array and divide it using (,) coma 
+                                        $title_array = explode(",", $banner->title);
+                                        for ($i = 0; $i < count($title_array); $i++) {
+                                            if ($i == 0) {
+                                                echo $title_array[$i];
+                                            } else {
+                                                echo "<br><span>" . $title_array[$i] . "</span>";
+                                            }
+                                        }
+                                        ?></a></h3>
+                                <a href="<?= $banner->link ?>" class="banner-link">Shop Now <i class="icon-long-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+        <?php
+                    $count++;
+                    if ($count >= 2) {
+                        break; // Exit the loop once 2 valid rows are processed
+                    }
+                }
+            }
+        }
 
-        <div class="col-md-6">
-            <div class="banner banner-overlay">
-                <a href="#">
-                    <img src="assets/images/demos/demo-14/banners/banner-8.jpg" alt="Banner img desc">
-                </a>
-
-                <div class="banner-content">
-                    <h4 class="banner-subtitle text-white d-none d-sm-block"><a href="#">Amazing Value</a></h4>
-
-                    <h3 class="banner-title text-white"><a href="#">Upgrade and Save <br><span>On The Latest Apple
-                                Devices</span></a></h3>
-                    <a href="#" class="banner-link">Shop Now <i class="icon-long-arrow-right"></i></a>
-                </div>
-            </div>
-        </div>
+        ?>
     </div>
 
     <div class="mb-3"></div>

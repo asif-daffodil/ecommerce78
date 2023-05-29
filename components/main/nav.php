@@ -3,7 +3,7 @@
         <div class="container">
             <div class="header-left">
                 <a href="tel:#"><i class="icon-phone"></i>Call: +0123 456 789</a>
-            </div><!-- End .header-left -->
+            </div>
 
             <div class="header-right">
 
@@ -19,8 +19,8 @@
                                             <li><a href="#">Eur</a></li>
                                             <li><a href="#">Usd</a></li>
                                         </ul>
-                                    </div><!-- End .header-menu -->
-                                </div><!-- End .header-dropdown -->
+                                    </div>
+                                </div>
                             </li>
                             <li>
                                 <div class="header-dropdown">
@@ -31,18 +31,18 @@
                                             <li><a href="#">French</a></li>
                                             <li><a href="#">Spanish</a></li>
                                         </ul>
-                                    </div><!-- End .header-menu -->
-                                </div><!-- End .header-dropdown -->
+                                    </div>
+                                </div>
                             </li>
                             <li class="login">
                                 <a href="#signin-modal" data-toggle="modal">Sign in / Sign up</a>
                             </li>
                         </ul>
                     </li>
-                </ul><!-- End .top-menu -->
-            </div><!-- End .header-right -->
-        </div><!-- End .container -->
-    </div><!-- End .header-top -->
+                </ul>
+            </div>
+        </div>
+    </div>
 
     <div class="header-middle">
         <div class="container-fluid">
@@ -55,7 +55,7 @@
                     <a href="./" class="logo">
                         <img src="assets/images/demos/demo-14/logo.png" alt="Molla Logo" width="105" height="25">
                     </a>
-                </div><!-- End .col-xl-3 col-xxl-2 -->
+                </div>
 
                 <div class="col col-lg-9 col-xl-9 col-xxl-10 header-middle-right">
                     <div class="row">
@@ -83,15 +83,15 @@
                                                 <option value="15">- Boats</option>
                                                 <option value="16">- Auto Tools &amp; Supplies</option>
                                             </select>
-                                        </div><!-- End .select-custom -->
+                                        </div>
                                         <label for="q" class="sr-only">Search</label>
                                         <input type="search" class="form-control" name="q" id="q" placeholder="Search product ..." required>
 
                                         <button class="btn btn-primary" type="submit"><i class="icon-search"></i></button>
-                                    </div><!-- End .header-search-wrapper -->
+                                    </div>
                                 </form>
-                            </div><!-- End .header-search -->
-                        </div><!-- End .col-xxl-4-5col -->
+                            </div>
+                        </div>
 
                         <div class="col-lg-4 col-xxl-5col d-flex justify-content-end align-items-center">
                             <div class="header-dropdown-link">
@@ -145,7 +145,7 @@
                                                         <span class="cart-product-qty">1</span>
                                                         x $84.00
                                                     </span>
-                                                </div><!-- End .product-cart-details -->
+                                                </div>
 
                                                 <figure class="product-image-container">
                                                     <a href="product.php" class="product-image">
@@ -153,7 +153,7 @@
                                                     </a>
                                                 </figure>
                                                 <a href="#" class="btn-remove" title="Remove Product"><i class="icon-close"></i></a>
-                                            </div><!-- End .product -->
+                                            </div>
 
                                             <div class="product">
                                                 <div class="product-cart-details">
@@ -165,7 +165,7 @@
                                                         <span class="cart-product-qty">1</span>
                                                         x $76.00
                                                     </span>
-                                                </div><!-- End .product-cart-details -->
+                                                </div>
 
                                                 <figure class="product-image-container">
                                                     <a href="product" class="product-image">
@@ -217,7 +217,7 @@
                                                     <div class="menu-col">
                                                         <div class="row">
                                                             <div class="col-md-6">
-                                                                <div class="menu-title">Laptops & Computers</div><!-- End .menu-title -->
+                                                                <div class="menu-title">Laptops & Computers</div>
                                                                 <ul>
                                                                     <li><a href="#">Desktop Computers</a></li>
                                                                     <li><a href="#">Monitors</a></li>
@@ -228,17 +228,17 @@
                                                                     <li><a href="#">Computer Accessories</a></li>
                                                                 </ul>
 
-                                                                <div class="menu-title">TV & Video</div><!-- End .menu-title -->
+                                                                <div class="menu-title">TV & Video</div>
                                                                 <ul>
                                                                     <li><a href="#">TVs</a></li>
                                                                     <li><a href="#">Home Audio Speakers</a></li>
                                                                     <li><a href="#">Projectors</a></li>
                                                                     <li><a href="#">Media Streaming Devices</a></li>
                                                                 </ul>
-                                                            </div><!-- End .col-md-6 -->
+                                                            </div>
 
                                                             <div class="col-md-6">
-                                                                <div class="menu-title">Cell Phones</div><!-- End .menu-title -->
+                                                                <div class="menu-title">Cell Phones</div>
                                                                 <ul>
                                                                     <li><a href="#">Carrier Phones</a></li>
                                                                     <li><a href="#">Unlocked Phones</a></li>
@@ -246,7 +246,7 @@
                                                                     <li><a href="#">Cellphone Chargers </a></li>
                                                                 </ul>
 
-                                                                <div class="menu-title">Digital Cameras</div><!-- End .menu-title -->
+                                                                <div class="menu-title">Digital Cameras</div>
                                                                 <ul>
                                                                     <li><a href="#">Digital SLR Cameras</a></li>
                                                                     <li><a href="#">Sports & Action Cameras</a></li>
@@ -256,20 +256,20 @@
                                                                     <li><a href="#">Digital Memory Cards</a></li>
                                                                     <li><a href="#">Camera Bags, Backpacks & Cases</a></li>
                                                                 </ul>
-                                                            </div><!-- End .col-md-6 -->
-                                                        </div><!-- End .row -->
-                                                    </div><!-- End .menu-col -->
-                                                </div><!-- End .col-md-8 -->
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
 
                                                 <div class="col-md-4">
                                                     <div class="banner banner-overlay">
                                                         <a href="category" class="banner banner-menu">
                                                             <img src="assets/images/demos/demo-13/menu/banner-1.jpg" alt="Banner">
                                                         </a>
-                                                    </div><!-- End .banner banner-overlay -->
-                                                </div><!-- End .col-md-4 -->
-                                            </div><!-- End .row -->
-                                        </div><!-- End .megamenu -->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </li>
                                     <li class="megamenu-container">
                                         <a class="sf-with-ul" href="#"><i class="icon-couch"></i>Furniture</a>
@@ -280,7 +280,7 @@
                                                     <div class="menu-col">
                                                         <div class="row">
                                                             <div class="col-md-6">
-                                                                <div class="menu-title">Bedroom</div><!-- End .menu-title -->
+                                                                <div class="menu-title">Bedroom</div>
                                                                 <ul>
                                                                     <li><a href="#">Beds, Frames & Bases</a></li>
                                                                     <li><a href="#">Dressers</a></li>
@@ -289,7 +289,7 @@
                                                                     <li><a href="#">Armoires</a></li>
                                                                 </ul>
 
-                                                                <div class="menu-title">Living Room</div><!-- End .menu-title -->
+                                                                <div class="menu-title">Living Room</div>
                                                                 <ul>
                                                                     <li><a href="#">Coffee Tables</a></li>
                                                                     <li><a href="#">Chairs</a></li>
@@ -297,10 +297,10 @@
                                                                     <li><a href="#">Futons & Sofa Beds</a></li>
                                                                     <li><a href="#">Cabinets & Chests</a></li>
                                                                 </ul>
-                                                            </div><!-- End .col-md-6 -->
+                                                            </div>
 
                                                             <div class="col-md-6">
-                                                                <div class="menu-title">Office</div><!-- End .menu-title -->
+                                                                <div class="menu-title">Office</div>
                                                                 <ul>
                                                                     <li><a href="#">Office Chairs</a></li>
                                                                     <li><a href="#">Desks</a></li>
@@ -309,7 +309,7 @@
                                                                     <li><a href="#">Breakroom Tables</a></li>
                                                                 </ul>
 
-                                                                <div class="menu-title">Kitchen & Dining</div><!-- End .menu-title -->
+                                                                <div class="menu-title">Kitchen & Dining</div>
                                                                 <ul>
                                                                     <li><a href="#">Dining Sets</a></li>
                                                                     <li><a href="#">Kitchen Storage Cabinets</a></li>
@@ -318,20 +318,20 @@
                                                                     <li><a href="#">Dining Room Tables</a></li>
                                                                     <li><a href="#">Bar Stools</a></li>
                                                                 </ul>
-                                                            </div><!-- End .col-md-6 -->
-                                                        </div><!-- End .row -->
-                                                    </div><!-- End .menu-col -->
-                                                </div><!-- End .col-md-8 -->
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
 
                                                 <div class="col-md-4">
                                                     <div class="banner banner-overlay">
                                                         <a href="category" class="banner banner-menu">
                                                             <img src="assets/images/demos/demo-13/menu/banner-2.jpg" alt="Banner">
                                                         </a>
-                                                    </div><!-- End .banner banner-overlay -->
-                                                </div><!-- End .col-md-4 -->
-                                            </div><!-- End .row -->
-                                        </div><!-- End .megamenu -->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </li>
                                     <li class="megamenu-container">
                                         <a class="sf-with-ul" href="#"><i class="icon-concierge-bell"></i>Cooking</a>
@@ -340,7 +340,7 @@
                                             <div class="menu-col">
                                                 <div class="row">
                                                     <div class="col-md-4">
-                                                        <div class="menu-title">Cookware</div><!-- End .menu-title -->
+                                                        <div class="menu-title">Cookware</div>
                                                         <ul>
                                                             <li><a href="#">Cookware Sets</a></li>
                                                             <li><a href="#">Pans, Griddles & Woks</a></li>
@@ -349,10 +349,10 @@
                                                             <li><a href="#">Kettles</a></li>
                                                             <li><a href="#">Soup & Stockpots</a></li>
                                                         </ul>
-                                                    </div><!-- End .col-md-4 -->
+                                                    </div>
 
                                                     <div class="col-md-4">
-                                                        <div class="menu-title">Dinnerware & Tabletop</div><!-- End .menu-title -->
+                                                        <div class="menu-title">Dinnerware & Tabletop</div>
                                                         <ul>
                                                             <li><a href="#">Plates</a></li>
                                                             <li><a href="#">Cups & Mugs</a></li>
@@ -360,10 +360,10 @@
                                                             <li><a href="#">Coffee & Tea Serving</a></li>
                                                             <li><a href="#">Salt & Pepper Shaker</a></li>
                                                         </ul>
-                                                    </div><!-- End .col-md-4 -->
+                                                    </div>
 
                                                     <div class="col-md-4">
-                                                        <div class="menu-title">Cooking Appliances</div><!-- End .menu-title -->
+                                                        <div class="menu-title">Cooking Appliances</div>
                                                         <ul>
                                                             <li><a href="#">Microwaves</a></li>
                                                             <li><a href="#">Coffee Makers</a></li>
@@ -372,8 +372,8 @@
                                                             <li><a href="#">Air Fryers</a></li>
                                                             <li><a href="#">Toasters & Ovens</a></li>
                                                         </ul>
-                                                    </div><!-- End .col-md-4 -->
-                                                </div><!-- End .row -->
+                                                    </div>
+                                                </div>
 
                                                 <div class="row menu-banners">
                                                     <div class="col-md-4">
@@ -381,27 +381,27 @@
                                                             <a href="#">
                                                                 <img src="assets/images/demos/demo-13/menu/1.jpg" alt="image">
                                                             </a>
-                                                        </div><!-- End .banner -->
-                                                    </div><!-- End .col-md-4 -->
+                                                        </div>
+                                                    </div>
 
                                                     <div class="col-md-4">
                                                         <div class="banner">
                                                             <a href="#">
                                                                 <img src="assets/images/demos/demo-13/menu/2.jpg" alt="image">
                                                             </a>
-                                                        </div><!-- End .banner -->
-                                                    </div><!-- End .col-md-4 -->
+                                                        </div>
+                                                    </div>
 
                                                     <div class="col-md-4">
                                                         <div class="banner">
                                                             <a href="#">
                                                                 <img src="assets/images/demos/demo-13/menu/3.jpg" alt="image">
                                                             </a>
-                                                        </div><!-- End .banner -->
-                                                    </div><!-- End .col-md-4 -->
-                                                </div><!-- End .row -->
-                                            </div><!-- End .menu-col -->
-                                        </div><!-- End .megamenu -->
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </li>
                                     <li class="megamenu-container">
                                         <a class="sf-with-ul" href="#"><i class="icon-tshirt"></i>Clothing</a>
@@ -412,7 +412,7 @@
                                                     <div class="menu-col">
                                                         <div class="row">
                                                             <div class="col-md-6">
-                                                                <div class="menu-title">Women</div><!-- End .menu-title -->
+                                                                <div class="menu-title">Women</div>
                                                                 <ul>
                                                                     <li><a href="#"><strong>New Arrivals</strong></a></li>
                                                                     <li><a href="#"><strong>Best Sellers</strong></a></li>
@@ -424,10 +424,10 @@
                                                                     <li><a href="#">Jewlery & Watches</a></li>
                                                                     <li><a href="#"><strong>Sale</strong></a></li>
                                                                 </ul>
-                                                            </div><!-- End .col-md-6 -->
+                                                            </div>
 
                                                             <div class="col-md-6">
-                                                                <div class="menu-title">Men</div><!-- End .menu-title -->
+                                                                <div class="menu-title">Men</div>
                                                                 <ul>
                                                                     <li><a href="#"><strong>New Arrivals</strong></a></li>
                                                                     <li><a href="#"><strong>Best Sellers</strong></a></li>
@@ -438,10 +438,10 @@
                                                                     <li><a href="#">Accessories</a></li>
                                                                     <li><a href="#">Jewlery & Watches</a></li>
                                                                 </ul>
-                                                            </div><!-- End .col-md-6 -->
-                                                        </div><!-- End .row -->
-                                                    </div><!-- End .menu-col -->
-                                                </div><!-- End .col-md-8 -->
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
 
                                                 <div class="col-md-4">
                                                     <div class="banner banner-overlay">
@@ -463,11 +463,11 @@
                                     <li><a href="#"><i class="icon-shopping-bag"></i>Backpack & Bag</a></li>
                                     <li><a href="#"><i class="icon-music"></i>Musical Instruments</a></li>
                                     <li><a href="#"><i class="icon-gift"></i>Gift Ideas</a></li>
-                                </ul><!-- End .menu-vertical -->
-                            </nav><!-- End .side-nav -->
-                        </div><!-- End .dropdown-menu -->
-                    </div><!-- End .category-dropdown -->
-                </div><!-- End .col-xl-3 col-xxl-2 -->
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
 
                 <div class="col col-lg-6 col-xl-6 col-xxl-8 header-center">
                     <nav class="main-nav">

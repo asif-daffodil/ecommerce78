@@ -5,7 +5,7 @@ include_once("./components/main/header.php");
 <body>
     <div class="page-wrapper">
         <?php
-        include_once("./nav.php");
+        include_once("./components/main/nav.php");
         ?>
 
         <main class="main">
@@ -13,7 +13,7 @@ include_once("./components/main/header.php");
             <div class="container-fluid">
                 <div class="row">
                     <?php
-                    include_once("./slider.php");
+                    include_once("./components/main/slider.php");
                     ?>
 
                     <div class="col-xl-3 col-xxl-2 d-none d-xxl-block">
@@ -37,7 +37,7 @@ include_once("./components/main/header.php");
             <div class="container-fluid">
                 <div class="row">
                     <?php include_once("./main.php") ?>
-                    <?php include_once("./sidebar.php") ?>
+                    <?php include_once("./components/main/sidebar.php") ?>
                 </div>
             </div>
         </main>

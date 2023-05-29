@@ -18,84 +18,32 @@
 
             <div class="col-sm-6 col-xl-12 mb-2">
                 <div class="widget widget-products">
-                    <h4 class="widget-title"><span>Bestsellers</span></h4><!-- End .widget-title -->
+                    <h4 class="widget-title"><span>New Products</span></h4>
 
-                    <div class="products">
-                        <div class="product product-sm">
-                            <figure class="product-media">
-                                <a href="product.html">
-                                    <img src="assets/images/demos/demo-14/products/small/product-1.jpg" alt="Product image" class="product-image">
-                                </a>
-                            </figure>
+                    <?php
+                    $select = $conn->query("SELECT * FROM `products` ORDER BY `id` DESC LIMIT 5");
+                    while ($data = $select->fetch_object()) {
+                    ?>
+                        <div class="products">
+                            <div class="product product-sm">
+                                <figure class="product-media">
+                                    <a href="product">
+                                        <img src="<?= $data->featured_img ?>" alt="Product image" class="product-image">
+                                    </a>
+                                </figure>
 
-                            <div class="product-body">
-                                <h5 class="product-title"><a href="product.html">Sceptre 50" Class FHD (1080P) LED TV</a></h5><!-- End .product-title -->
-                                <div class="product-price">
-                                    $199.99
-                                </div><!-- End .product-price -->
-                            </div><!-- End .product-body -->
-                        </div><!-- End .product product-sm -->
+                                <div class="product-body">
+                                    <h5 class="product-title"><a href="product"><?= $data->title ?></a></h5>
+                                    <div class="product-price">
+                                        $<?= $data->discount_price ?? $data->regular_price ?>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <?php
+                    }
+                    ?>
 
-                        <div class="product product-sm">
-                            <figure class="product-media">
-                                <a href="product.html">
-                                    <img src="assets/images/demos/demo-14/products/small/product-2.jpg" alt="Product image" class="product-image">
-                                </a>
-                            </figure>
-
-                            <div class="product-body">
-                                <h5 class="product-title"><a href="product.html">Red Cookware Set, 9 Piece</a></h5><!-- End .product-title -->
-                                <div class="product-price">
-                                    $24.95
-                                </div><!-- End .product-price -->
-                            </div><!-- End .product-body -->
-                        </div><!-- End .product product-sm -->
-
-                        <div class="product product-sm">
-                            <figure class="product-media">
-                                <a href="product.html">
-                                    <img src="assets/images/demos/demo-14/products/small/product-3.jpg" alt="Product image" class="product-image">
-                                </a>
-                            </figure>
-
-                            <div class="product-body">
-                                <h5 class="product-title"><a href="product.html">Epson WorkForce WF-2750 All-in-One Wireless</a></h5><!-- End .product-title -->
-                                <div class="product-price">
-                                    $49.99
-                                </div><!-- End .product-price -->
-                            </div><!-- End .product-body -->
-                        </div><!-- End .product product-sm -->
-
-                        <div class="product product-sm">
-                            <figure class="product-media">
-                                <a href="product.html">
-                                    <img src="assets/images/demos/demo-14/products/small/product-4.jpg" alt="Product image" class="product-image">
-                                </a>
-                            </figure>
-
-                            <div class="product-body">
-                                <h5 class="product-title"><a href="product.html">Stainless Steel Microwave Oven</a></h5><!-- End .product-title -->
-                                <div class="product-price">
-                                    $64.84
-                                </div><!-- End .product-price -->
-                            </div><!-- End .product-body -->
-                        </div><!-- End .product product-sm -->
-
-                        <div class="product product-sm">
-                            <figure class="product-media">
-                                <a href="product.html">
-                                    <img src="assets/images/demos/demo-14/products/small/product-5.jpg" alt="Product image" class="product-image">
-                                </a>
-                            </figure>
-
-                            <div class="product-body">
-                                <h5 class="product-title"><a href="product.html">Fatboy Original Beanbag</a></h5><!-- End .product-title -->
-                                <div class="product-price">
-                                    $49.99
-                                </div><!-- End .product-price -->
-                            </div><!-- End .product-body -->
-                        </div><!-- End .product product-sm -->
-                    </div><!-- End .products -->
                 </div><!-- End .widget widget-products -->
             </div><!-- End .col-sm-6 col-xl-12 -->
 
