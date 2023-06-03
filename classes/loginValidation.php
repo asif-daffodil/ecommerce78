@@ -4,6 +4,7 @@ class loginClass extends dbConnect
 {
     private function __construct()
     {
+        return;
     }
 
     private static function rakibDa($data)
@@ -32,13 +33,86 @@ class loginClass extends dbConnect
             $crrName = dbConnect::$conn->real_escape_string($name);
         }
 
+
         if (empty($email)) {
             $data['errEmail'] = "Please write your email";
         } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $data['errEmail'] = "Invalid email";
         } else {
-            unset($data['errEmail']);
-            $crrEmail = dbConnect::$conn->real_escape_string($email);
+            $select_query  = dbConnect::$conn->query("SELECT * FROM `users` WHERE `email` = '$email");
+            if ($select_query->num_rows > 0) {
+                $data['errEmail'] = "Email address already exists!";
+            } else {
+                unset($data['errEmail']);
+                $crrEmail = dbConnect::$conn->real_escape_string($email);
+            }
+        }
+
+        if (empty($mobile)) {
+            $data['errMobile'] = "Please enter your mobile number";
+        } elseif (!preg_match('/^[0-9]{11}+$/', $mobile)) {
+            $data['errMobile'] = "Invalid mobile number!";
+        } else {
+            unset($data['errMobile']);
+            $crrMobile = dbConnect::$conn->real_escape_string($email);
+        }
+
+        // password validation
+        $uppercase = preg_match('@[A-Z]@', $pass);
+        $lowercase = preg_match('@[a-z]@', $pass);
+        $number    = preg_match('@[0-9]@', $pass);
+        if (empty($pass)) {
+            $data['errPass'] = "Enter your password!";
+        } elseif (!$uppercase || !$lowercase || !$number) {
+            $data['errPass'] = "Must be a strong password!";
+        } elseif (strlen($pass) < 6) {
+            $data['errPass'] = "Your password must be 6 characters long!";
+        } else {
+            unset($data['errPass']);
+            $crrPass = dbConnect::$conn->real_escape_string($pass);
+        }
+
+        json_encode($data);
+
+        echo json_encode($data);
+
+
+        if (isset($crrName) && isset($crrEmail) && isset($crrMobile) && isset($crrPass)) {
+            $hash_pass = password_hash($crrPass, PASSWORD_BCRYPT);
+            $array_crrName = explode(" ", $crrName);
+            // $count_array_size = sizeof($array_crrName);
+            $first_name = $array_crrName[0];
+            $last_name = ($array_crrName[1] . (" " . $array_crrName[2] ?? null)) ?? null;
+
+            $insert_query = dbConnect::$conn->query("INSERT INTO `users`(`first_name`, `last_name`, `phone`, `email`, `password`) VALUES ('$first_name' , '$last_name' , '$crrMobile', '$crrEmail', '$hash_pass');");
+
+            $_SESSION['users'] = ["first_name" => $first_name, "phone" => $crrMobile, "email" => $crrEmail];
+
+            header("Location: index.php");
+        }
+    }
+
+
+    public static function signInForm(): void
+    {
+        $formdata = json_decode(file_get_contents('php://input'), true);
+        $data = [];
+        $logInEmail = loginClass::rakibDa($formdata['singin_email']);
+        $logInPass = loginClass::rakibDa($formdata['singin_pass']);
+
+        if (empty($logInEmail)) {
+            $data['err_logInEmail'] = "Enter your email address!";
+        } else {
+            unset($data['err_logInEmail']);
+            $crr_login_email = $logInEmail;
+        }
+
+        if (empty($logInPass)) {
+            $data['err_logInEmail'] = "Enter your password!";
+        } else {
+            unset($data['err_logInEmail']);
+
+            $crr_login_pass  = $logInPass;
         }
 
         json_encode($data);
@@ -48,3 +122,4 @@ class loginClass extends dbConnect
 }
 
 loginClass::registrForm();
+// loginClass::signInForm();
