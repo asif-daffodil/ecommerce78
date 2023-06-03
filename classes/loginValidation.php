@@ -15,6 +15,11 @@ class loginClass extends dbConnect
         return $data;
     }
 
+    private static function session(): void
+    {
+        session_start();
+    }
+
     public static function registrForm(): void
     {
         $formData = json_decode(file_get_contents('php://input'), true);
@@ -39,7 +44,7 @@ class loginClass extends dbConnect
         } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $data['errEmail'] = "Invalid email";
         } else {
-            $select_query  = dbConnect::$conn->query("SELECT * FROM `users` WHERE `email` = '$email");
+            $select_query  = dbConnect::$conn->query("SELECT * FROM `users` WHERE `email` = '$email'");
             if ($select_query->num_rows > 0) {
                 $data['errEmail'] = "Email address already exists!";
             } else {
@@ -72,24 +77,25 @@ class loginClass extends dbConnect
             $crrPass = dbConnect::$conn->real_escape_string($pass);
         }
 
-        json_encode($data);
-
-        echo json_encode($data);
-
 
         if (isset($crrName) && isset($crrEmail) && isset($crrMobile) && isset($crrPass)) {
             $hash_pass = password_hash($crrPass, PASSWORD_BCRYPT);
             $array_crrName = explode(" ", $crrName);
             // $count_array_size = sizeof($array_crrName);
             $first_name = $array_crrName[0];
-            $last_name = ($array_crrName[1] . (" " . $array_crrName[2] ?? null)) ?? null;
+            array_unshift($array_crrName, $first_name);
+            $last_name = implode(" ", $array_crrName);
 
-            $insert_query = dbConnect::$conn->query("INSERT INTO `users`(`first_name`, `last_name`, `phone`, `email`, `password`) VALUES ('$first_name' , '$last_name' , '$crrMobile', '$crrEmail', '$hash_pass');");
-
-            $_SESSION['users'] = ["first_name" => $first_name, "phone" => $crrMobile, "email" => $crrEmail];
-
-            header("Location: index.php");
+            $insert_query = dbConnect::$conn->query("INSERT INTO `users`(`first_name`, `last_name`, `phone`, `email`, `password`) VALUES ('$first_name', '$last_name', '$crrMobile', '$crrEmail', '$hash_pass')");
+            if ($insert_query) {
+                $data["success"] = "Data Inserted Successfully";
+                echo json_encode($data);
+                return;
+            }
         }
+
+        json_encode($data);
+        echo json_encode($data);
     }
 
 

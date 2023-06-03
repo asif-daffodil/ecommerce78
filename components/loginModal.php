@@ -108,27 +108,32 @@
             fetch(url, options)
                 .then(response => response.json())
                 .then(res => {
-                    if (res.errName) {
-                        errName.innerHTML = "<small>" + res.errName + "</small>";
-                    } else {
-                        errName.innerHTML = null;
-                    }
-                    if (res.errEmail) {
-                        errEmail.innerHTML = "<small>" + res.errEmail + "</small>";
-                    } else {
-                        errEmail.innerHTML = null;
-                    }
+                    console.log(res);
+                    if (!res.success) {
+                        if (res.errName) {
+                            errName.innerHTML = "<small>" + res.errName + "</small>";
+                        } else {
+                            errName.innerHTML = null;
+                        }
+                        if (res.errEmail) {
+                            errEmail.innerHTML = "<small>" + res.errEmail + "</small>";
+                        } else {
+                            errEmail.innerHTML = null;
+                        }
 
-                    if (res.errMobile) {
-                        errMobile.innerHTML = "<small>" + res.errMobile + "</small>";
-                    } else {
-                        errMobile.innerHTML = null;
-                    }
+                        if (res.errMobile) {
+                            errMobile.innerHTML = "<small>" + res.errMobile + "</small>";
+                        } else {
+                            errMobile.innerHTML = null;
+                        }
 
-                    if (res.errPass) {
-                        errPass.innerHTML = "<small>" + res.errPass + "</small>";
+                        if (res.errPass) {
+                            errPass.innerHTML = "<small>" + res.errPass + "</small>";
+                        } else {
+                            errPass.innerHTML = null;
+                        }
                     } else {
-                        errPass.innerHTML = null;
+                        errName.innerHTML = errEmail.innerHTML = errMobile.innerHTML = errPass.innerHTML = "";
                     }
                 })
                 .catch(error => {
