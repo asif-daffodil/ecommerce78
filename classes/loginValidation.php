@@ -83,7 +83,7 @@ class loginClass extends dbConnect
             $array_crrName = explode(" ", $crrName);
             // $count_array_size = sizeof($array_crrName);
             $first_name = $array_crrName[0];
-            array_unshift($array_crrName, $first_name);
+            array_shift($array_crrName);
             $last_name = implode(" ", $array_crrName);
 
             $insert_query = dbConnect::$conn->query("INSERT INTO `users`(`first_name`, `last_name`, `phone`, `email`, `password`) VALUES ('$first_name', '$last_name', '$crrMobile', '$crrEmail', '$hash_pass')");
