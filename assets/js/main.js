@@ -776,7 +776,7 @@ $(document).ready(function () {
 
     var ajaxUrl = $(this).attr("href");
 
-    var mpInstance = $.magnificPopup.instance;
+    var mpInstance = $.magnificPopup?.instance;
     if (mpInstance.isOpen) mpInstance.close();
 
     setTimeout(function () {
@@ -833,7 +833,7 @@ $(document).ready(function () {
 
   if (document.getElementById("newsletter-popup-form")) {
     setTimeout(function () {
-      var mpInstance = $.magnificPopup.instance;
+      var mpInstance = $.magnificPopup?.instance ?? null;
       if (mpInstance.isOpen) {
         mpInstance.close();
       }

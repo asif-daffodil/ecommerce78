@@ -1,3 +1,12 @@
+<div id="msg"></div>
+<ul class="nav nav-pills nav-fill" role="tablist">
+    <li class="nav-item">
+        <a class="nav-link active" id="signin-tab" data-toggle="tab" href="#signin" role="tab" aria-controls="signin" aria-selected="true">Sign In</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="register-tab" data-toggle="tab" href="#register" role="tab" aria-controls="register" aria-selected="false">Register</a>
+    </li>
+</ul>
 <div class="tab-content" id="tab-content-5">
     <div class="tab-pane fade show active" id="signin" role="tabpanel" aria-labelledby="signin-tab">
         <form id="mollaSignIn">
@@ -82,6 +91,7 @@
         const errMobile = document.getElementById("errMobile");
         const registerPassword = document.getElementById("register-password");
         const errPass = document.getElementById("errPass");
+        const msg = document.getElementById("msg");
 
 
         if (!document.getElementById("register-policy").checked) {
@@ -108,7 +118,6 @@
             fetch(url, options)
                 .then(response => response.json())
                 .then(res => {
-                    console.log(res);
                     if (!res.success) {
                         if (res.errName) {
                             errName.innerHTML = "<small>" + res.errName + "</small>";
@@ -134,6 +143,16 @@
                         }
                     } else {
                         errName.innerHTML = errEmail.innerHTML = errMobile.innerHTML = errPass.innerHTML = "";
+                        msg.innerHTML = `
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">Registration successfull
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        `;
+                        setTimeout(() => {
+                            location.href = `./classes/session.php?user=ASDfgh123&name=${data.name}&mobile=${data.mobile}&email=${data.email}`
+                        }, 2000);
                     }
                 })
                 .catch(error => {
@@ -151,10 +170,11 @@
         const singin_pass = document.getElementById("singin-password");
         const err_singin_pass = document.getElementById("errSingInPassword");
 
-        var url = "./classes/loginValidation.php";
-        var data = {
+        const url = "./classes/loginValidation.php";
+        const data = {
             singin_email: singin_email.value,
-            singin_pass: singin_pass.value
+            singin_pass: singin_pass.value,
+            signin: 'ASDfgh123'
         };
 
         var options = {
@@ -162,13 +182,12 @@
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.strnigify(datas)
+            body: JSON.stringify(data)
         };
 
         fetch(url, options)
             .then(response => response.json())
             .then(res => {
-
                 if (res.err_logInEmail) {
                     err_singin_email.innerHTML = "<small>" + res.err_logInEmail + "</small>";
                 } else {
@@ -179,6 +198,16 @@
                     err_singin_pass.innerHTML = "<small>" + res.err_logInPass + "</small>";
                 } else {
                     err_singin_pass.innerHTML = null;
+                }
+
+                if (res.err_log) {
+                    msg.innerHTML = `
+                            <div class="alert alert-warning alert-dismissible fade show" role="alert">${res.err_log}
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        `;
                 }
 
             })

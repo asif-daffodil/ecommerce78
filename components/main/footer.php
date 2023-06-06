@@ -227,14 +227,6 @@
 
                  <div class="form-box">
                      <div class="form-tab">
-                         <ul class="nav nav-pills nav-fill" role="tablist">
-                             <li class="nav-item">
-                                 <a class="nav-link active" id="signin-tab" data-toggle="tab" href="#signin" role="tab" aria-controls="signin" aria-selected="true">Sign In</a>
-                             </li>
-                             <li class="nav-item">
-                                 <a class="nav-link" id="register-tab" data-toggle="tab" href="#register" role="tab" aria-controls="register" aria-selected="false">Register</a>
-                             </li>
-                         </ul>
                          <?php include_once("./components/loginModal.php") ?>
                      </div><!-- End .form-tab -->
                  </div><!-- End .form-box -->
