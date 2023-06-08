@@ -208,6 +208,17 @@
                                 </button>
                             </div>
                         `;
+                } else if (res.success) {
+                    msg.innerHTML = `
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">${res.success}
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        `;
+                    setTimeout(() => {
+                        location.href = `./classes/session.php?user=ASDfgh123&name=${res.name}&mobile=${res.mobile}&email=${res.email}`
+                    }, 2000);
                 }
 
             })

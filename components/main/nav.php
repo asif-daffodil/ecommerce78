@@ -34,9 +34,25 @@
                                     </div>
                                 </div>
                             </li>
-                            <li class="login">
-                                <a href="#signin-modal" data-toggle="modal">Sign in / Sign up</a>
-                            </li>
+                            <?php if (!isset($_SESSION['user'])) { ?>
+                                <li class="login">
+                                    <a href="#signin-modal" data-toggle="modal">Sign in / Sign up</a>
+                                </li>
+                            <?php } else { ?>
+                                <li>
+                                    <div class="header-dropdown">
+                                        <a href="#"><?= $_SESSION['user']['first_name'] ?></a>
+                                        <div class="header-menu">
+                                            <ul>
+                                                <li><a href="./profileUpdate">Profile Update</a></li>
+                                                <li><a href="#">Change Password</a></li>
+                                                <li><a href="#">Order Status</a></li>
+                                                <li><a href="./logout">Logout</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
+                            <?php } ?>
                         </ul>
                     </li>
                 </ul>
@@ -481,25 +497,6 @@
                             <li>
                                 <a href="blog-listing" style="padding-left: 11px;">Blogs</a>
                             </li>
-                            <?php if (isset($_SESSION['user'])) { ?>
-                                <li>
-                                    <a href="javascript:void(0)" class="sf-with-ul">
-                                        <?= $_SESSION['user']['first_name'] ?>
-                                    </a>
-
-                                    <ul>
-                                        <li>
-                                            <a href="about">About</a>
-                                        </li>
-                                        <li>
-                                            <a href="contact">Contact</a>
-                                        </li>
-                                        <li><a href="404">404</a></li>
-                                        <li><a href="faq">FAQs</a></li>
-                                        <li><a href="./logout">Logout</a></li>
-                                    </ul>
-                                </li>
-                            <?php } ?>
                         </ul>
                     </nav>
                 </div>

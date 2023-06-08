@@ -39,13 +39,19 @@ class loginClass extends dbConnect
             }
 
             if (isset($crr_login_email) && isset($crr_login_pass)) {
-                $crr_ln_pass = password_hash($crr_login_pass, PASSWORD_BCRYPT);
-                $selectQuery = dbConnect::$conn->query("SELECT * FROM `users` WHERE `email` = '$crr_login_email' AND `password` = '$crr_ln_pass'");
-                if ($selectQuery->num_rows != 1) {
-                    $data['err_log'] = "Username or password problem";
+                $checkEmail = dbConnect::$conn->query("SELECT * FROM `users` WHERE `email` = '$crr_login_email'");
+                if ($checkEmail->num_rows == 0) {
+                    $data['err_log'] = "Email address or password problem";
                 } else {
-                    $select = $selectQuery->fetch_object();
-                    "./classes/session.php?user=ASDfgh123&name=$select->first_name%20$select->last_name&mobile=$select->phone&email=$select->email";
+                    $select = $checkEmail->fetch_object();
+                    if (!password_verify($crr_login_pass, $select->password)) {
+                        $data['err_log'] = "Email address or password problem";
+                    } else {
+                        $data['success'] = "Login successfull";
+                        $data['name'] = $select->first_name . " " . $select->last_name;
+                        $data['mobile'] = $select->phone;
+                        $data['email'] = $select->email;
+                    }
                 }
             }
 
