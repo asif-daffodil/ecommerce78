@@ -20,17 +20,21 @@ class profileUpdate extends dbConnect
     {
         $all_data = json_decode(file_get_contents('php://input'), true);
         $data = [];
-        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($all_data['updateProfile']) && $all_data['updateProfile'] == "update") {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($all_data['updateProfile']) && $all_data['updateProfile'] == 'update') {
+
+
+            session_start();
+            $session_email = $_SESSION['user']['email'];
 
             $upfirst_name = profileUpdate::safethat($all_data['upfirst_name']);
-            $uplast_name = profileUpdate::safethat($all_data['uplast_name']);
-            $upcompany_name = profileUpdate::safethat($all_data['upcompany_name']);
-            $upstreet_address = profileUpdate::safethat($all_data['upstreet_address']);
-            $uphouse = profileUpdate::safethat($all_data['uphouse']);
-            $upcountry = profileUpdate::safethat($all_data['upcountry']);
-            $upcity = profileUpdate::safethat($all_data['upcity']);
-            $upstate = profileUpdate::safethat($all_data['upstate']);
-            $upzip = profileUpdate::safethat($all_data['upzip']);
+            $uplast_name = profileUpdate::safethat($all_data['uplast_name'] ?? null);
+            $upcompany_name = profileUpdate::safethat($all_data['upcompany_name'] ?? null);
+            $upstreet_address = profileUpdate::safethat($all_data['upstreet_address'] ?? null);
+            $uphouse = profileUpdate::safethat($all_data['uphouse'] ?? null);
+            $upcountry = profileUpdate::safethat($all_data['upcountry'] ?? null);
+            $upcity = profileUpdate::safethat($all_data['upcity'] ?? null);
+            $upstate = profileUpdate::safethat($all_data['upstate'] ?? null);
+            $upzip = profileUpdate::safethat($all_data['upzip'] ?? null);
             $upphone = profileUpdate::safethat($all_data['upphone']);
             $upemail = profileUpdate::safethat($all_data['upemail']);
 
@@ -44,57 +48,42 @@ class profileUpdate extends dbConnect
                 $good_upfirst_name = dbConnect::$conn->real_escape_string($upfirst_name);
             }
 
-            if (!empty($uplast_name)) {
-                if (!preg_match("/^[A-Za-z. ]*$/", $uplast_name)) {
-                    $data['errorLName'] = "Please enter your last name!";
-                } else {
-                    unset($data['errorLName']);
-                    $good_uplast_name = dbConnect::$conn->real_escape_string($uplast_name);
-                }
+            if (empty($uplast_name)) {
+                $data['errorLName'] = "Please enter your last name!";
+            } elseif (!preg_match("/^[A-Za-z. ]*$/", $uplast_name)) {
+                $data['errorLName'] = "Invalid last name field!";
+            } else {
+                unset($data['errorLName']);
+                $good_uplast_name = dbConnect::$conn->real_escape_string($uplast_name);
             }
 
 
-            if (!empty($upcompany_name)) {
+            if (isset($upcompany_name)) {
                 $good_upcompany_name = dbConnect::$conn->real_escape_string($upcompany_name);
             }
 
-            if (!empty($upstreet_address)) {
+            if (isset($upstreet_address)) {
                 $good_upstreet_address = dbConnect::$conn->real_escape_string($upstreet_address);
             }
 
-            if (!empty($uphouse)) {
+            if (isset($uphouse)) {
                 $good_uphouse = dbConnect::$conn->real_escape_string($uphouse);
             }
 
-            if (!empty($upcountry)) {
-                if (!preg_match("/^[A-Za-z. ]*$/", $upcountry)) {
-                    $data['errorCountry'] = "Invalid Country Name!";
-                } else {
-                    unset($data['errorCountry']);
-                    $good_upcountry = dbConnect::$conn->real_escape_string($upcountry);
-                };
+            if (isset($upcountry)) {
+                $good_upcountry = dbConnect::$conn->real_escape_string($upcountry);
             }
 
 
-            if (!empty($upcity)) {
-                if (!preg_match("/^[A-Za-z. ]*$/", $upcity)) {
-                    $data['errorCity'] = "Invalid City!";
-                } else {
-                    unset($data['errorCity']);
-                    $good_upcity = dbConnect::$conn->real_escape_string($upcity);
-                };
+            if (isset($upcity)) {
+                $good_upcity = dbConnect::$conn->real_escape_string($upcity);
             }
 
-            if (!empty($upstate)) {
-                if (!preg_match("/^[A-Za-z. ]*$/", $upstate)) {
-                    $data['errorState'] = "Invalid State!";
-                } else {
-                    unset($data['errorState']);
-                    $good_upstate = dbConnect::$conn->real_escape_string($upstate);
-                }
+            if (isset($upstate)) {
+                $good_upstate = dbConnect::$conn->real_escape_string($upstate);
             }
 
-            if (!empty($upzip)) {
+            if (isset($upzip)) {
                 $good_upzip = dbConnect::$conn->real_escape_string($upzip);
             }
 
@@ -112,23 +101,47 @@ class profileUpdate extends dbConnect
             } elseif (!filter_var($upemail, FILTER_VALIDATE_EMAIL)) {
                 $data['errorEmail'] = "Invalid email address!";
             } else {
-                unset($data['errorEmail']);
-                $good_upemail = dbConnect::$conn->real_escape_string($upemail);
+                $select_query = dbConnect::$conn->query("SELECT * FROM users WHERE email = '$upemail'");
+                // $data = $select_query->fetch_assoc();
+                if (($select_query->num_rows > 0 || $select_query->num_rows === 1)) {
+                    $data['errorEmail'] = "Email address already exists!";
+                } else {
+                    unset($data['errorEmail']);
+                    $good_upemail = dbConnect::$conn->real_escape_string($upemail);
+                }
             }
 
-            json_encode($data);
-            echo json_encode($data);
+            if ((isset($good_upfirst_name) && isset($good_uplast_name) && isset($good_upemail) && isset($good_upphone))) {
+                $select_email = $session_email;
 
-
-            if ((isset($good_upfirst_name) && isset($good_upemail) && isset($good_upphone)) && isset($good_upzip)) {
-                $update_query = dbConnect::$conn->query("UPDATE `users` SET `first_name` = '$good_upfirst_name', `last_name` = '$good_uplast_name', `company_name` = '$good_upcompany_name', `street_address` = '$good_upstreet_address', `house` = '$good_uphouse', `country` = '$good_upcountry', `city` = '$good_upcity', `state` = '$good_upstate', `zip` = '$good_upzip', `phone` = '$good_upphone' ,`email` = '$good_upemail' WHERE `email` = 'ashraf.uzzaman04082004@gmail.com'");
+                $update_query = dbConnect::$conn->query("UPDATE `users` SET `first_name` = '$good_upfirst_name', `last_name` = '$good_uplast_name', `company_name` = '$good_upcompany_name', `street_address` = '$good_upstreet_address', `house` = '$good_uphouse', `country` = '$good_upcountry', `city` = '$good_upcity', `state` = '$good_upstate', `zip` = '$good_upzip', `phone` = '$good_upphone' ,`email` = '$good_upemail' WHERE `email` = '$select_email'");
 
                 if ($update_query) {
                     $data["update_success"] = "Updated successfully";
                     echo json_encode($data);
+
+                    $_SESSION['user']['email'] = $good_upemail;
+                    $_SESSION['user']['phone'] = $good_upphone;
+                    $_SESSION['user']['first_name'] = $good_upfirst_name;
+                    $_SESSION['user']['last_name'] = $good_uplast_name;
+                    $_SESSION['user']['company_name'] = $good_upcompany_name;
+                    $_SESSION['user']['street_address'] = $good_upstreet_address;
+                    $_SESSION['user']['house'] = $good_uphouse;
+                    $_SESSION['user']['city'] = $good_upcity;
+                    $_SESSION['user']['state'] = $good_upstate;
+                    $_SESSION['user']['zip'] = $good_upzip;
+                    $_SESSION['user']['country'] = $good_upcountry;
+
+                    return;
+                } else {
+                    $data["error_update"] = "Update Failed!";
+                    echo json_encode($data);
                     return;
                 }
             }
+
+            json_encode($data);
+            echo json_encode($data);
         }
     }
 }

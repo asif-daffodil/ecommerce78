@@ -129,7 +129,7 @@ class loginClass extends dbConnect
                 }
             }
 
-            json_encode($data);
+            // json_encode($data);
             echo json_encode($data);
         }
     }

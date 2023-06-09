@@ -120,6 +120,8 @@
                 .then(response => response.json())
                 .then(res => {
 
+                    console.log(res);
+
                     if (!res.success) {
                         if (res.errName) {
                             errName.innerHTML = "<small>" + res.errName + "</small>";

@@ -2,7 +2,15 @@
 include_once("./components/main/header.php");
 include_once("./components/main/nav.php");
 
-// (!isset($_SESSION['user'])) ? "<script>window.history.go(-1)</script>" : null;
+if (!isset($_SESSION['user'])) {
+?>
+    <script>
+        window.location.href = "./";
+    </script>
+<?php
+} else {
+    null;
+}
 
 $email = $_SESSION['user']['email'];
 $result = $conn->query("SELECT * FROM users WHERE email = '$email'");
@@ -161,6 +169,7 @@ include_once("./components/main/footer.php")
             console.error("Error:", error);
         });
 </script> -->
+
 <script>
     const updateProfile = document.getElementById("updateProfile");
     updateProfile.addEventListener("submit", (e) => {
@@ -203,7 +212,7 @@ include_once("./components/main/footer.php")
             upzip: upzip.value,
             upphone: upphone.value,
             upemail: upemail.value,
-            updateProfile: "update"
+            updateProfile: 'update'
         };
 
         const option = {
@@ -219,6 +228,7 @@ include_once("./components/main/footer.php")
             .then(res => {
 
                 if (!res.update_success) {
+                    up_success.innerHTML = null;
 
                     // first name validation
                     if (res.errorFName) {
@@ -241,26 +251,6 @@ include_once("./components/main/footer.php")
                         error_Country.innerHTML = null;
                     }
 
-                    // city validation
-                    if (res.errorCity) {
-                        error_city.innerHTML = "<small>" + res.errorCity + "</small>";
-                    } else {
-                        error_city.innerHTML = null;
-                    }
-
-                    // state validation
-                    if (res.errorState) {
-                        error_state.innerHTML = "<small>" + res.errorState + "</small>";
-                    } else {
-                        error_state.innerHTML = null;
-                    }
-
-                    // Zip validation
-                    if (res.errorZip) {
-                        error_zip.innerHTML = "<small>" + res.errorZip + "</small>";
-                    } else {
-                        error_zip.innerHTML = null;
-                    }
 
                     // Phone validation
                     if (res.errorPhone) {
@@ -280,6 +270,10 @@ include_once("./components/main/footer.php")
                         error_up_email.innerHTML = null;
 
                     up_success.innerHTML = `<div class="alert alert-success alert-dismissible fade show shadow" role="alert"><strong>Congratulations!</strong> Profile Updated successfully.<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true" style="font-size: 22px;">&times;</span></button></div>`;
+
+                    setInterval(() => {
+                        window.location.reload();
+                    }, 2000);
                 }
 
             })
