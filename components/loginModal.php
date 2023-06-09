@@ -99,16 +99,16 @@
         } else {
             document.getElementById("errAgree").innerHTML = null;
 
-            var url = "./classes/loginValidation.php";
+            const url = "./classes/loginValidation.php";
 
-            var data = {
+            const data = {
                 name: registerName.value,
                 email: registerEmail.value,
                 mobile: registerMobile.value,
                 pass: registerPassword.value,
             };
 
-            var options = {
+            const options = {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -153,7 +153,7 @@
                             </div>
                         `;
                         setTimeout(() => {
-                            location.href = `./classes/session.php?user=ASDfgh123&name=${res.name}&mobile=${res.mobile}&email=${res.email}`
+                            location.href = `./classes/session.php?user=ASDfgh123&name=${data.name}&mobile=${data.mobile}&email=${data.email}`
                         }, 2000);
                     }
                 })

@@ -189,9 +189,9 @@ include_once("./components/main/footer.php")
         const error_up_phone = document.getElementsByClassName("error_up_phone")[0];
         const error_up_email = document.getElementsByClassName("error_up_email")[0];
 
-        var url = "./classes/PUpdate.php";
+        const url = "./classes/PUpdate.php";
 
-        var data = {
+        const data = {
             upfirst_name: upfirst_name.value,
             uplast_name: uplast_name.value,
             upcompany_name: upcompany_name.value,
@@ -206,7 +206,7 @@ include_once("./components/main/footer.php")
             updateProfile: "update"
         };
 
-        var option = {
+        const option = {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
