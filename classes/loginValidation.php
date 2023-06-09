@@ -94,7 +94,7 @@ class loginClass extends dbConnect
                 $data['errMobile'] = "Invalid mobile number!";
             } else {
                 unset($data['errMobile']);
-                $crrMobile = dbConnect::$conn->real_escape_string($email);
+                $crrMobile = dbConnect::$conn->real_escape_string($mobile);
             }
 
             // password validation
@@ -121,6 +121,7 @@ class loginClass extends dbConnect
                 $last_name = implode(" ", $array_crrName);
 
                 $insert_query = dbConnect::$conn->query("INSERT INTO `users`(`first_name`, `last_name`, `phone`, `email`, `password`) VALUES ('$first_name', '$last_name', '$crrMobile', '$crrEmail', '$hash_pass')");
+
                 if ($insert_query) {
                     $data["success"] = "Data Inserted Successfully";
                     echo json_encode($data);
@@ -135,4 +136,3 @@ class loginClass extends dbConnect
 }
 
 loginClass::registrForm();
-// loginClass::signInForm();

@@ -1,3 +1,6 @@
+<?php
+$pagename = pathinfo($_SERVER['PHP_SELF'], PATHINFO_FILENAME);
+?>
 <header class="header header-14">
     <div class="header-top">
         <div class="container">
@@ -488,13 +491,13 @@
                 <div class="col col-lg-6 col-xl-6 col-xxl-8 header-center">
                     <nav class="main-nav">
                         <ul class="menu sf-arrows">
-                            <li class="megamenu-container active">
+                            <li class="<?= $pagename == "index" ? "active" : null ?>">
                                 <a href="./" style="padding-left: 11px;">Home</a>
                             </li>
-                            <li>
+                            <li class="<?= $pagename == "category" ? "active" : null ?>">
                                 <a href="category" style="padding-left: 11px;">Shop</a>
                             </li>
-                            <li>
+                            <li class="<?= $pagename == "blog-listing" ? "active" : null ?>">
                                 <a href="blog-listing" style="padding-left: 11px;">Blogs</a>
                             </li>
                         </ul>

@@ -1,5 +1,6 @@
 <?php
-class sessionClass
+include_once("../db.php");
+class sessionClass extends dbConnect
 {
     private function __construct()
     {
@@ -20,13 +21,26 @@ class sessionClass
     public static function sessionData(): void
     {
         if (isset($_GET['user']) && $_GET['user'] == 'ASDfgh123') {
-            $array_crrName = explode(" ", $_GET['name']);
+            $get_name = $_GET['name'];
+            $get_mobile = $_GET['mobile'];
+            $get_email = $_GET['email'];
+
+            $array_crrName = explode(" ", $get_name);
             $first_name = $array_crrName[0];
             array_shift($array_crrName);
             $last_name = implode(" ", $array_crrName);
-            $userArr = ['first_name' => $first_name, 'last_name' => $last_name, 'phone' => $_GET['mobile'], 'email' => $_GET['email']];
-            sessionClass::session($userArr);
-            header("location: ../");
+
+            $fetch_data = dbConnect::$conn->query("SELECT * FROM `users` WHERE `first_name` = '$first_name' AND `last_name` = '$last_name' AND `email` = '$get_email' AND `phone` = '$get_mobile'");
+
+            if ($fetch_data->num_rows > 0) {
+                $userArr = ['first_name' => $first_name, 'last_name' => $last_name, 'phone' => $_GET['mobile'], 'email' => $_GET['email']];
+                sessionClass::session($userArr);
+                header("location: ../");
+            } else {
+                unset($_SESSION['user']);
+                session_unset();
+                header("location: ../");
+            }
         }
     }
 }

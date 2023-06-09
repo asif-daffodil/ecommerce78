@@ -100,6 +100,7 @@
             document.getElementById("errAgree").innerHTML = null;
 
             var url = "./classes/loginValidation.php";
+
             var data = {
                 name: registerName.value,
                 email: registerEmail.value,
@@ -118,6 +119,7 @@
             fetch(url, options)
                 .then(response => response.json())
                 .then(res => {
+
                     if (!res.success) {
                         if (res.errName) {
                             errName.innerHTML = "<small>" + res.errName + "</small>";
@@ -151,7 +153,7 @@
                             </div>
                         `;
                         setTimeout(() => {
-                            location.href = `./classes/session.php?user=ASDfgh123&name=${data.name}&mobile=${data.mobile}&email=${data.email}`
+                            location.href = `./classes/session.php?user=ASDfgh123&name=${res.name}&mobile=${res.mobile}&email=${res.email}`
                         }, 2000);
                     }
                 })
@@ -171,6 +173,7 @@
         const err_singin_pass = document.getElementById("errSingInPassword");
 
         const url = "./classes/loginValidation.php";
+
         const data = {
             singin_email: singin_email.value,
             singin_pass: singin_pass.value,

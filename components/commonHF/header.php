@@ -91,8 +91,6 @@ $pagename = pathinfo($_SERVER['PHP_SELF'], PATHINFO_FILENAME);
                                 <li>
                                     <a href=" contact" class="<?= $pagename == "contact" ? "activeee" : null ?>">Contact</a>
                                 </li>
-                                <li class="activeee"><a href=" login" class="<?= $pagename == "login" ? "activeee" : null ?>">Login</a>
-                                </li>
                                 <li><a href=" faq" class="<?= $pagename == "faq" ? "activeee" : null ?>">FAQs</a></li>
                             </ul>
                         </li>
