@@ -24,9 +24,9 @@ class profileUpdate extends dbConnect
 
             $upfirst_name = profileUpdate::safethat($all_data['upfirst_name']);
             $uplast_name = profileUpdate::safethat($all_data['uplast_name']);
-            $upcompany_name = profileUpdate::safethat($all_data['upcompany_name']);
+            $upcompany_name = profileUpdate::safethat($all_data['upcompany_name'] ?? null);
             $upstreet_address = profileUpdate::safethat($all_data['upstreet_address']);
-            $uphouse = profileUpdate::safethat($all_data['uphouse']);
+            $uphouse = profileUpdate::safethat($all_data['uphouse'] ?? null);
             $upcountry = profileUpdate::safethat($all_data['upcountry']);
             $upcity = profileUpdate::safethat($all_data['upcity']);
             $upstate = profileUpdate::safethat($all_data['upstate']);
@@ -120,8 +120,8 @@ class profileUpdate extends dbConnect
             echo json_encode($data);
 
 
-            if ((isset($good_upfirst_name) && isset($good_upemail) && isset($good_upphone)) && isset($good_upzip)) {
-                $update_query = dbConnect::$conn->query("UPDATE `users` SET `first_name` = '$good_upfirst_name', `last_name` = '$good_uplast_name', `company_name` = '$good_upcompany_name', `street_address` = '$good_upstreet_address', `house` = '$good_uphouse', `country` = '$good_upcountry', `city` = '$good_upcity', `state` = '$good_upstate', `zip` = '$good_upzip', `phone` = '$good_upphone' ,`email` = '$good_upemail' WHERE `email` = 'ashraf.uzzaman04082004@gmail.com'");
+            if ((isset($good_upfirst_name) && isset($good_upemail) && isset($good_upphone))) {
+                $update_query = dbConnect::$conn->query("UPDATE `users` SET `first_name` = '$good_upfirst_name', `last_name` = '$good_uplast_name', `company_name` = '$good_upcompany_name', `street_address` = '$good_upstreet_address', `house` = '$good_uphouse', `country` = '$good_upcountry', `city` = '$good_upcity', `state` = '$good_upstate', `zip` = '$good_upzip', `phone` = '$good_upphone' ,`email` = '$good_upemail' WHERE `email` = 'asif.abir001@gmail.com'");
 
                 if ($update_query) {
                     $data["update_success"] = "Updated successfully";

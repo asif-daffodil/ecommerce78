@@ -217,7 +217,7 @@ include_once("./components/main/footer.php")
         fetch(url, option)
             .then(response => response.json())
             .then(res => {
-
+                console.log(res);
                 if (!res.update_success) {
 
                     // first name validation
