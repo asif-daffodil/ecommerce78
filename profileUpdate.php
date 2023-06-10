@@ -19,58 +19,12 @@ if ($result->num_rows === 1) {
     $user = $result->fetch_assoc();
 }
 ?>
-
 <style>
-    .header-left {
-        display: none !important;
-    }
-
-    .header-14 .header-bottom .header-center {
-        justify-content: flex-start !important;
-    }
-
-    .side-nav {
-        display: none;
-    }
-
-    .form-select {
-        width: 100%;
-        height: 40px;
-        /* padding: 0.85rem 2rem; */
-        font-size: 1.4rem;
-        line-height: 1.5;
-        font-weight: 300;
-        color: #777;
-        background-color: #fafafa;
-        border: 1px solid #ebebeb;
-        border-radius: 0;
-        /* margin-bottom: 2rem; */
-        transition: all 0.3s;
-        box-shadow: none;
-    }
-
-    .form-select:focus {
-        border-color: #fcb941 !important;
-    }
-
-    select:focus-visible {
-        outline-offset: unset;
-        outline: none;
-    }
-
-    #up_success {
-        position: fixed;
-        bottom: 2%;
-        right: 2%;
-        z-index: 100;
-    }
-
-    .alert {
-        border-radius: 6px;
-        font-size: 18px;
-        padding: 1rem 4.5rem !important;
-    }
+    <?php
+    include_once("./assets/css/main/style.min.css");
+    ?>
 </style>
+
 <div id="up_success">
 </div>
 <div class="container">
@@ -158,17 +112,6 @@ if ($result->num_rows === 1) {
 <?php
 include_once("./components/main/footer.php")
 ?>
-
-<!-- <script>
-    fetch('https://restcountries.com/v3.1/all')
-        .then(response => response.json())
-        .then(data => {
-            console.log(data);
-        })
-        .catch(error => {
-            console.error("Error:", error);
-        });
-</script> -->
 
 <script>
     const updateProfile = document.getElementById("updateProfile");

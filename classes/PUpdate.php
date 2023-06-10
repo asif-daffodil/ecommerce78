@@ -24,10 +24,10 @@ class profileUpdate extends dbConnect
 
 
             session_start();
-            $session_email = $_SESSION['user']['email'];
+            $session_email = $_SESSION['user']['email'] ?? null;
 
             $upfirst_name = profileUpdate::safethat($all_data['upfirst_name']);
-            $uplast_name = profileUpdate::safethat($all_data['uplast_name'] ?? null);
+            $uplast_name = profileUpdate::safethat($all_data['uplast_name']);
             $upcompany_name = profileUpdate::safethat($all_data['upcompany_name'] ?? null);
             $upstreet_address = profileUpdate::safethat($all_data['upstreet_address'] ?? null);
             $uphouse = profileUpdate::safethat($all_data['uphouse'] ?? null);
@@ -102,7 +102,7 @@ class profileUpdate extends dbConnect
                 $data['errorEmail'] = "Invalid email address!";
             } else {
                 $select_query = dbConnect::$conn->query("SELECT * FROM users WHERE email = '$upemail'");
-                if ($_SESSION['user']['email'] != $upemail) {
+                if ($session_email != $upemail) {
                     if ($select_query->num_rows > 0) {
                         $data['errorEmail'] = "Email address already exists!";
                     } else {

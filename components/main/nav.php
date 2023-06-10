@@ -46,10 +46,15 @@ $pagename = pathinfo($_SERVER['PHP_SELF'], PATHINFO_FILENAME);
                                     <div class="header-dropdown">
                                         <a href="#"><?= $_SESSION['user']['first_name'] ?></a>
                                         <div class="header-menu">
+                                            <style>
+                                                .active {
+                                                    color: #fcb941 !important;
+                                                }
+                                            </style>
                                             <ul>
-                                                <li><a href="./profileUpdate">Profile Update</a></li>
-                                                <li><a href="#">Change Password</a></li>
-                                                <li><a href="#">Order Status</a></li>
+                                                <li><a class="<?= $pagename == "profileUpdate" ? "active" : null ?>" href="./profileUpdate">Profile Update</a></li>
+                                                <li><a class="<?= $pagename == "changePass" ? "active" : null ?>" href="./changePass">Change Password</a></li>
+                                                <li><a class="<?= $pagename == "orderstatus" ? "active" : null ?>" href="#">Order Status</a></li>
                                                 <li><a href="./logout">Logout</a></li>
                                             </ul>
                                         </div>
