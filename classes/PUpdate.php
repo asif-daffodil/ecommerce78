@@ -102,9 +102,13 @@ class profileUpdate extends dbConnect
                 $data['errorEmail'] = "Invalid email address!";
             } else {
                 $select_query = dbConnect::$conn->query("SELECT * FROM users WHERE email = '$upemail'");
-                // $data = $select_query->fetch_assoc();
-                if (($select_query->num_rows > 0 || $select_query->num_rows === 1)) {
-                    $data['errorEmail'] = "Email address already exists!";
+                if ($_SESSION['user']['email'] != $upemail) {
+                    if ($select_query->num_rows > 0) {
+                        $data['errorEmail'] = "Email address already exists!";
+                    } else {
+                        unset($data['errorEmail']);
+                        $good_upemail = dbConnect::$conn->real_escape_string($upemail);
+                    }
                 } else {
                     unset($data['errorEmail']);
                     $good_upemail = dbConnect::$conn->real_escape_string($upemail);
