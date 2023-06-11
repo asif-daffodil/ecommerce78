@@ -33,7 +33,9 @@ class sessionClass extends dbConnect
             $fetch_data = dbConnect::$conn->query("SELECT * FROM `users` WHERE `first_name` = '$first_name' AND `last_name` = '$last_name' AND `email` = '$get_email' AND `phone` = '$get_mobile'");
 
             if ($fetch_data->num_rows > 0) {
-                $userArr = ['first_name' => $first_name, 'last_name' => $last_name, 'phone' => $_GET['mobile'], 'email' => $_GET['email']];
+                $fetch = $fetch_data->fetch_object();
+                $img_data = $fetch->images;
+                $userArr = ['first_name' => $first_name, 'last_name' => $last_name, 'phone' => $_GET['mobile'], 'email' => $_GET['email'], 'images' => $img_data];
                 sessionClass::session($userArr);
                 header("location: ../");
             } else {

@@ -43,8 +43,8 @@ class changePass extends dbConnect
                 $select_all = dbConnect::$conn->query("SELECT * FROM `users` WHERE `email` = '$session_email'");
                 $fetch = $select_all->fetch_object();
                 $existing_pass = $fetch->password;
-                $verify_pass = password_verify($old_pass, $existing_pass);
-                if ($old_pass != $verify_pass) {
+                $mdold_pass = md5($old_pass);
+                if ($mdold_pass != $existing_pass) {
                     $data['error_opass'] = "Password doesn't match!";
                 } else {
                     unset($data['error_opass']);
@@ -57,6 +57,8 @@ class changePass extends dbConnect
             $lowercase = preg_match('@[a-z]@', $new_pass);
             $number    = preg_match('@[0-9]@', $new_pass);
             if (empty($new_pass)) {
+                $data['error_npass'] = "Field can't empty!";
+            } elseif ($new_pass == $old_pass) {
                 $data['error_npass'] = "Please enter new password!";
             } elseif (!$uppercase || !$lowercase || !$number) {
                 $data['error_npass'] = "Use strong password!";
@@ -66,7 +68,6 @@ class changePass extends dbConnect
                 unset($data['error_npass']);
                 $great_npass = dbConnect::$conn->real_escape_string($new_pass);
             }
-
 
             // confirm password
             if (empty($conf_pass)) {
@@ -78,10 +79,9 @@ class changePass extends dbConnect
                 $great_confpass = dbConnect::$conn->real_escape_string($conf_pass);
             }
 
-
             if (isset($great_opass) && isset($great_npass) && isset($great_confpass)) {
-
-                $change_pass = dbConnect::$conn->query("UPDATE `users` SET  `password` = '$great_npass' WHERE `email` = '$session_email'");
+                $md5_pass = md5($great_npass);
+                $change_pass = dbConnect::$conn->query("UPDATE `users` SET  `password` = '$md5_pass ' WHERE `email` = '$session_email'");
 
                 if ($change_pass) {
                     $data['change_successfully'] = "Password changed successfully.";

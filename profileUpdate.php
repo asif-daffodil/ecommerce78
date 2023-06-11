@@ -31,6 +31,27 @@ if ($result->num_rows === 1) {
     <div class="row">
         <div class="col-md-8 m-auto py-5">
             <div class="col-md-12 px-0 display-4 mb-3">Update Your Profile</div>
+            <?php
+            $email = $_SESSION['user']['email'];
+            $select_data = $conn->query("SELECT * FROM users WHERE email = '$email'");
+            $fetch = $select_data->fetch_object();
+            $user_id = $fetch->id;
+            ?>
+            <form id="user_img" enctype="multipart/form-data">
+                <div>
+                    <div class="shadow">
+                        <input type="file" class="d-none" id="file_pp">
+                        <label for="file_pp">
+                            <img src="./assets/images/users/<?= (isset($_SESSION['user']['images']) && $_SESSION['user']['images'] != null) ? "$user_id" . "/" . $_SESSION['user']['images'] : "blank_img.jpg" ?>" alt="User Image" id="p_pic" title="Click to change image.">
+                        </label>
+                    </div>
+                    <div>
+                        <span class="text-danger mx-5 error_img"></span>
+                    </div>
+                </div>
+
+            </form>
+
             <form id="updateProfile" class="p-5 rounded shadow">
                 <div class="row">
                     <div class="col-md-6">
@@ -112,6 +133,55 @@ if ($result->num_rows === 1) {
 <?php
 include_once("./components/main/footer.php")
 ?>
+
+<!-- for image upload -->
+<script>
+    const img_file = document.getElementById("file_pp");
+    const up_success = document.getElementById("up_success");
+    const error_img = document.getElementsByClassName("error_img")[0];
+
+    img_file.addEventListener("change", (e) => {
+        const previewImg = document.getElementById("p_pic");
+        const file = e.target.files[0];
+
+        const formData = new FormData();
+        formData.append('image', file);
+
+        const reader = new FileReader();
+
+        const fileTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/jpg'];
+
+        if (file) {
+            reader.readAsDataURL(file);
+            if (fileTypes.includes(file.type)) {
+                reader.addEventListener("loadend", (e) => {
+                    previewImg.src = e.target.result;
+                    error_img.innerHTML = null;
+                });
+            } else {
+                error_img.innerHTML = "Please select an image file!";
+            }
+        }
+
+        fetch("./classes/Upimg.php", {
+            method: 'POST',
+            body: formData
+        }).then(response => response.json()).then(result => {
+            if (!result.success) {
+                up_success.innerHTML = null;
+                error_img.innerHTML = result.error_img;
+            } else {
+                error_img.innerHTML = null;
+
+                up_success.innerHTML = `<div class="alert alert-success alert-dismissible fade show shadow" role="alert"><strong>Done!</strong> ${result.success}.<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true" style="font-size: 22px;">&times;</span></button></div>`;
+
+                setInterval(() => {
+                    window.location.reload();
+                }, 2000);
+            }
+        });
+    });
+</script>
 
 <script>
     const updateProfile = document.getElementById("updateProfile");

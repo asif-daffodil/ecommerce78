@@ -44,7 +44,9 @@ class loginClass extends dbConnect
                     $data['err_log'] = "Email address or password problem";
                 } else {
                     $select = $checkEmail->fetch_object();
-                    if (!password_verify($crr_login_pass, $select->password)) {
+                    $pasword  = $select->password;
+                    $pass_veri = md5($pasword);
+                    if (!$pass_veri) {
                         $data['err_log'] = "Email address or password problem";
                     } else {
                         $data['success'] = "Login successfull";
@@ -114,13 +116,13 @@ class loginClass extends dbConnect
 
 
             if (isset($crrName) && isset($crrEmail) && isset($crrMobile) && isset($crrPass)) {
-                $hash_pass = password_hash($crrPass, PASSWORD_BCRYPT);
+                $md5_pass = md5($crrPass);
                 $array_crrName = explode(" ", $crrName);
                 $first_name = $array_crrName[0];
                 array_shift($array_crrName);
                 $last_name = implode(" ", $array_crrName);
 
-                $insert_query = dbConnect::$conn->query("INSERT INTO `users`(`first_name`, `last_name`, `phone`, `email`, `password`) VALUES ('$first_name', '$last_name', '$crrMobile', '$crrEmail', '$hash_pass')");
+                $insert_query = dbConnect::$conn->query("INSERT INTO `users`(`first_name`, `last_name`, `phone`, `email`, `password`) VALUES ('$first_name', '$last_name', '$crrMobile', '$crrEmail', '$md5_pass')");
 
                 if ($insert_query) {
                     $data["success"] = "Data Inserted Successfully";

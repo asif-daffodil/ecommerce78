@@ -53,3 +53,28 @@ select:focus-visible {
     font-size: 18px;
     padding: 1rem 4.5rem !important;
 }
+
+#user_img{
+    >div{ 
+        display: inline-block;
+        display: flex;
+        justify-content: left;
+        align-items: center;
+        margin-bottom: 40px;
+        >:nth-child(1){
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            >label{
+                >img{
+                    width: 300px;
+                    height: 300px;
+                    object-fit: cover;
+                    border-radius: 50%;
+                    cursor: pointer;
+                    border: 2px solid #fcb941;
+                }
+            }
+        }
+    }
+}
