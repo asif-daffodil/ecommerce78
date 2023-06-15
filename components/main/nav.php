@@ -55,6 +55,9 @@ $pagename = pathinfo($_SERVER['PHP_SELF'], PATHINFO_FILENAME);
                                                 <li><a class="<?= $pagename == "profileUpdate" ? "active" : null ?>" href="./profileUpdate">Profile Update</a></li>
                                                 <li><a class="<?= $pagename == "changePass" ? "active" : null ?>" href="./changePass">Change Password</a></li>
                                                 <li><a class="<?= $pagename == "orderstatus" ? "active" : null ?>" href="#">Order Status</a></li>
+                                                <?php if ($_SESSION['user']['role'] == "admin") { ?>
+                                                    <li><a href="./admin">Admin</a></li>
+                                                <?php } ?>
                                                 <li><a href="./logout">Logout</a></li>
                                             </ul>
                                         </div>

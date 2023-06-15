@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 29, 2023 at 06:15 PM
+-- Generation Time: Jun 15, 2023 at 11:11 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -194,18 +194,19 @@ INSERT INTO `products` (`id`, `name`, `title`, `regular_price`, `discount_price`
 
 CREATE TABLE `product_categories` (
   `id` int(11) NOT NULL,
-  `name` varchar(255) DEFAULT NULL
+  `name` varchar(255) DEFAULT NULL,
+  `description` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `product_categories`
 --
 
-INSERT INTO `product_categories` (`id`, `name`) VALUES
-(1, 'Furniture'),
-(2, 'Clothing'),
-(3, 'Electronics'),
-(4, 'Cooking');
+INSERT INTO `product_categories` (`id`, `name`, `description`) VALUES
+(1, 'Furniture', NULL),
+(2, 'Clothing', NULL),
+(3, 'Electronics', NULL),
+(4, 'Cooking', NULL);
 
 -- --------------------------------------------------------
 
@@ -368,6 +369,32 @@ INSERT INTO `statistics` (`id`, `title`, `count_value`, `unit`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `sub_category`
+--
+
+CREATE TABLE `sub_category` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `cat_id` int(11) NOT NULL,
+  `details` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sub_sub_cat`
+--
+
+CREATE TABLE `sub_sub_cat` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `sub_cat_id` int(11) NOT NULL,
+  `details` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `team`
 --
 
@@ -416,6 +443,7 @@ CREATE TABLE `users` (
   `email` varchar(255) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
   `images` text DEFAULT NULL,
+  `role` char(5) NOT NULL DEFAULT 'user',
   `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -423,9 +451,10 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `first_name`, `last_name`, `company_name`, `street_address`, `house`, `country`, `city`, `state`, `zip`, `phone`, `email`, `password`, `images`, `created_at`) VALUES
-(1, 'Yousuf', 'Molla', 'Khan', NULL, NULL, NULL, NULL, NULL, NULL, '01712121212', 'yousuf@molla.com', '123456', NULL, '2023-05-27 07:47:01'),
-(2, 'Siam', 'Chattapaddhay', 'Niyamot', NULL, NULL, NULL, NULL, NULL, NULL, '01946464646', NULL, NULL, NULL, '2023-05-27 08:00:42');
+INSERT INTO `users` (`id`, `first_name`, `last_name`, `company_name`, `street_address`, `house`, `country`, `city`, `state`, `zip`, `phone`, `email`, `password`, `images`, `role`, `created_at`) VALUES
+(1, 'Yousuf', 'Molla', 'Khan', NULL, NULL, NULL, NULL, NULL, NULL, '01712121212', 'yousuf@molla.com', '$2y$10$Zb/q6iYpjJEwJ9AwlNRKz.ExYHabmJpWpFZmOtsf1uuiNQb2p9WNi', NULL, 'user', '2023-06-06 14:49:14'),
+(2, 'Siam', 'Chattapaddhay', 'Niyamot', NULL, NULL, NULL, NULL, NULL, NULL, '01946464646', NULL, '$2y$10$bMiofhZ5H3zLymtGR5kmA.zskWNHJV9x/LLdnGCLSTHEauV8g1tQu', NULL, 'user', '2023-06-08 07:30:03'),
+(28, 'Asif', 'Abir', '', '9 Sher-E-Bangla Road', '9', 'Bangladesh', 'Dhaka', '', '1209', '01955517560', 'abir@dipti.com.bd', '$2y$10$Kh6/eRPMr4rqZXszgAy11eMJXlKJ1NNA1ZLQln3CGGcWL4fBLKG9.', 'company7eKSTm5q648ab7ac4b90937525820230615090308.jpg', 'admin', '2023-06-15 07:19:00');
 
 -- --------------------------------------------------------
 
@@ -520,6 +549,20 @@ ALTER TABLE `statistics`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `sub_category`
+--
+ALTER TABLE `sub_category`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `cat_id` (`cat_id`);
+
+--
+-- Indexes for table `sub_sub_cat`
+--
+ALTER TABLE `sub_sub_cat`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `sub_cat_id` (`sub_cat_id`);
+
+--
 -- Indexes for table `team`
 --
 ALTER TABLE `team`
@@ -602,6 +645,18 @@ ALTER TABLE `statistics`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
+-- AUTO_INCREMENT for table `sub_category`
+--
+ALTER TABLE `sub_category`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `sub_sub_cat`
+--
+ALTER TABLE `sub_sub_cat`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `team`
 --
 ALTER TABLE `team`
@@ -611,7 +666,7 @@ ALTER TABLE `team`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- Constraints for dumped tables
@@ -629,6 +684,18 @@ ALTER TABLE `products`
 ALTER TABLE `reviews`
   ADD CONSTRAINT `reviews_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`),
   ADD CONSTRAINT `reviews_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
+
+--
+-- Constraints for table `sub_category`
+--
+ALTER TABLE `sub_category`
+  ADD CONSTRAINT `sub_category_ibfk_1` FOREIGN KEY (`cat_id`) REFERENCES `product_categories` (`id`);
+
+--
+-- Constraints for table `sub_sub_cat`
+--
+ALTER TABLE `sub_sub_cat`
+  ADD CONSTRAINT `sub_sub_cat_ibfk_1` FOREIGN KEY (`sub_cat_id`) REFERENCES `sub_category` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

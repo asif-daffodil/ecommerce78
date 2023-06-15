@@ -30,12 +30,12 @@ class sessionClass extends dbConnect
             array_shift($array_crrName);
             $last_name = implode(" ", $array_crrName);
 
-            $fetch_data = dbConnect::$conn->query("SELECT * FROM `users` WHERE `first_name` = '$first_name' AND `last_name` = '$last_name' AND `email` = '$get_email' AND `phone` = '$get_mobile'");
+            $fetch_data = dbConnect::$conn->query("SELECT * FROM `users` WHERE `email` = '$get_email'");
 
             if ($fetch_data->num_rows > 0) {
                 $fetch = $fetch_data->fetch_object();
                 $img_data = $fetch->images;
-                $userArr = ['first_name' => $first_name, 'last_name' => $last_name, 'phone' => $_GET['mobile'], 'email' => $_GET['email'], 'images' => $img_data];
+                $userArr = ['id' => $fetch->id, 'first_name' => $first_name, 'last_name' => $last_name, 'phone' => $_GET['mobile'], 'email' => $_GET['email'], 'images' => $img_data, 'role' => $fetch->role];
                 sessionClass::session($userArr);
                 header("location: ../");
             } else {

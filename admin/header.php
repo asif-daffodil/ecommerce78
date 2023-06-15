@@ -1,6 +1,9 @@
 <?php
 session_start();
+(!isset($_SESSION['user']['role']) || $_SESSION['user']['role'] != "admin") ? header("location: ../") : null;
+$pageName = pathinfo($_SERVER['PHP_SELF'], PATHINFO_FILENAME);
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,3 +25,8 @@ session_start();
 </head>
 
 <body id="page-top">
+    <div id="wrapper">
+        <?php
+        include_once("./sidebar.php");
+        ?>
+        <div id="content-wrapper" class="d-flex flex-column">
