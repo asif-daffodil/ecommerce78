@@ -2,6 +2,15 @@
 session_start();
 (!isset($_SESSION['user']['role']) || $_SESSION['user']['role'] != "admin") ? header("location: ../") : null;
 $pageName = pathinfo($_SERVER['PHP_SELF'], PATHINFO_FILENAME);
+$conn = mysqli_connect("localhost", "root", "", "ecommers78");
+function safeThat($data)
+{
+    $data = htmlspecialchars($data);
+    $data = trim($data);
+    $data = stripslashes($data);
+    return $data;
+}
+
 ?>
 
 <!DOCTYPE html>
