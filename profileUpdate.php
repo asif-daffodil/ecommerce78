@@ -49,7 +49,6 @@ if ($result->num_rows === 1) {
                         <span class="text-danger mx-5 error_img"></span>
                     </div>
                 </div>
-
             </form>
 
             <form id="updateProfile" class="p-5 rounded shadow">
