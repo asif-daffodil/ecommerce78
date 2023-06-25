@@ -102,6 +102,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['addSubSubcat'])) {
         }
     }
 }
+
+//mysql query to select all from category table
+$proCat = $conn->query("SELECT * FROM `product_categories`");
 ?>
 <style>
     .form-select.is-invalid,
@@ -132,7 +135,33 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['addSubSubcat'])) {
                         <input type="submit" name="addcat" value="Add Category" class="btn btn-primary btn-sm">
                     </form>
                 </div>
-                <div class="col-md-6"></div>
+                <div class="col-md-6">
+                    <table id="mainCat" class="display">
+                        <thead>
+                            <tr>
+                                <th>SN</th>
+                                <th>Category Name</th>
+                                <th>Description</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            $sn = 1;
+                            while ($data = $proCat->fetch_object()) { ?>
+                                <tr>
+                                    <td><?= $sn++ ?></td>
+                                    <td><?= $data->name ?></td>
+                                    <td><?= $data->description ?></td>
+                                    <td>
+                                        <a href="" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></a>
+                                        <a href="" class="btn btn-sm btn-danger"><i class="far fa-trash-alt"></i></a>
+                                    </td>
+                                </tr>
+                            <?php } ?>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
         <?php
