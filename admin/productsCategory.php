@@ -6,8 +6,11 @@ $selectSubSubCat = $conn->query("SELECT * FROM `sub_sub_cat`");
 if (isset($_POST['addcat'])) {
     $name = safeThat($_POST['name']);
     $description = safeThat($_POST['description']);
+
     if (empty($name)) {
         $errName = "please write your name";
+    } elseif (strlen($description) > 120) {
+        $errDes = "Your description should be 20 character.";
     } else {
         $name = $conn->real_escape_string($name);
         $description = $conn->real_escape_string($description);
@@ -48,10 +51,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['addsubcat'])) {
     }
 
     if (isset($subDescription)) {
-        $corr_subDescription = $conn->real_escape_string($subDescription);
+        if (strlen($subDescription) > 120) {
+            $err_subDescription = "Your description should be 120 character long.";
+        } else {
+            $corr_subDescription = $conn->real_escape_string($subDescription);
+        }
     }
 
-    if (isset($corr_SelectPCat) && isset($corr_subName)) {
+    if (isset($corr_SelectPCat) && isset($corr_subName) && !isset($err_subDescription)) {
         $insertSubCat = $conn->query("INSERT INTO `sub_category` (`name`, `cat_id`, `details`) VALUES ('$corr_subName', $corr_SelectPCat, '$corr_subDescription')");
 
         if ($insertSubCat) {
@@ -89,10 +96,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['addSubSubcat'])) {
     }
 
     if (isset($subSubdescription)) {
-        $corr_subSubdescription = $conn->real_escape_string($subSubdescription);
+        if (strlen($subSubdescription) > 120) {
+            $err_subSubdescription = "Your description should be 120 character long.";
+        } else {
+            $corr_subSubdescription = $conn->real_escape_string($subSubdescription);
+        }
     }
 
-    if (isset($corr_selectPreSubCat) && isset($corr_subSubname)) {
+    if (isset($corr_selectPreSubCat) && isset($corr_subSubname) && !isset($err_subSubdescription)) {
         $insertSubSubCat = $conn->query("INSERT INTO `sub_sub_cat` (`name`, `sub_cat_id`, `details`) VALUES ('$corr_subSubname', $corr_selectPreSubCat, '$corr_subSubdescription')");
 
         if ($insertSubSubCat) {
@@ -104,7 +115,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['addSubSubcat'])) {
 }
 
 //mysql query to select all from category table
-$proCat = $conn->query("SELECT * FROM `product_categories`");
+$proCat = $conn->query("SELECT * FROM `product_categories` ORDER BY `id` DESC");
+$proSubCat = $conn->query("SELECT * FROM `sub_category` ORDER BY `id` DESC");
+$proSubSubCat = $conn->query("SELECT * FROM `sub_sub_cat` ORDER BY `id` DESC");
 ?>
 <style>
     .form-select.is-invalid,
@@ -120,48 +133,56 @@ $proCat = $conn->query("SELECT * FROM `product_categories`");
         <!-- add Category section-->
         <h3 class="h3 mb-0 font-weight-bold text-dark mb-3">Product Category</h3>
         <div class="mb-4">
-            <div class="row border-bottom pb-3">
+            <div class="row border-bottom py-5">
                 <div class="col-md-6">
                     <h2>Add Category</h2>
                     <?= $msg ?? null ?>
                     <form method="post">
                         <div class="mb-3">
-                            <input type="text" placeholder="Category Name" class="form-control <?= isset($errName) ? "is-invalid" : null ?>" name="name">
+                            <input type="text" placeholder="Category Name" class="form-control <?= isset($errName) ? "is-invalid" : null ?>" name="name" value="<?= $name ?? null ?>">
                             <div class="invalid-feedback"><?= $errName ?? null ?></div>
                         </div>
                         <div class="mb-3">
-                            <textarea name="description" class="form-control" placeholder="Category Description" style="resize: none;"></textarea>
+                            <textarea name="description" class="form-control cat_des_textarea <?= isset($errDes) ? "is-invalid" : null ?>" placeholder="Category Description" style="resize: none;"><?= $description ?? null ?></textarea>
+                            <div class="show_value_length d-none">
+                                <span class="value_length">0</span>
+                                <span class="limit_length">/120</span>
+                            </div>
+                            <div class="invalid-feedback"><?= $errDes ?? null ?></div>
                         </div>
                         <input type="submit" name="addcat" value="Add Category" class="btn btn-primary btn-sm">
                     </form>
                 </div>
-                <div class="col-md-6">
-                    <table id="mainCat" class="display">
-                        <thead>
-                            <tr>
-                                <th>SN</th>
-                                <th>Category Name</th>
-                                <th>Description</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-                            $sn = 1;
-                            while ($data = $proCat->fetch_object()) { ?>
+                <?php if ($proCat->num_rows > 0) {
+                ?>
+                    <div class="col-md-6">
+                        <table id="mainCat" class="display">
+                            <thead>
                                 <tr>
-                                    <td><?= $sn++ ?></td>
-                                    <td><?= $data->name ?></td>
-                                    <td><?= $data->description ?></td>
-                                    <td>
-                                        <a href="" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></a>
-                                        <a href="" class="btn btn-sm btn-danger"><i class="far fa-trash-alt"></i></a>
-                                    </td>
+                                    <th>SN</th>
+                                    <th>Category Name</th>
+                                    <th>Description</th>
+                                    <th>Action</th>
                                 </tr>
-                            <?php } ?>
-                        </tbody>
-                    </table>
-                </div>
+                            </thead>
+                            <tbody>
+                                <?php
+                                $sn = 1;
+                                while ($data = $proCat->fetch_object()) { ?>
+                                    <tr>
+                                        <td><?= $sn++ ?></td>
+                                        <td><?= $data->name ?></td>
+                                        <td><?= $data->description ?></td>
+                                        <td>
+                                            <a href="" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></a>
+                                            <a href="" class="btn btn-sm btn-danger"><i class="far fa-trash-alt"></i></a>
+                                        </td>
+                                    </tr>
+                                <?php } ?>
+                            </tbody>
+                        </table>
+                    </div>
+                <?php } ?>
             </div>
         </div>
         <?php
@@ -170,7 +191,7 @@ $proCat = $conn->query("SELECT * FROM `product_categories`");
         ?>
             <!-- add sub cetegory section here -->
             <div class="mb-4">
-                <div class="row border-bottom pb-3">
+                <div class="row border-bottom py-5">
                     <div class="col-md-6">
                         <h2>Add Sub Category</h2>
                         <?= $submsg ?? null ?>
@@ -196,16 +217,57 @@ $proCat = $conn->query("SELECT * FROM `product_categories`");
                                 <div class="invalid-feedback"><?= $err_SelectPCat ?? null ?></div>
                             </div>
                             <div class="mb-3">
-                                <input type="text" placeholder="Sub Cetagory Name" class="form-control <?= isset($err_subName) ? "is-invalid" : null ?>" name="subName">
+                                <input type="text" placeholder="Sub Cetagory Name" class="form-control <?= isset($err_subName) ? "is-invalid" : null ?>" name="subName" value="<?= $subName ?? null ?>">
                                 <div class="invalid-feedback"><?= $err_subName ?? null ?></div>
                             </div>
                             <div class="mb-3">
-                                <textarea name="subDescription" class="form-control" placeholder="Sub Cetagory Description" style="resize: none;"></textarea>
+                                <textarea name="subDescription" class="form-control cat_des_textarea2 <?= isset($err_subDescription) ? "is-invalid" : null ?>" placeholder="Sub Cetagory Description" style="resize: none;"><?= $subDescription ?? null ?></textarea>
+                                <div class="show_value_length2 d-none">
+                                    <span class="value_length2">0</span>
+                                    <span class="limit_length2">/120</span>
+                                </div>
+                                <div class="invalid-feedback"><?= $err_subDescription ?? null ?></div>
                             </div>
                             <input type="submit" name="addsubcat" value="Add Sub Category" class="btn btn-primary btn-sm">
                         </form>
                     </div>
-                    <div class="col-md-6"></div>
+                    <?php
+                    if ($proSubCat->num_rows > 0) { ?>
+                        <div class="col-md-6">
+                            <table id="mainSubCat" class="display">
+                                <thead>
+                                    <tr>
+                                        <th>SN</th>
+                                        <th>Sub-Cat Name</th>
+                                        <th>Description</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    $sn = 1;
+                                    while ($data = $proSubCat->fetch_object()) { ?>
+                                        <tr>
+                                            <td><?= $sn++ ?></td>
+                                            <td><?= $data->name ?></td>
+                                            <td>
+                                                <?php
+                                                if (($data->details)) {
+                                                    echo substr($data->details, 0, 4) . "....";
+                                                }
+                                                ?>
+                                            </td>
+                                            <td>
+                                                <a href="" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></a>
+                                                <a href="" class="btn btn-sm btn-danger"><i class="far fa-trash-alt"></i></a>
+                                            </td>
+                                        </tr>
+                                    <?php } ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    <?php } ?>
+
                 </div>
             </div>
 
@@ -215,7 +277,7 @@ $proCat = $conn->query("SELECT * FROM `product_categories`");
             ?>
                 <!-- add sub sub cetegory section here -->
                 <div class="mb-4">
-                    <div class="row border-bottom pb-3">
+                    <div class="row border-bottom py-5">
                         <div class="col-md-6">
                             <h2>Add Sub sub Category</h2>
                             <?= $subSubmsg ?? null ?>
@@ -240,16 +302,50 @@ $proCat = $conn->query("SELECT * FROM `product_categories`");
                                     <div class="invalid-feedback"><?= $err_selectPreSubCat ?? null ?></div>
                                 </div>
                                 <div class="mb-3">
-                                    <input type="text" placeholder="Sub Sub Category Name" class="form-control <?= isset($err_subSubname) ? "is-invalid" : null ?>" name="subSubname" value="<?= $corr_subSubname ?? null ?>">
+                                    <input type="text" placeholder="Sub Sub Category Name" class="form-control <?= isset($err_subSubname) ? "is-invalid" : null ?>" name="subSubname" value="<?= $subSubname ?? null ?>">
                                     <div class="invalid-feedback"><?= $err_subSubname ?? null ?></div>
                                 </div>
                                 <div class="mb-3">
-                                    <textarea name="subSubdescription" class="form-control" placeholder="Sub Sub Category Description" style="resize: none;"><?= $corr_subSubdescription ?? null ?></textarea>
+                                    <textarea name="subSubdescription" class="form-control cat_des_textarea3 <?= isset($err_subSubdescription) ? "is-invalid" : null ?>" placeholder="Sub Sub Category Description" style="resize: none;"><?= $subSubdescription ?? null ?></textarea>
+                                    <div class="show_value_length3 d-none">
+                                        <span class="value_length3">0</span>
+                                        <span>/120</span>
+                                    </div>
+                                    <div class="invalid-feedback"><?= $err_subDescription ?? null ?></div>
                                 </div>
                                 <input type="submit" name="addSubSubcat" value="Add Sub Sub Category" class="btn btn-primary btn-sm">
                             </form>
                         </div>
-                        <div class="col-md-6"></div>
+                        <?php if ($proSubSubCat->num_rows > 0) {
+                        ?>
+                            <div class="col-md-6">
+                                <table id="mainSubSubCat" class="display">
+                                    <thead>
+                                        <tr>
+                                            <th>SN</th>
+                                            <th>Category Name</th>
+                                            <th>Description</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        $sn = 1;
+                                        while ($data = $proSubSubCat->fetch_object()) { ?>
+                                            <tr>
+                                                <td><?= $sn++ ?></td>
+                                                <td><?= $data->name ?></td>
+                                                <td><?= $data->details ?></td>
+                                                <td>
+                                                    <a href="" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></a>
+                                                    <a href="" class="btn btn-sm btn-danger"><i class="far fa-trash-alt"></i></a>
+                                                </td>
+                                            </tr>
+                                        <?php } ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <?php } ?>
                     </div>
                 </div>
 
