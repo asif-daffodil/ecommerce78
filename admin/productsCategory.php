@@ -62,7 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['addsubcat'])) {
         $insertSubCat = $conn->query("INSERT INTO `sub_category` (`name`, `cat_id`, `details`) VALUES ('$corr_subName', $corr_SelectPCat, '$corr_subDescription')");
 
         if ($insertSubCat) {
-            $corr_SelectPCat = $corr_subName = $corr_subDescription = null;
+            $SelectPCat = $subName = $subDescription = null;
 
             $submsg = "<div class='alert alert-success alert-dismissible fade show shadow' role='alert'><strong>Congratulations!</strong> Sub Categories inserted successfully.<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true' style='font-size: 22px;'>&times;</span></button></div>";
         }
@@ -107,7 +107,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['addSubSubcat'])) {
         $insertSubSubCat = $conn->query("INSERT INTO `sub_sub_cat` (`name`, `sub_cat_id`, `details`) VALUES ('$corr_subSubname', $corr_selectPreSubCat, '$corr_subSubdescription')");
 
         if ($insertSubSubCat) {
-            $corr_selectPreSubCat = $corr_subSubname = $corr_subSubdescription = null;
+            $selectPreSubCat = $subSubname = $subSubdescription = null;
 
             $subSubmsg = "<div class='alert alert-success alert-dismissible fade show shadow' role='alert'><strong>Congratulations!</strong> Sub Sub Categories inserted successfully.<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true' style='font-size: 22px;'>&times;</span></button></div>";
         }
@@ -174,7 +174,7 @@ $proSubSubCat = $conn->query("SELECT * FROM `sub_sub_cat` ORDER BY `id` DESC");
                                         <td><?= $data->name ?></td>
                                         <td><?= $data->description ?></td>
                                         <td>
-                                            <a href="" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></a>
+                                            <button type="button" class="btn btn-sm btn-warning upCatBtn" data-catName="<?= $data->name ?>" data-catDes="<?= $data->description ?>" data-catId="<?= $data->id ?>"><i class=" fas fa-edit"></i></button>
                                             <a href="" class="btn btn-sm btn-danger"><i class="far fa-trash-alt"></i></a>
                                         </td>
                                     </tr>
@@ -363,3 +363,37 @@ $proSubSubCat = $conn->query("SELECT * FROM `sub_sub_cat` ORDER BY `id` DESC");
 <?php
 include_once("./footer.php");
 ?>
+
+<!-- bootstrap 4 modal div -->
+<div class="modal fade" id="mainCatModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="z-index: 99999999
+">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-warning text-white shadow">
+                <h5 class="modal-title" id="exampleModalLabel">Update Category</h5>
+                <button class="close text-white" type="button" data-dismiss="modal" aria-label="Close" style="outline: none;">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="text-success" id="smsg"></div>
+                <form method="post" id="updateCatForm">
+                    <input type="hidden" id="catId">
+                    <div class="mb-3">
+                        <input type="text" placeholder="Category Name" class="form-control <?= isset($errName) ? "is-invalid" : null ?>" name="name" value="<?= $name ?? null ?>" id="catName">
+                        <div class="invalid-feedback"><?= $errName ?? null ?></div>
+                    </div>
+                    <div class="mb-3">
+                        <textarea name="description" class="form-control cat_des_textarea <?= isset($errDes) ? "is-invalid" : null ?>" placeholder="Category Description" style="resize: none;" id="catDes"><?= $description ?? null ?></textarea>
+                        <div class="show_value_length d-none">
+                            <span class="value_length">0</span>
+                            <span class="limit_length">/120</span>
+                        </div>
+                        <div class="invalid-feedback"><?= $errDes ?? null ?></div>
+                    </div>
+                    <input type="submit" name="addcat" value="Update Category" class="btn btn-primary btn-sm">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

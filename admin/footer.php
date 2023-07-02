@@ -135,6 +135,65 @@
 <!-- Page level custom scripts -->
 <script src="js/demo/chart-area-demo.js"></script>
 <script src="js/demo/chart-pie-demo.js"></script>
+<script>
+    $(document).ready(function() {
+
+
+        $(".upCatBtn").click(function() {
+            const catName = $(this).attr("data-catName");
+            const catDes = $(this).attr("data-catDes");
+            const catId = $(this).attr("data-catId");
+            $("#catName").val(catName);
+            $("#catDes").val(catDes);
+            $("#catId").val(catId);
+            $("#mainCatModal").modal("show");
+        })
+
+        $("#updateCatForm").submit(function(e) {
+            e.preventDefault(); // Prevent form submission
+
+            // Get form data
+            const catId = $("#catId").val();
+            const catName = $("#catName").val();
+            const catDes = $("#catDes").val();
+
+            // Perform client-side form validation
+            if (!catName) {
+                // Handle empty category name
+                $("#catName").addClass("is-invalid");
+                $("#catName").next().text("Please enter a category name.");
+                return;
+            }
+
+            // Perform AJAX request to update the category
+            $.ajax({
+                url: "./ajax/update_category.php",
+                type: "POST",
+                data: {
+                    catId: catId,
+                    catName: catName,
+                    catDes: catDes
+                },
+                success: function(response) {
+                    if (response === "success") {
+                        $("#smsg").text("Category updated successfully.");
+                        setTimeout(() => {
+                            // $("#mainCatModal").modal("hide");
+                            location.reload();
+                        }, 2000);
+                    } else {
+                        // Update failed
+                        // Handle the error message or show validation errors
+                    }
+                },
+                error: function() {
+                    // Handle AJAX error
+                }
+            });
+        });
+
+    })
+</script>
 </body>
 
 </html>
