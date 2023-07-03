@@ -116,8 +116,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['addSubSubcat'])) {
 
 //mysql query to select all from category table
 $proCat = $conn->query("SELECT * FROM `product_categories` ORDER BY `id` DESC");
-$proSubCat = $conn->query("SELECT * FROM `sub_category` ORDER BY `id` DESC");
-$proSubSubCat = $conn->query("SELECT * FROM `sub_sub_cat` ORDER BY `id` DESC");
+
+$proSubCatwithLinked = $conn->query("SELECT sub_category.*, product_categories.name AS cat_name
+FROM sub_category
+JOIN product_categories ON sub_category.cat_id = product_categories.id
+ORDER BY sub_category.id DESC;
+");
+
+$proSubSubCatwithLinked = $conn->query("SELECT sub_sub_cat.*, sub_category.name AS sub_cat_name
+FROM sub_sub_cat
+JOIN sub_category ON sub_sub_cat.sub_cat_id = sub_category.id
+ORDER BY sub_sub_cat.`id` DESC");
 ?>
 <style>
     .form-select.is-invalid,
@@ -172,7 +181,13 @@ $proSubSubCat = $conn->query("SELECT * FROM `sub_sub_cat` ORDER BY `id` DESC");
                                     <tr>
                                         <td><?= $sn++ ?></td>
                                         <td><?= $data->name ?></td>
-                                        <td><?= $data->description ?></td>
+                                        <td>
+                                            <?php
+                                            if (($data->description)) {
+                                                echo substr($data->description, 0, 4) . "....";
+                                            }
+                                            ?>
+                                        </td>
                                         <td>
                                             <button type="button" class="btn btn-sm btn-warning upCatBtn" data-catName="<?= $data->name ?>" data-catDes="<?= $data->description ?>" data-catId="<?= $data->id ?>"><i class=" fas fa-edit"></i></button>
                                             <a href="" class="btn btn-sm btn-danger"><i class="far fa-trash-alt"></i></a>
@@ -197,15 +212,8 @@ $proSubSubCat = $conn->query("SELECT * FROM `sub_sub_cat` ORDER BY `id` DESC");
                         <?= $submsg ?? null ?>
                         <form action="" method="post">
                             <div class="mb-3">
-                                <?php
-                                if (isset($corr_SelectPCat)) {
-                                    $catData = $conn->query("SELECT * FROM `product_categories` WHERE `id` = '$corr_SelectPCat'");
-                                    $fetch = $catData->fetch_assoc();
-                                }
-                                ?>
-
                                 <select name="SelectPCat" class="form-select form-control <?= (isset($err_SelectPCat)) ? "is-invalid" : null ?>">
-                                    <option value="<?= $fetch['id'] ?? null ?>"><?= $fetch['name'] ?? "Select Parent Cetagory" ?></option>
+                                    <option value="<?= $SelectPCat ?? null ?>"><?= !empty($SelectPCat) ? $SelectPCat : "Select Parent Cetagory" ?></option>
                                     <?php
                                     while ($Cat_Fetch = $selectAllCat->fetch_object()) {
                                     ?>
@@ -232,12 +240,13 @@ $proSubSubCat = $conn->query("SELECT * FROM `sub_sub_cat` ORDER BY `id` DESC");
                         </form>
                     </div>
                     <?php
-                    if ($proSubCat->num_rows > 0) { ?>
+                    if ($proSubCatwithLinked->num_rows > 0) { ?>
                         <div class="col-md-6">
                             <table id="mainSubCat" class="display">
                                 <thead>
                                     <tr>
                                         <th>SN</th>
+                                        <th>Parent Cat</th>
                                         <th>Sub-Cat Name</th>
                                         <th>Description</th>
                                         <th>Action</th>
@@ -246,9 +255,10 @@ $proSubSubCat = $conn->query("SELECT * FROM `sub_sub_cat` ORDER BY `id` DESC");
                                 <tbody>
                                     <?php
                                     $sn = 1;
-                                    while ($data = $proSubCat->fetch_object()) { ?>
+                                    while ($data = $proSubCatwithLinked->fetch_object()) { ?>
                                         <tr>
                                             <td><?= $sn++ ?></td>
+                                            <td><?= $data->cat_name ?></td>
                                             <td><?= $data->name ?></td>
                                             <td>
                                                 <?php
@@ -258,7 +268,7 @@ $proSubSubCat = $conn->query("SELECT * FROM `sub_sub_cat` ORDER BY `id` DESC");
                                                 ?>
                                             </td>
                                             <td>
-                                                <a href="" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></a>
+                                                <button type="button" class="btn btn-sm btn-warning upSubCatBtn" data-catName="<?= $data->name ?>" data-catDes="<?= $data->details ?>" data-catId="<?= $data->id ?>" data-selectId="<?= $data->cat_id ?>" data-selectName="<?= $data->cat_name ?>"><i class=" fas fa-edit"></i></button>
                                                 <a href="" class="btn btn-sm btn-danger"><i class="far fa-trash-alt"></i></a>
                                             </td>
                                         </tr>
@@ -283,14 +293,8 @@ $proSubSubCat = $conn->query("SELECT * FROM `sub_sub_cat` ORDER BY `id` DESC");
                             <?= $subSubmsg ?? null ?>
                             <form method="post">
                                 <div class="mb-3">
-                                    <?php
-                                    if (isset($corr_selectPreSubCat)) {
-                                        $subCatData = $conn->query("SELECT * FROM `sub_category` WHERE `id` = '$corr_selectPreSubCat'");
-                                        $fetch = $subCatData->fetch_assoc();
-                                    }
-                                    ?>
                                     <select name="selectPSubCat" class="form-select form-control <?= isset($err_selectPreSubCat) ? "is-invalid" : null ?>">
-                                        <option value="<?= $fetch['name'] ?? null ?>"><?= $fetch['name'] ?? "Select Parent Sub Cetagory" ?></option>
+                                        <option value="<?= $selectPreSubCat ?? null ?>"><?= !empty($selectPreSubCat) ? $selectPreSubCat : "Select Parent Sub Cetagory" ?></option>
                                         <?php
                                         while ($SubCat_Fetch = $selectSubCat->fetch_object()) {
                                         ?>
@@ -316,13 +320,14 @@ $proSubSubCat = $conn->query("SELECT * FROM `sub_sub_cat` ORDER BY `id` DESC");
                                 <input type="submit" name="addSubSubcat" value="Add Sub Sub Category" class="btn btn-primary btn-sm">
                             </form>
                         </div>
-                        <?php if ($proSubSubCat->num_rows > 0) {
+                        <?php if ($proSubSubCatwithLinked->num_rows > 0) {
                         ?>
                             <div class="col-md-6">
                                 <table id="mainSubSubCat" class="display">
                                     <thead>
                                         <tr>
                                             <th>SN</th>
+                                            <th>Parent Cat</th>
                                             <th>Category Name</th>
                                             <th>Description</th>
                                             <th>Action</th>
@@ -331,13 +336,20 @@ $proSubSubCat = $conn->query("SELECT * FROM `sub_sub_cat` ORDER BY `id` DESC");
                                     <tbody>
                                         <?php
                                         $sn = 1;
-                                        while ($data = $proSubSubCat->fetch_object()) { ?>
+                                        while ($data = $proSubSubCatwithLinked->fetch_object()) { ?>
                                             <tr>
                                                 <td><?= $sn++ ?></td>
+                                                <td><?= $data->sub_cat_name ?></td>
                                                 <td><?= $data->name ?></td>
-                                                <td><?= $data->details ?></td>
                                                 <td>
-                                                    <a href="" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></a>
+                                                    <?php
+                                                    if (($data->details)) {
+                                                        echo substr($data->details, 0, 4) . "....";
+                                                    }
+                                                    ?>
+                                                </td>
+                                                <td>
+                                                    <button type="button" class="btn btn-sm btn-warning upSubSubCatBtn" data-catName="<?= $data->name ?>" data-catDes="<?= $data->details ?>" data-catId="<?= $data->id ?>" data-selectId="<?= $data->sub_cat_id ?>" data-selectName="<?= $data->sub_cat_name ?>"><i class=" fas fa-edit"></i></button>
                                                     <a href="" class="btn btn-sm btn-danger"><i class="far fa-trash-alt"></i></a>
                                                 </td>
                                             </tr>
@@ -363,37 +375,3 @@ $proSubSubCat = $conn->query("SELECT * FROM `sub_sub_cat` ORDER BY `id` DESC");
 <?php
 include_once("./footer.php");
 ?>
-
-<!-- bootstrap 4 modal div -->
-<div class="modal fade" id="mainCatModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="z-index: 99999999
-">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header bg-warning text-white shadow">
-                <h5 class="modal-title" id="exampleModalLabel">Update Category</h5>
-                <button class="close text-white" type="button" data-dismiss="modal" aria-label="Close" style="outline: none;">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="text-success" id="smsg"></div>
-                <form method="post" id="updateCatForm">
-                    <input type="hidden" id="catId">
-                    <div class="mb-3">
-                        <input type="text" placeholder="Category Name" class="form-control <?= isset($errName) ? "is-invalid" : null ?>" name="name" value="<?= $name ?? null ?>" id="catName">
-                        <div class="invalid-feedback"><?= $errName ?? null ?></div>
-                    </div>
-                    <div class="mb-3">
-                        <textarea name="description" class="form-control cat_des_textarea <?= isset($errDes) ? "is-invalid" : null ?>" placeholder="Category Description" style="resize: none;" id="catDes"><?= $description ?? null ?></textarea>
-                        <div class="show_value_length d-none">
-                            <span class="value_length">0</span>
-                            <span class="limit_length">/120</span>
-                        </div>
-                        <div class="invalid-feedback"><?= $errDes ?? null ?></div>
-                    </div>
-                    <input type="submit" name="addcat" value="Update Category" class="btn btn-primary btn-sm">
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
