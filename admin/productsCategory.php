@@ -177,6 +177,7 @@ ORDER BY sub_sub_cat.`id` DESC");
                             <tbody>
                                 <?php
                                 $sn = 1;
+                                $snButton = 1;
                                 while ($data = $proCat->fetch_object()) { ?>
                                     <tr>
                                         <td><?= $sn++ ?></td>
@@ -190,7 +191,7 @@ ORDER BY sub_sub_cat.`id` DESC");
                                         </td>
                                         <td>
                                             <button type="button" class="btn btn-sm btn-warning upCatBtn" data-catName="<?= $data->name ?>" data-catDes="<?= $data->description ?>" data-catId="<?= $data->id ?>"><i class=" fas fa-edit"></i></button>
-                                            <a href="" class="btn btn-sm btn-danger"><i class="far fa-trash-alt"></i></a>
+                                            <button type="button" data-catId="<?= $data->id ?>" class="btn btn-sm btn-danger dltcat" data-catWhich="main category" data-serialNo="<?= $snButton++ ?>"><i class="far fa-trash-alt"></i></button>
                                         </td>
                                     </tr>
                                 <?php } ?>
@@ -255,6 +256,7 @@ ORDER BY sub_sub_cat.`id` DESC");
                                 <tbody>
                                     <?php
                                     $sn = 1;
+                                    $snButton = 1;
                                     while ($data = $proSubCatwithLinked->fetch_object()) { ?>
                                         <tr>
                                             <td><?= $sn++ ?></td>
@@ -269,7 +271,7 @@ ORDER BY sub_sub_cat.`id` DESC");
                                             </td>
                                             <td>
                                                 <button type="button" class="btn btn-sm btn-warning upSubCatBtn" data-catName="<?= $data->name ?>" data-catDes="<?= $data->details ?>" data-catId="<?= $data->id ?>" data-selectId="<?= $data->cat_id ?>" data-selectName="<?= $data->cat_name ?>"><i class=" fas fa-edit"></i></button>
-                                                <a href="" class="btn btn-sm btn-danger"><i class="far fa-trash-alt"></i></a>
+                                                <button type="button" data-catId="<?= $data->id ?>" class="btn btn-sm btn-danger dltcat" data-catWhich="sub category" data-serialNo="<?= $snButton++ ?>"><i class="far fa-trash-alt"></i></button>
                                             </td>
                                         </tr>
                                     <?php } ?>
@@ -336,6 +338,7 @@ ORDER BY sub_sub_cat.`id` DESC");
                                     <tbody>
                                         <?php
                                         $sn = 1;
+                                        $snButton = 1;
                                         while ($data = $proSubSubCatwithLinked->fetch_object()) { ?>
                                             <tr>
                                                 <td><?= $sn++ ?></td>
@@ -350,7 +353,7 @@ ORDER BY sub_sub_cat.`id` DESC");
                                                 </td>
                                                 <td>
                                                     <button type="button" class="btn btn-sm btn-warning upSubSubCatBtn" data-catName="<?= $data->name ?>" data-catDes="<?= $data->details ?>" data-catId="<?= $data->id ?>" data-selectId="<?= $data->sub_cat_id ?>" data-selectName="<?= $data->sub_cat_name ?>"><i class=" fas fa-edit"></i></button>
-                                                    <a href="" class="btn btn-sm btn-danger"><i class="far fa-trash-alt"></i></a>
+                                                    <button type="button" data-catId="<?= $data->id ?>" class="btn btn-sm btn-danger dltcat" data-catWhich="sub-sub category" data-serialNo="<?= $snButton++ ?>"><i class="far fa-trash-alt"></i></button>
                                                 </td>
                                             </tr>
                                         <?php } ?>
@@ -367,6 +370,175 @@ ORDER BY sub_sub_cat.`id` DESC");
         ?>
     </div>
 </div>
+
+<!-- bootstrap 4 modal div main chategory update modal -->
+<div class="modal fade" id="mainCatModal" tabindex="-1" role="dialog" aria-labelledby="mainCatModal123" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header bg-warning text-white shadow">
+                <h5 class="modal-title" id="mainCatModal123">Update Category</h5>
+                <button class="close text-white" type="button" data-dismiss="modal" aria-label="Close" style="outline: none;">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="text-success" id="smsg"></div>
+                <form method="post" id="updateCatForm">
+                    <input type="hidden" id="catId">
+                    <div class="mb-3">
+                        <input type="text" placeholder="Category Name" class="form-control" id="catName">
+                        <div class="invalid-feedback"></div>
+                    </div>
+                    <div class="mb-3">
+                        <textarea class="form-control cat_des_textarea " placeholder="Category Description" style="resize: none;" id="catDes"></textarea>
+                        <div class="invalid-feedback"></div>
+                        <div class="show_value_length d-none">
+                            <span class="value_length">0</span>
+                            <span class="limit_length">/120</span>
+                        </div>
+                    </div>
+                    <input type="submit" value="Update Category" class="btn btn-primary btn-sm">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- sub chategory update modal -->
+<div class="modal fade" id="mainSubCatModal" tabindex="-1" role="dialog" aria-labelledby="mainSubCatModal" aria-hidden="true" style="z-index: 99999999">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-warning text-white shadow">
+                <h5 class="modal-title fw-bold" id="mainSubCatModal123">Update Sub-Category</h5>
+                <button class="close text-white" type="button" data-dismiss="modal" aria-label="Close" style="outline: none;">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="text-success" id="upSubCatSuccMsg"></div>
+                <form method="POST">
+                    <input type="hidden" id="subCatId">
+                    <?php
+                    $selectAllCat = $conn->query("SELECT * FROM `product_categories`");
+                    if ($selectAllCat->num_rows > 0) {
+                    ?>
+                        <div class="mb-3">
+                            <select id="upSelectPreCat" class="form-select form-control">
+                                <option id="selected_pre_cat_id">Select Parent Cetagory</option>
+                                <?php
+                                while ($allCat = $selectAllCat->fetch_object()) {
+                                ?>
+                                    <option value="<?= $allCat->id ?>"><?= $allCat->name ?></option>
+                                <?php
+                                }
+                                ?>
+                            </select>
+                            <div class="invalid-feedback upSelectPreCatErrormsg"></div>
+                        </div>
+                    <?php
+                    } ?>
+                    <div class="mb-3">
+                        <input type="text" placeholder="Category Name" class="form-control" id="subCatName">
+                        <div class="invalid-feedback subCatNameErrMsg"></div>
+                    </div>
+                    <div class="mb-3">
+                        <textarea name="description" class="form-control cat_des_textarea" placeholder="Category Description" style="resize: none;" id="subCatDes"></textarea>
+                        <div class="show_value_length d-none">
+                            <span class="value_length">0</span>
+                            <span class="limit_length">/120</span>
+                        </div>
+                        <div class="invalid-feedback subCatDesUpdate"></div>
+                    </div>
+                    <button type="button" id="upSubCat" class="btn btn-primary btn-sm">Update Sub-Category</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- sub sub chategory update modal -->
+<div class="modal fade" id="SubSubCatModal" tabindex="-1" role="dialog" aria-labelledby="SubSubCatModal1923" aria-hidden="true" style="z-index: 99999999">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-warning text-white shadow">
+                <h5 class="modal-title fw-bold" id="SubSubCatModal1923">Update Sub-sub-Category</h5>
+                <button class="close text-white" type="button" data-dismiss="modal" aria-label="Close" style="outline: none;">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="text-success" id="upSubSubCatSuccMsg"></div>
+                <form method="POST">
+                    <input type="hidden" id="subSubCatId">
+                    <?php
+                    $selectSubCat = $conn->query("SELECT * FROM `sub_category`");
+                    if ($selectSubCat->num_rows > 0) {
+                    ?>
+                        <div class="mb-3">
+                            <select class="form-select form-control selectPreSubCat">
+                                <option id="upSelectPreSubCat"></option>Select Parent Sub Cetagory</option>
+                                <?php
+                                while ($SubCat_Fetch = $selectSubCat->fetch_object()) {
+                                ?>
+                                    <option value="<?= $SubCat_Fetch->id ?>"><?= $SubCat_Fetch->name ?></option>
+                                <?php
+                                }
+                                ?>
+                            </select>
+                            <div class="invalid-feedback selectPreSubCat"></div>
+                        </div>
+                    <?php
+                    }
+                    ?>
+
+                    <div class="mb-3">
+                        <input type="text" placeholder="Category Name" class="form-control" id="subSubCatName">
+                        <div class="invalid-feedback subSubCatNameErrMsg"></div>
+                    </div>
+                    <div class="mb-3">
+                        <textarea name="description" class="form-control cat_des_textarea" placeholder="Category Description" style="resize: none;" id="subSubCatDes"></textarea>
+                        <div class="invalid-feedback subSubCatDesUpdate"></div>
+                        <div class="show_value_length d-none">
+                            <span class="value_length">0</span>
+                            <span class="limit_length">/120</span>
+                        </div>
+
+                    </div>
+                    <button type="button" id="upSubSubCat" class="btn btn-primary btn-sm">Update Sub-Category</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalTitle">Delete Category</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h4>Are you sure that you will delete the data number <span id="dltCatSerialNo" class="text-danger"></span> of the <span id="dltCatWhich" class="text-warning"></span>?</h4>
+                <span class="allDltMsg text-danger"></span>
+                <form>
+                    <input type="hidden" id="getCatIdAttr">
+                    <input type="hidden" id="getWhichCatAttr">
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                <button type="button" id="deleteCat" class="btn btn-danger"><i class="far fa-trash-alt"></i> Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script>
     setTimeout(() => {
         Array.from(document.querySelectorAll(".alert")).map(d => d.remove());

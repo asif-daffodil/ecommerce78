@@ -9,3 +9,6 @@ const mainSubCat = new DataTable("#mainSubCat", {
 const mainSubSubCat = new DataTable("#mainSubSubCat", {
   lengthMenu: [5, 7],
 });
+const allBrands = new DataTable("#allBrands", {
+  lengthMenu: [5, 10, 20],
+});

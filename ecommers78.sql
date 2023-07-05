@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 15, 2023 at 11:11 AM
+-- Generation Time: Jul 05, 2023 at 08:57 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -54,22 +54,26 @@ INSERT INTO `banners` (`banner_id`, `image_src`, `image_alt`, `subtitle`, `title
 
 CREATE TABLE `brands` (
   `brand_id` int(11) NOT NULL,
+  `sub_sub_cat_id` int(10) DEFAULT NULL,
+  `brand_name` char(50) NOT NULL,
   `image_src` varchar(255) DEFAULT NULL,
-  `image_alt` varchar(255) DEFAULT NULL
+  `image_alt` varchar(255) DEFAULT NULL,
+  `details` varchar(255) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `brands`
 --
 
-INSERT INTO `brands` (`brand_id`, `image_src`, `image_alt`) VALUES
-(1, 'assets/images/brands/1.png', 'Brand Name'),
-(2, 'assets/images/brands/2.png', 'Brand Name'),
-(3, 'assets/images/brands/3.png', 'Brand Name'),
-(4, 'assets/images/brands/4.png', 'Brand Name'),
-(5, 'assets/images/brands/5.png', 'Brand Name'),
-(6, 'assets/images/brands/6.png', 'Brand Name'),
-(7, 'assets/images/brands/7.png', 'Brand Name');
+INSERT INTO `brands` (`brand_id`, `sub_sub_cat_id`, `brand_name`, `image_src`, `image_alt`, `details`, `created_at`) VALUES
+(1, NULL, '', 'assets/images/brands/1.png', 'Brand Name', '', '2023-07-05 12:22:39'),
+(2, NULL, '', 'assets/images/brands/2.png', 'Brand Name', '', '2023-07-05 12:22:39'),
+(3, NULL, '', 'assets/images/brands/3.png', 'Brand Name', '', '2023-07-05 12:22:39'),
+(4, NULL, '', 'assets/images/brands/4.png', 'Brand Name', '', '2023-07-05 12:22:39'),
+(5, NULL, '', 'assets/images/brands/5.png', 'Brand Name', '', '2023-07-05 12:22:39'),
+(6, NULL, '', 'assets/images/brands/6.png', 'Brand Name', '', '2023-07-05 12:22:39'),
+(7, NULL, '', 'assets/images/brands/7.png', 'Brand Name', '', '2023-07-05 12:22:39');
 
 -- --------------------------------------------------------
 
@@ -203,10 +207,10 @@ CREATE TABLE `product_categories` (
 --
 
 INSERT INTO `product_categories` (`id`, `name`, `description`) VALUES
-(1, 'Furniture', NULL),
-(2, 'Clothing', NULL),
-(3, 'Electronics', NULL),
-(4, 'Cooking', NULL);
+(1, 'Furniture', ''),
+(2, 'Clothing', ''),
+(3, 'Electronics', ''),
+(4, 'Cooking', '');
 
 -- --------------------------------------------------------
 
@@ -374,9 +378,9 @@ INSERT INTO `statistics` (`id`, `title`, `count_value`, `unit`) VALUES
 
 CREATE TABLE `sub_category` (
   `id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL,
   `cat_id` int(11) NOT NULL,
-  `details` varchar(255) NOT NULL
+  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `details` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -452,9 +456,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `first_name`, `last_name`, `company_name`, `street_address`, `house`, `country`, `city`, `state`, `zip`, `phone`, `email`, `password`, `images`, `role`, `created_at`) VALUES
-(1, 'Yousuf', 'Molla', 'Khan', NULL, NULL, NULL, NULL, NULL, NULL, '01712121212', 'yousuf@molla.com', '$2y$10$Zb/q6iYpjJEwJ9AwlNRKz.ExYHabmJpWpFZmOtsf1uuiNQb2p9WNi', NULL, 'user', '2023-06-06 14:49:14'),
-(2, 'Siam', 'Chattapaddhay', 'Niyamot', NULL, NULL, NULL, NULL, NULL, NULL, '01946464646', NULL, '$2y$10$bMiofhZ5H3zLymtGR5kmA.zskWNHJV9x/LLdnGCLSTHEauV8g1tQu', NULL, 'user', '2023-06-08 07:30:03'),
-(28, 'Asif', 'Abir', '', '9 Sher-E-Bangla Road', '9', 'Bangladesh', 'Dhaka', '', '1209', '01955517560', 'abir@dipti.com.bd', '$2y$10$Kh6/eRPMr4rqZXszgAy11eMJXlKJ1NNA1ZLQln3CGGcWL4fBLKG9.', 'company7eKSTm5q648ab7ac4b90937525820230615090308.jpg', 'admin', '2023-06-15 07:19:00');
+(1, 'Webcoder', 'Ashraf', 'WebCoder Ashraf', '1736- Janatabag, Rayerbag', '', 'Bangladesh', 'Dhaka', '', '1236', '01749931891', 'ashraf.uzzaman04082004@gmail.com', 'd5ca69a859c445ad53328a214f283ee9', NULL, 'admin', '2023-07-05 18:57:25');
 
 -- --------------------------------------------------------
 
@@ -483,7 +485,8 @@ ALTER TABLE `banners`
 -- Indexes for table `brands`
 --
 ALTER TABLE `brands`
-  ADD PRIMARY KEY (`brand_id`);
+  ADD PRIMARY KEY (`brand_id`),
+  ADD KEY `sub_sub_cat_id` (`sub_sub_cat_id`);
 
 --
 -- Indexes for table `contact_details`
@@ -618,7 +621,7 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `product_categories`
 --
 ALTER TABLE `product_categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
 
 --
 -- AUTO_INCREMENT for table `reviews`
@@ -648,13 +651,13 @@ ALTER TABLE `statistics`
 -- AUTO_INCREMENT for table `sub_category`
 --
 ALTER TABLE `sub_category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `sub_sub_cat`
 --
 ALTER TABLE `sub_sub_cat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `team`
@@ -666,11 +669,17 @@ ALTER TABLE `team`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `brands`
+--
+ALTER TABLE `brands`
+  ADD CONSTRAINT `brands_ibfk_1` FOREIGN KEY (`sub_sub_cat_id`) REFERENCES `sub_sub_cat` (`id`);
 
 --
 -- Constraints for table `products`

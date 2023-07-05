@@ -1,14 +1,10 @@
+// ----------------------------------------------------------------
+// ------------------ sub category description textarea -----------------
+// ----------------------------------------------------------------
+
 const catDesTextarea = document.querySelector(".cat_des_textarea");
 const showValueLength = document.querySelector(".show_value_length"),
   valueLength = showValueLength.querySelector(".value_length");
-
-const catDesTextarea2 = document.querySelector(".cat_des_textarea2");
-const showValueLength2 = document.querySelector(".show_value_length2"),
-  valueLength2 = showValueLength2.querySelector(".value_length2");
-
-const catDesTextarea3 = document.querySelector(".cat_des_textarea3");
-const showValueLength3 = document.querySelector(".show_value_length3"),
-  valueLength3 = showValueLength3.querySelector(".value_length3");
 
 catDesTextarea.addEventListener("keyup", () => {
   const value = catDesTextarea.value.length;
@@ -28,6 +24,14 @@ catDesTextarea.addEventListener("keyup", () => {
   }
 });
 
+// ----------------------------------------------------------------
+// ------------------ sub cat description textarea -----------------
+// ----------------------------------------------------------------
+
+const catDesTextarea2 = document.querySelector(".cat_des_textarea2");
+const showValueLength2 = document.querySelector(".show_value_length2"),
+  valueLength2 = showValueLength2.querySelector(".value_length2");
+
 catDesTextarea2.addEventListener("keyup", () => {
   const value = catDesTextarea2.value.length;
 
@@ -45,6 +49,14 @@ catDesTextarea2.addEventListener("keyup", () => {
     showValueLength2.classList.add("text-danger");
   }
 });
+
+// ----------------------------------------------------------------
+// ------------------ sub sub cat description textarea -----------------
+// ----------------------------------------------------------------
+
+const catDesTextarea3 = document.querySelector(".cat_des_textarea3");
+const showValueLength3 = document.querySelector(".show_value_length3"),
+  valueLength3 = showValueLength3.querySelector(".value_length3");
 
 catDesTextarea3.addEventListener("keyup", () => {
   const value = catDesTextarea3.value.length;

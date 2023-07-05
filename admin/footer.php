@@ -39,150 +39,6 @@
     </div>
 </div>
 
-
-<!-- bootstrap 4 modal div main chategory update modal -->
-<div class="modal fade" id="mainCatModal" tabindex="-1" role="dialog" aria-labelledby="mainCatModal123" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header bg-warning text-white shadow">
-                <h5 class="modal-title" id="mainCatModal123">Update Category</h5>
-                <button class="close text-white" type="button" data-dismiss="modal" aria-label="Close" style="outline: none;">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="text-success" id="smsg"></div>
-                <form method="post" id="updateCatForm">
-                    <input type="hidden" id="catId">
-                    <div class="mb-3">
-                        <input type="text" placeholder="Category Name" class="form-control" id="catName">
-                        <div class="invalid-feedback"></div>
-                    </div>
-                    <div class="mb-3">
-                        <textarea class="form-control cat_des_textarea " placeholder="Category Description" style="resize: none;" id="catDes"></textarea>
-                        <div class="invalid-feedback"></div>
-                        <div class="show_value_length d-none">
-                            <span class="value_length">0</span>
-                            <span class="limit_length">/120</span>
-                        </div>
-                    </div>
-                    <input type="submit" value="Update Category" class="btn btn-primary btn-sm">
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- sub chategory update modal -->
-<div class="modal fade" id="mainSubCatModal" tabindex="-1" role="dialog" aria-labelledby="mainSubCatModal" aria-hidden="true" style="z-index: 99999999
-">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header bg-warning text-white shadow">
-                <h5 class="modal-title fw-bold" id="mainSubCatModal123">Update Sub-Category</h5>
-                <button class="close text-white" type="button" data-dismiss="modal" aria-label="Close" style="outline: none;">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="text-success" id="upSubCatSuccMsg"></div>
-                <form method="POST">
-                    <input type="hidden" id="subCatId">
-                    <?php
-                    $selectAllCat = $conn->query("SELECT * FROM `product_categories`");
-                    if ($selectAllCat->num_rows > 0) {
-                    ?>
-                        <div class="mb-3">
-                            <select id="upSelectPreCat" class="form-select form-control">
-                                <option id="selected_pre_cat_id">Select Parent Cetagory</option>
-                                <?php
-                                while ($allCat = $selectAllCat->fetch_object()) {
-                                ?>
-                                    <option value="<?= $allCat->id ?>"><?= $allCat->name ?></option>
-                                <?php
-                                }
-                                ?>
-                            </select>
-                            <div class="invalid-feedback upSelectPreCatErrormsg"></div>
-                        </div>
-                    <?php
-                    } ?>
-                    <div class="mb-3">
-                        <input type="text" placeholder="Category Name" class="form-control" id="subCatName">
-                        <div class="invalid-feedback subCatNameErrMsg"></div>
-                    </div>
-                    <div class="mb-3">
-                        <textarea name="description" class="form-control cat_des_textarea" placeholder="Category Description" style="resize: none;" id="subCatDes"></textarea>
-                        <div class="show_value_length d-none">
-                            <span class="value_length">0</span>
-                            <span class="limit_length">/120</span>
-                        </div>
-                        <div class="invalid-feedback subCatDesUpdate"></div>
-                    </div>
-                    <button type="button" id="upSubCat" class="btn btn-primary btn-sm">Update Sub-Category</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-<!-- sub sub chategory update modal -->
-<div class="modal fade" id="SubSubCatModal" tabindex="-1" role="dialog" aria-labelledby="SubSubCatModal1923" aria-hidden="true" style="z-index: 99999999
-">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header bg-warning text-white shadow">
-                <h5 class="modal-title fw-bold" id="SubSubCatModal1923">Update Sub-sub-Category</h5>
-                <button class="close text-white" type="button" data-dismiss="modal" aria-label="Close" style="outline: none;">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="text-success" id="upSubSubCatSuccMsg"></div>
-                <form method="POST">
-                    <input type="hidden" id="subSubCatId">
-                    <?php
-                    $selectSubCat = $conn->query("SELECT * FROM `sub_category`");
-                    if ($selectSubCat->num_rows > 0) {
-                    ?>
-                        <div class="mb-3">
-                            <select class="form-select form-control selectPreSubCat">
-                                <option id="upSelectPreSubCat"></option>Select Parent Sub Cetagory</option>
-                                <?php
-                                while ($SubCat_Fetch = $selectSubCat->fetch_object()) {
-                                ?>
-                                    <option value="<?= $SubCat_Fetch->id ?>"><?= $SubCat_Fetch->name ?></option>
-                                <?php
-                                }
-                                ?>
-                            </select>
-                            <div class="invalid-feedback selectPreSubCat"></div>
-                        </div>
-                    <?php
-                    }
-                    ?>
-
-                    <div class="mb-3">
-                        <input type="text" placeholder="Category Name" class="form-control" id="subSubCatName">
-                        <div class="invalid-feedback subSubCatNameErrMsg"></div>
-                    </div>
-                    <div class="mb-3">
-                        <textarea name="description" class="form-control cat_des_textarea" placeholder="Category Description" style="resize: none;" id="subSubCatDes"></textarea>
-                        <div class="invalid-feedback subSubCatDesUpdate"></div>
-                        <div class="show_value_length d-none">
-                            <span class="value_length">0</span>
-                            <span class="limit_length">/120</span>
-                        </div>
-
-                    </div>
-                    <button type="button" id="upSubSubCat" class="btn btn-primary btn-sm">Update Sub-Category</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-
 <!-- Bootstrap core JavaScript-->
 <script src="vendor/jquery/jquery.min.js"></script>
 <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -207,8 +63,11 @@
 <script src="js/demo/chart-area-demo.js"></script>
 <script src="js/demo/chart-pie-demo.js"></script>
 
-<!-- modal chategory scripts -->
+<!-- modal update chategory scripts -->
 <script src="./js/custom/upCatModal.js?<?= time(); ?>"></script>
+
+<!-- modal delete category scripts -->
+<script src="./js/custom/dltCatModal.js?<?= time(); ?>"></script>
 </body>
 
 </html>
