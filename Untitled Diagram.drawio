@@ -1,9 +1,15 @@
-<mxfile host="app.diagrams.net" modified="2023-07-06T07:18:45.415Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36" version="21.6.1" etag="xFIaGxYjO60R-B8WdO_E" type="github">
+<mxfile host="app.diagrams.net" modified="2023-07-06T08:45:06.472Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36" etag="ISYFutuxsN0SHjFlprAP" version="21.6.1" type="github">
   <diagram name="Page-1" id="xD7Pk_g3DcGwnip9B8ev">
-    <mxGraphModel>
+    <mxGraphModel dx="880" dy="452" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
+        <mxCell id="TfzM1alSF1hOF3ZPf0_q-1" value="&lt;b&gt;Product Table&lt;br&gt;&lt;/b&gt;id&lt;br&gt;name&lt;br&gt;description&lt;br&gt;additional_information&lt;br&gt;shipping_returns&lt;br&gt;reviews&lt;br&gt;short_description&lt;br&gt;color&lt;br&gt;size&lt;br&gt;type&lt;br&gt;regular_price&lt;br&gt;descount_price&lt;br&gt;featured_img&lt;br&gt;gallery&lt;br&gt;category_id&lt;br&gt;sub_category_id&lt;br&gt;sub_sub_cat_id&lt;br&gt;brand_id&lt;br&gt;offer_time" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="340" height="340" as="geometry" />
+        </mxCell>
+        <mxCell id="TfzM1alSF1hOF3ZPf0_q-2" value="Review Table&lt;br&gt;id&lt;br&gt;user_id&lt;br&gt;product_id&lt;br&gt;star&lt;br&gt;title&lt;br&gt;comment&lt;br&gt;helpful&lt;br&gt;unhelpful&lt;br&gt;created_at" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="400" y="40" width="340" height="340" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
