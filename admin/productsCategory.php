@@ -352,7 +352,9 @@ ORDER BY sub_sub_cat.`id` DESC");
                                                     ?>
                                                 </td>
                                                 <td>
+                                                    <!-- update button -->
                                                     <button type="button" class="btn btn-sm btn-warning upSubSubCatBtn" data-catName="<?= $data->name ?>" data-catDes="<?= $data->details ?>" data-catId="<?= $data->id ?>" data-selectId="<?= $data->sub_cat_id ?>" data-selectName="<?= $data->sub_cat_name ?>"><i class=" fas fa-edit"></i></button>
+                                                    <!-- delete button -->
                                                     <button type="button" data-catId="<?= $data->id ?>" class="btn btn-sm btn-danger dltcat" data-catWhich="sub-sub category" data-serialNo="<?= $snButton++ ?>"><i class="far fa-trash-alt"></i></button>
                                                 </td>
                                             </tr>
@@ -513,7 +515,7 @@ ORDER BY sub_sub_cat.`id` DESC");
 </div>
 
 
-<!-- Modal -->
+<!-- Category delete Modal -->
 <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
