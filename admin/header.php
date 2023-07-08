@@ -35,7 +35,13 @@ function safeThat($data)
     <link href="css/sb-admin-2.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
     <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" />
-
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    <link href="./js/MagicSuggest/magicsuggest.css" rel="stylesheet" type="text/css">
+    <style>
+        #ms2 ms-res-ctn {
+            display: none !important;
+        }
+    </style>
 </head>
 
 <body id="page-top">

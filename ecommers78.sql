@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 07, 2023 at 09:12 PM
+-- Generation Time: Jul 08, 2023 at 09:13 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -235,8 +235,8 @@ CREATE TABLE `reviews` (
 
 INSERT INTO `reviews` (`id`, `rating`, `comment`, `product_id`, `user_id`, `created_at`) VALUES
 (1, 4, 'Valo hoise kintu problem ase!', 1, 1, '2023-05-27 07:48:18'),
-(2, 5, 'Oshadhado hoise! bakita thi thaklei hoy!', 1, 2, '2023-05-27 08:02:01'),
-(3, 2, 'good product', 5, 2, '2023-05-27 09:22:26'),
+(2, 5, 'Oshadhado hoise! bakita thi thaklei hoy!', 1, 1, '2023-07-08 07:10:58'),
+(3, 2, 'good product', 5, 1, '2023-07-08 07:11:01'),
 (4, 3, 'Valo hoise kintu problem ase!', 1, 1, '2023-05-27 07:48:18'),
 (5, 5, 'Oshadhado hoise! bakita thi thaklei hoy!', 1, 2, '2023-05-27 08:02:01'),
 (6, 3, 'good product', 14, 2, '2023-05-27 09:22:26'),
@@ -472,7 +472,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `first_name`, `last_name`, `company_name`, `street_address`, `house`, `country`, `city`, `state`, `zip`, `phone`, `email`, `password`, `images`, `role`, `created_at`) VALUES
-(1, 'Ashraf', 'Uzzaman', 'WebCoder Ashraf', '1736- Janatabag, Rayerbag', '111/32', 'Bangladesh', 'Dhaka', 'Dhaka', '1236', '01749931891', 'ashraf.uzzaman04082004@gmail.com', 'd5ca69a859c445ad53328a214f283ee9', 'companyzhorCJiE64a5bd8d18ad362991020230705205925.png', 'admin', '2023-07-05 18:59:25');
+(1, 'Ashraf', 'Uzzaman', 'WebCoder Ashraf', '1736- Janatabag, Rayerbag', '111/32', 'Bangladesh', 'Dhaka', 'Dhaka', '1236', '01749931891', 'ashraf.uzzaman04082004@gmail.com', 'd5ca69a859c445ad53328a214f283ee9', 'companyzhorCJiE64a5bd8d18ad362991020230705205925.png', 'admin', '2023-07-05 18:59:25'),
+(2, 'Asif', 'Abir', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '01955517560', 'asif.abir001@gmail.com', '6e6f90eeab713b48981f3effb909c1d8', NULL, 'admin', '2023-07-08 07:12:33');
 
 -- --------------------------------------------------------
 
@@ -687,7 +688,7 @@ ALTER TABLE `team`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- Constraints for dumped tables
@@ -714,12 +715,6 @@ ALTER TABLE `reviews`
 --
 ALTER TABLE `sub_category`
   ADD CONSTRAINT `sub_category_ibfk_1` FOREIGN KEY (`cat_id`) REFERENCES `product_categories` (`id`);
-
---
--- Constraints for table `sub_sub_cat`
---
-ALTER TABLE `sub_sub_cat`
-  ADD CONSTRAINT `sub_sub_cat_ibfk_1` FOREIGN KEY (`sub_cat_id`) REFERENCES `sub_category` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

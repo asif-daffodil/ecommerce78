@@ -68,6 +68,55 @@
 
 <!-- modal delete category scripts -->
 <script src="./js/custom/dltCatModal.js?<?= time(); ?>"></script>
+<script src="./js/MagicSuggest/magicsuggest.js"></script>
+<script>
+    $(function() {
+        var ms1 = $('#ms1').magicSuggest({
+            data: ['MediumVioletRed', 'DeepPink', 'PaleVioletRed', 'HotPink',
+                'LightPink', 'Pink', 'DarkRed', 'Red', 'Firebrick', 'Crimson',
+                'IndianRed', 'LightCoral', 'Salmon', 'DarkSalmon',
+                'LightSalmon', 'OrangeRed', 'Tomato', 'DarkOrange', 'Coral',
+                'Orange', 'DarkKhaki', 'Gold', 'Khaki', 'PeachPuff', 'Yellow',
+                'PaleGoldenrod', 'Moccasin', 'PapayaWhip', 'LightGoldenrodYellow',
+                'LemonChiffon', 'LightYellow', 'Maroon', 'Brown', 'SaddleBrown', 'Sienna',
+                'Chocolate', 'DarkGoldenrod', 'Peru', 'RosyBrown', 'Goldenrod',
+                'SandyBrown', 'Tan', 'Burlywood', 'Wheat', 'NavajoWhite', 'Bisque',
+                'BlanchedAlmond', 'Cornsilk', 'DarkGreen', 'Green', 'DarkOliveGreen',
+                'ForestGreen', 'SeaGreen', 'Olive', 'OliveDrab', 'MediumSeaGreen',
+                'LimeGreen', 'Lime', 'SpringGreen', 'MediumSpringGreen', 'DarkSeaGreen',
+                'MediumAquamarine', 'YellowGreen', 'LawnGreen', 'Chartreuse', 'LightGreen',
+                'GreenYellow', 'PaleGreen', 'Teal', 'DarkCyan', 'LightSeaGreen',
+                'CadelBlue', 'DarkTurquoise', 'MediumTurquoise', 'Turquoise', 'Aqua',
+                'Cyan', 'AquaMarine', 'PaleTurquoise', 'LightCyan', 'Navy', 'DarkBlue',
+                'MediumBlue', 'Blue', 'MidnightBlue', 'RoyalBlue', 'SteelBlue',
+                'DodgerBlue', 'DeepSkyBlue', 'CornFlowerBlue', 'SkyBlue', 'LightSkyBlue',
+                'LightSteelBlue', 'LightBlue', 'PowderBlue', 'Indigo', 'Purple',
+                'DarkMagenta', 'DarkViolet', 'DarkSlateBlue', 'BlueViolet', 'DarkOrchid',
+                'Fuchsia', 'Magenta', 'SlateBlue', 'MediumSlateBlue',
+                'MediumOrchid', 'MediumPurple', 'Orchid', 'Violet', 'Plum',
+                'Thistle', 'Lavender', 'MistyRose', 'AntiqueWhite', 'Linen',
+                'Beige', 'WhiteSmoke', 'LavenderBlush', 'OldLace', 'AliceBlue',
+                'Seashell', 'GhostWhite', 'Honeydew', 'ForalWhite', 'Azure',
+                'MintCream', 'Snow', 'Ivory', 'White', 'Black', 'DarkSlateGray',
+                'DimGray', 'SlateGrey', 'Gray', 'LightSlateGray', 'DarkGray',
+                'Silver', 'LightGray', 'Gainsboro'
+            ]
+        });
+    });
+</script>
+<script>
+    $(function() {
+        var ms2 = $('#ms2').magicSuggest({
+            data: null,
+            autoSelect: false,
+            disabledField: null,
+            hideTrigger: true,
+            maxDropHeight: 0,
+            maxSuggestions: null,
+            expanded: false
+        });
+    });
+</script>
 </body>
 
 </html>

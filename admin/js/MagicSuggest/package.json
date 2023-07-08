@@ -1,0 +1,29 @@
+{
+  "name": "magicsuggest",
+  "version": "2.1.6",
+  "description": "MagicSuggest is a multiple selection auto-suggest input box for Bootstrap 3.",
+  "main": "magicsuggest.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Magicsuggest/magicsuggest.git"
+  },
+  "author": "Nicolas Bize",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Magicsuggest/magicsuggest/issues"
+  },
+  "homepage": "https://github.com/Magicsuggest/magicsuggest#readme",
+  "dependencies": {
+    "bootstrap": "~3",
+    "jquery": ">= 1.8.3"
+  },
+  "keywords": [
+    "autocomplete",
+    "bootstrap3",
+    "JQuery"
+  ]
+}
+
