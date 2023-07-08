@@ -68,6 +68,13 @@
 
 <!-- modal delete category scripts -->
 <script src="./js/custom/dltCatModal.js?<?= time(); ?>"></script>
+
+<!-- insert brand_id -->
+<script src="./js/custom/addBrand.js?<?= time(); ?>"></script>
+
+<!-- update Brand -->
+<script src="./js/custom/updateBrand.js?<?= time(); ?>"></script>
+
 <script src="./js/MagicSuggest/magicsuggest.js"></script>
 <script>
     $(function() {

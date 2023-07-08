@@ -39,7 +39,7 @@ include_once("./header.php");
                     </div>
                     <div class="col-md-6">
                         <div class="mb-3">
-                            <input type="text" id="ms1" class="form-control">
+                            <input type="text" id="ms1" class="form-control" placeholder="Select your color">
                         </div>
                     </div>
                     <div class="col-md-6">

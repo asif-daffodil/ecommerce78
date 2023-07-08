@@ -80,13 +80,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['getWhichCatAttr']) && is
 
         // if the child foreign key exists then show error message
         $deleteSubSubCat = $conn->query("DELETE FROM `sub_sub_cat`
-        WHERE `id` = $getId
-          AND NOT EXISTS (
-            SELECT 1
-            FROM `brands`
-            WHERE `sub_sub_cat_id` = $getId
-            );");
-
+        WHERE `id` = $getId");
         if ($deleteSubSubCat) {
             if ($conn->affected_rows > 0) {
                 echo "deleted";

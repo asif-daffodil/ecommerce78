@@ -1,7 +1,7 @@
 <?php
 include_once("./header.php");
 ?>
-< id="content">
+<div id="content">
     <?php
     include_once("./topbar.php");
     ?>
@@ -9,38 +9,37 @@ include_once("./header.php");
         <div class="row border-bottom py-5">
             <div class="col-md-6">
                 <h2>Add Brands</h2>
-                <form method="POST">
+                <br>
+                <form method="POST" enctype="multipart/form-data">
                     <div class="mb-3">
-                        <label for="exampleFormControlFile1">Example file input</label>
-                        <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                        <input type="file" id="brand_img" class="form-control-file">
                     </div>
                     <div class="mb-3">
-                        <input type="text" placeholder="Brand Name" class="form-control" name="name">
+                        <input type="text" placeholder="Brand Name" class="form-control" id="brand_name">
                         <div class="invalid-feedback"></div>
                     </div>
                     <div class="mb-3">
-                        <textarea class="form-control brands_des" placeholder="Description" style="resize: none;"></textarea>
-                        <div class="show_value_length_brand d-none">
+                        <textarea class="form-control" id="brands_des" placeholder="Description" style="resize: none;"></textarea>
+                        <div class="d-none show_value_length_brand">
                             <span class="value_length_brand">0</span>
                             <span class="limit_length">/120</span>
                         </div>
                         <div class="invalid-feedback"></div>
                     </div>
-                    <input type="button" value="Add Category" class="btn btn-primary btn-sm">
+                    <input type="button" id="add_Brand" value="Add Brand" class="btn btn-primary btn-sm">
                 </form>
             </div>
             <?php
-            $selectBrands = $conn->query("SELECT * FROM `brands`");
+            $selectBrands = $conn->query("SELECT * FROM `brands`  ORDER BY `brand_id` DESC");
             if ($selectBrands->num_rows > 0) {
             ?>
-                <div class="col-md-6 table-responsive">
+                <div class="col-md-6 my-5 my-md-0 table-responsive">
                     <table class="table table-bordered" id="allBrands" class="display">
                         <thead>
                             <tr>
                                 <th>SN</th>
-                                <th>Sub-sub Cat</th>
-                                <th>Category Name</th>
-                                <th>Description</th>
+                                <th>Brand Name</th>
+                                <th>Details</th>
                                 <th>Image</th>
                                 <th>Action</th>
                             </tr>
@@ -51,7 +50,6 @@ include_once("./header.php");
                             while ($data = $selectBrands->fetch_object()) { ?>
                                 <tr>
                                     <td><?= $sn++ ?></td>
-                                    <td></td>
                                     <td><?= $data->brand_name ?></td>
                                     <td>
                                         <?php
@@ -64,7 +62,9 @@ include_once("./header.php");
                                         <img width="100px" src="../<?= $data->image_src ?>" alt="<?= $data->image_alt ?>">
                                     </td>
                                     <td>
-                                        <button type="button" class="btn btn-sm btn-warning upCatBtn" data-brandName="<?= $data->brand_name ?>" data-brandDes="<?= $data->details ?>" data-brandId="<?= $data->brand_id ?>"><i class=" fas fa-edit"></i></button>
+                                        <!-- update button -->
+                                        <button type="button" class="btn btn-sm btn-warning upBrandBtn" data-brandName="<?= $data->brand_name ?>" data-brandDes="<?= $data->details ?>" data-brandId="<?= $data->brand_id ?>" data-brandImg="<?= $data->image_src ?>"><i class=" fas fa-edit"></i></button>
+
                                         <a href="" class="btn btn-sm btn-danger"><i class="far fa-trash-alt"></i></a>
                                     </td>
                                 </tr>
@@ -75,30 +75,66 @@ include_once("./header.php");
             <?php } ?>
         </div>
     </div>
-    <script>
-        // text length counter
-        const brandsDes = document.querySelector(".brands_des");
-        const showValueLengthBrand = document.querySelector(".show_value_length_brand"),
-            valueLengthBrand = showValueLengthBrand.querySelector(".value_length_brand");
+</div>
 
-        brandsDes.addEventListener("keyup", () => {
-            const brandValue = brandsDes.value.length;
+<!-- update brands modal -->
+<div class="modal fade" id="updateBrands" tabindex="-1" role="dialog" aria-labelledby="updateBrandsModal" aria-hidden="true" style="z-index: 99999999">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-warning text-white shadow">
+                <h5 class="modal-title fw-bold" id="updateBrandsModal123">Update Brand</h5>
+                <button class="close text-white" type="button" data-dismiss="modal" aria-label="Close" style="outline: none;">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form method="POST" enctype="multipart/form-data">
+                    <input type="hidden" id="brands_Id">
+                    <div class="mb-3 text-center">
+                        <label for="updateImageSrc">
+                            <img width="100px" style="border: 1px solid #ddd; padding:10px" alt="" id="brand_imgModalSrc">
+                        </label>
+                        <input type="file" class="d-none" id="updateImageSrc">
+                        <span class="d-block">Click to change image</span>
+                    </div>
+                    <div class="mb-3">
+                        <input type="text" placeholder="Brand Name" class="form-control" id="update_brandName">
+                    </div>
+                    <div class="mb-3">
+                        <textarea name="description" class="form-control cat_des_textarea" placeholder="Category Description" style="resize: none;" id="update_brandDetails"></textarea>
+                    </div>
+                    <span class="text-danger my-3 d-block" id="upBrandError"></span>
+                    <button type="button" id="upBrandData" class="btn btn-primary">Update</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    const brandsDes = document.querySelector("#brands_des");
+    const showValueLengthBrand = document.querySelector(".show_value_length_brand"),
+        valueLengthBrand = showValueLengthBrand.querySelector(".value_length_brand");
 
-            valueLengthBrand.innerHTML = brandValue;
+    brandsDes.addEventListener("keyup", () => {
+        const brandValue = brandsDes.value.length;
 
-            showValueLengthBrand.classList.remove("text-danger");
-            showValueLengthBrand.classList.remove("d-block");
-            showValueLengthBrand.classList.add("d-none");
+        valueLengthBrand.innerHTML = brandValue;
 
-            if (brandValue > 0) {
-                showValueLengthBrand.classList.add("d-block");
-                showValueLengthBrand.classList.remove("d-none");
-            }
-            if (brandValue > 120) {
-                showValueLengthBrand.classList.add("text-danger");
-            }
-        });
-    </script>
-    <?php
-    include_once("./footer.php");
-    ?>
+        showValueLengthBrand.classList.remove("text-danger");
+        showValueLengthBrand.classList.remove("d-block");
+        showValueLengthBrand.classList.add("d-none");
+
+        if (brandValue > 0) {
+            showValueLengthBrand.classList.add("d-block");
+            showValueLengthBrand.classList.remove("d-none");
+        }
+        if (brandValue > 120) {
+            showValueLengthBrand.classList.add("text-danger");
+        }
+    });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<?php
+include_once("./footer.php");
+?>
