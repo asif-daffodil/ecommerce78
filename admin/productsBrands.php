@@ -64,8 +64,8 @@ include_once("./header.php");
                                     <td>
                                         <!-- update button -->
                                         <button type="button" class="btn btn-sm btn-warning upBrandBtn" data-brandName="<?= $data->brand_name ?>" data-brandDes="<?= $data->details ?>" data-brandId="<?= $data->brand_id ?>" data-brandImg="<?= $data->image_src ?>"><i class=" fas fa-edit"></i></button>
-
-                                        <a href="" class="btn btn-sm btn-danger"><i class="far fa-trash-alt"></i></a>
+                                        <!-- delete button -->
+                                        <button type="button" class="btn btn-sm btn-danger dltBrand" data-brandId="<?= $data->brand_id ?>"><i class=" far fa-trash-alt"></i></button>
                                     </td>
                                 </tr>
                             <?php } ?>

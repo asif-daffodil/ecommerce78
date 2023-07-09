@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 08, 2023 at 09:13 AM
+-- Generation Time: Jul 09, 2023 at 08:03 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -66,13 +66,13 @@ CREATE TABLE `brands` (
 --
 
 INSERT INTO `brands` (`brand_id`, `brand_name`, `image_src`, `image_alt`, `details`, `created_at`) VALUES
-(1, '', 'assets/images/brands/1.png', 'Brand Name', '', '2023-07-05 12:22:39'),
+(1, 'Walton', 'assets/images/brands/1.png', 'Brand Name', '', '2023-07-05 12:22:39'),
 (2, '', 'assets/images/brands/2.png', 'Brand Name', '', '2023-07-05 12:22:39'),
 (3, '', 'assets/images/brands/3.png', 'Brand Name', '', '2023-07-05 12:22:39'),
 (4, '', 'assets/images/brands/4.png', 'Brand Name', '', '2023-07-05 12:22:39'),
 (5, '', 'assets/images/brands/5.png', 'Brand Name', '', '2023-07-05 12:22:39'),
 (6, '', 'assets/images/brands/6.png', 'Brand Name', '', '2023-07-05 12:22:39'),
-(7, '', 'assets/images/brands/7.png', 'Brand Name', '', '2023-07-05 12:22:39');
+(21, 'Hugo', 'assets/images/brands/brand-OvKre6V164aaf282efc8320855020230709194642.png', 'hugo', 'ok', '2023-07-09 17:46:42');
 
 -- --------------------------------------------------------
 
@@ -212,7 +212,7 @@ INSERT INTO `product_categories` (`id`, `name`, `description`) VALUES
 (1, 'Furniture', ''),
 (2, 'Clothing', ''),
 (3, 'Electronics', ''),
-(4, 'Cooking', '');
+(4, 'Cooking', 'Good Category');
 
 -- --------------------------------------------------------
 
@@ -404,13 +404,6 @@ CREATE TABLE `sub_sub_cat` (
   `sub_cat_id` int(11) NOT NULL,
   `details` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `sub_sub_cat`
---
-
-INSERT INTO `sub_sub_cat` (`id`, `name`, `sub_cat_id`, `details`) VALUES
-(31, 'fsdfadsf', 34, '');
 
 -- --------------------------------------------------------
 
@@ -616,7 +609,7 @@ ALTER TABLE `banners`
 -- AUTO_INCREMENT for table `brands`
 --
 ALTER TABLE `brands`
-  MODIFY `brand_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `brand_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `contact_details`
@@ -676,7 +669,7 @@ ALTER TABLE `sub_category`
 -- AUTO_INCREMENT for table `sub_sub_cat`
 --
 ALTER TABLE `sub_sub_cat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT for table `team`

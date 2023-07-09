@@ -75,6 +75,9 @@
 <!-- update Brand -->
 <script src="./js/custom/updateBrand.js?<?= time(); ?>"></script>
 
+<!-- delete brand -->
+<script src="./js/custom/dltBrand.js?<?= time(); ?>"></script>
+
 <script src="./js/MagicSuggest/magicsuggest.js"></script>
 <script>
     $(function() {
