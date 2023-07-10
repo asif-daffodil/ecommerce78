@@ -12,6 +12,7 @@ $(document).on("click", ".dltBrand", function () {
   }).then((result) => {
     if (result.isConfirmed) {
       deleteFunc();
+      $(this).closest("tr").remove();
     }
   });
 
@@ -36,8 +37,6 @@ $(document).on("click", ".dltBrand", function () {
             icon: "success",
             title: "Your brand has been deleted.",
             confirmButtonText: "Ok",
-          }).then(() => {
-            location.reload();
           });
         }
       },
