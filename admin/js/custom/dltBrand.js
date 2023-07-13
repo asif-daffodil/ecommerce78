@@ -12,7 +12,17 @@ $(document).on("click", ".dltBrand", function () {
   }).then((result) => {
     if (result.isConfirmed) {
       deleteFunc();
-      $(this).closest("tr").remove();
+
+      // Get the DataTable instance
+      var dataTable = $("#allBrands").DataTable();
+
+      // Find the row in the DataTable's data source and remove it
+      var row = dataTable.row($(this).closest("tr"));
+
+      row.remove();
+
+      // Redraw the DataTable to reflect the updated data
+      dataTable.draw();
     }
   });
 

@@ -540,12 +540,24 @@ ORDER BY sub_sub_cat.`id` DESC");
         </div>
     </div>
 </div>
-
 <script>
     setTimeout(() => {
         Array.from(document.querySelectorAll(".alert")).map(d => d.remove());
     }, 2500)
 </script>
+
+<!-- modal update chategory scripts -->
+<script src="./js/custom/upCatModal.js?<?= time(); ?>"></script>
+
+<!-- character length counter -->
+<script src="./js/custom/characterCount.js?<?= time(); ?>"></script>
+
+
+<!-- modal update chategory scripts -->
+<script src="./js/custom/upCatModal.js?<?= time(); ?>"></script>
+
+<!-- modal delete category scripts -->
+<script src="./js/custom/dltCatModal.js?<?= time(); ?>"></script>
 <?php
 include_once("./footer.php");
 ?>

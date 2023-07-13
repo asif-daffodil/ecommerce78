@@ -135,6 +135,15 @@ include_once("./header.php");
 </script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+<!-- insert brand_id -->
+<script src="./js/custom/addBrand.js?<?= time(); ?>"></script>
+
+<!-- update Brand -->
+<script src="./js/custom/updateBrand.js?<?= time(); ?>"></script>
+
+<!-- delete brand -->
+<script src="./js/custom/dltBrand.js?<?= time(); ?>"></script>
+
 <?php
 include_once("./footer.php");
 ?>

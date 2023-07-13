@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 09, 2023 at 08:03 PM
+-- Generation Time: Jul 13, 2023 at 09:29 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -66,13 +66,14 @@ CREATE TABLE `brands` (
 --
 
 INSERT INTO `brands` (`brand_id`, `brand_name`, `image_src`, `image_alt`, `details`, `created_at`) VALUES
-(1, 'Walton', 'assets/images/brands/1.png', 'Brand Name', '', '2023-07-05 12:22:39'),
-(2, '', 'assets/images/brands/2.png', 'Brand Name', '', '2023-07-05 12:22:39'),
-(3, '', 'assets/images/brands/3.png', 'Brand Name', '', '2023-07-05 12:22:39'),
-(4, '', 'assets/images/brands/4.png', 'Brand Name', '', '2023-07-05 12:22:39'),
-(5, '', 'assets/images/brands/5.png', 'Brand Name', '', '2023-07-05 12:22:39'),
-(6, '', 'assets/images/brands/6.png', 'Brand Name', '', '2023-07-05 12:22:39'),
-(21, 'Hugo', 'assets/images/brands/brand-OvKre6V164aaf282efc8320855020230709194642.png', 'hugo', 'ok', '2023-07-09 17:46:42');
+(1, 'Le Brarel', 'assets/images/brands/brand-QHRl43Db64b04fee980c499454920230713212638.png', 'le brarel', 'Brazilian company. Which will blow your mind!', '2023-07-05 12:22:39'),
+(2, 'Something', 'assets/images/brands/brand-kvSA9NWM64b04fe1e9f2d77118220230713212625.png', 'something', 'Something is bigger than nothing.', '2023-07-05 12:22:39'),
+(3, 'Costa brava', 'assets/images/brands/brand-ntLN6z7v64b04fd86b90e22160620230713212616.png', 'costa brava', 'Good Costa in the world', '2023-07-05 12:22:39'),
+(4, 'Oceanic', 'assets/images/brands/brand-ykdSOuvY64b04fc56371698135020230713212557.png', 'oceanic', 'Ocean Titan ', '2023-07-05 12:22:39'),
+(5, 'Fountain', 'assets/images/brands/brand-ak1NlXLK64b04fb6117b721440020230713212542.png', 'fountain', 'best feelings in spring', '2023-07-05 12:22:39'),
+(6, 'Black Birds', 'assets/images/brands/brand-G0t753Rv64b04f580f5b881026520230713212408.png', 'black birds', 'Fly like birds. Strong like Egel', '2023-07-05 12:22:39'),
+(21, 'Hugo', 'assets/images/brands/brand-OvKre6V164aaf282efc8320855020230709194642.png', 'hugo', 'okfasdf', '2023-07-09 17:46:42'),
+(42, 'Mr Bookers', 'assets/images/brands/brand-TpUG3ozw64b0501e9a62764152220230713212726.png', 'mr bookers', 'Bookers Expert', '2023-07-13 19:27:26');
 
 -- --------------------------------------------------------
 
@@ -390,7 +391,19 @@ CREATE TABLE `sub_category` (
 --
 
 INSERT INTO `sub_category` (`id`, `cat_id`, `name`, `details`) VALUES
-(34, 2, 'fasdfds', '');
+(35, 3, 'Laptops &amp; Computers', ''),
+(36, 3, 'Cell Phones', ''),
+(37, 3, 'TV &amp; Video', ''),
+(38, 3, 'Digital Cameras', ''),
+(39, 1, 'Bedroom', ''),
+(40, 1, 'Office', ''),
+(41, 1, 'Living Room', ''),
+(42, 1, 'Kitchen &amp; Dining', ''),
+(43, 4, 'Cookware', ''),
+(44, 4, 'Dinnerware &amp; Tabletop', ''),
+(46, 4, 'Cooking Appliances', ''),
+(47, 2, 'Women', ''),
+(48, 2, 'Men', '');
 
 -- --------------------------------------------------------
 
@@ -404,6 +417,89 @@ CREATE TABLE `sub_sub_cat` (
   `sub_cat_id` int(11) NOT NULL,
   `details` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `sub_sub_cat`
+--
+
+INSERT INTO `sub_sub_cat` (`id`, `name`, `sub_cat_id`, `details`) VALUES
+(38, 'Desktop Computers', 35, ''),
+(39, 'Monitors', 35, ''),
+(40, 'Laptops', 35, ''),
+(41, 'iPad &amp; Tablets', 35, ''),
+(42, 'Hard Drives &amp; Storage', 35, ''),
+(43, 'Printers &amp; Supplies', 35, ''),
+(44, 'Computer Accessories', 35, ''),
+(45, 'TVs', 37, ''),
+(46, 'Home Audio Speakers', 37, ''),
+(47, 'Projectors', 37, ''),
+(48, 'Media Streaming Devices', 37, ''),
+(49, 'Carrier Phones', 36, ''),
+(50, 'Unlocked Phones', 36, ''),
+(51, 'Phone &amp; Cellphone Cases', 36, ''),
+(52, 'Cellphone Chargers', 36, ''),
+(53, 'Digital SLR Cameras', 38, ''),
+(54, 'Sports &amp; Action Cameras', 38, ''),
+(55, 'Camcorders', 38, ''),
+(56, 'Camera Lenses', 38, ''),
+(57, 'Photo Printer', 38, ''),
+(58, 'Digital Memory Cards', 38, ''),
+(59, 'Camera Bags, Backpacks &amp; Cases', 38, ''),
+(60, 'Beds, Frames &amp; Bases', 39, ''),
+(61, 'Dressers', 39, ''),
+(62, 'Nightstands', 39, ''),
+(63, 'Kids&#039; Beds &amp; Headboards', 39, ''),
+(64, 'Armoires', 39, ''),
+(65, 'Coffee Tables', 41, ''),
+(66, 'Chairs', 41, ''),
+(67, 'Tables', 41, ''),
+(68, 'Futons &amp; Sofa Beds', 41, ''),
+(69, 'Cabinets &amp; Chests', 41, ''),
+(70, 'Office Chairs', 40, ''),
+(71, 'Desks', 40, ''),
+(72, 'Bookcases', 40, ''),
+(73, 'File Cabinets', 40, ''),
+(74, 'Breakroom Tables', 40, ''),
+(75, 'Dining Sets', 42, ''),
+(76, 'Kitchen Storage Cabinets', 42, ''),
+(77, 'Bakers Racks', 42, ''),
+(78, 'Dining Chairs', 42, ''),
+(79, 'Dining Room Tables', 42, ''),
+(80, 'Bar Stools', 42, ''),
+(81, 'Cookware Sets', 43, ''),
+(82, 'Pans, Griddles &amp; Woks', 43, ''),
+(83, 'Pots', 43, ''),
+(84, 'Skillets &amp; Grill Pans', 43, ''),
+(85, 'Kettles', 43, ''),
+(86, 'Soup &amp; Stockpots', 43, ''),
+(87, 'Plates', 44, ''),
+(88, 'Cups &amp; Mugs', 44, ''),
+(89, 'Trays &amp; Platters', 44, ''),
+(90, 'Coffee &amp; Tea Serving', 44, ''),
+(91, 'Salt &amp; Pepper Shaker', 44, ''),
+(92, 'Microwaves', 46, ''),
+(93, 'Coffee Makers', 46, ''),
+(94, 'Mixers &amp; Attachments', 46, ''),
+(95, 'Slow Cookers', 46, ''),
+(96, 'Toasters &amp; Ovens', 46, ''),
+(97, 'Air Fryers', 46, ''),
+(98, 'New Arrivals', 47, ''),
+(99, 'Best Sellers', 47, ''),
+(100, 'Trending', 47, ''),
+(101, 'Clothing', 47, ''),
+(102, 'Shoes', 47, ''),
+(103, 'Bags', 47, ''),
+(104, 'Accessories', 47, ''),
+(105, 'Jewlery &amp; Watches', 47, ''),
+(106, 'Sale', 47, ''),
+(107, 'New Arrivals', 48, ''),
+(108, 'Best Sellers', 48, ''),
+(109, 'Trending', 48, ''),
+(110, 'Clothing', 48, ''),
+(111, 'Shoes', 48, ''),
+(112, 'Bags', 48, ''),
+(113, 'Accessories', 48, ''),
+(114, 'Jewlery &amp; Watches', 48, '');
 
 -- --------------------------------------------------------
 
@@ -609,7 +705,7 @@ ALTER TABLE `banners`
 -- AUTO_INCREMENT for table `brands`
 --
 ALTER TABLE `brands`
-  MODIFY `brand_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `brand_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT for table `contact_details`
@@ -663,13 +759,13 @@ ALTER TABLE `statistics`
 -- AUTO_INCREMENT for table `sub_category`
 --
 ALTER TABLE `sub_category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT for table `sub_sub_cat`
 --
 ALTER TABLE `sub_sub_cat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=115;
 
 --
 -- AUTO_INCREMENT for table `team`

@@ -14,14 +14,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && $_GET['getSuccess'] == 'success') {
         echo "error";
         exit();
     } else {
-        if (unlink($unlink)) {
-            $dltQurey = $conn->query("DELETE FROM `brands` WHERE `brand_id` = $brandId");
-            if ($dltQurey) {
-                echo "success";
-                exit();
-            }
-        } else {
-            echo "error";
+        unlink($unlink);
+        $dltQurey = $conn->query("DELETE FROM `brands` WHERE `brand_id` = $brandId");
+        if ($dltQurey) {
+            echo "success";
             exit();
         }
     }
