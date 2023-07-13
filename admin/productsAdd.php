@@ -49,25 +49,27 @@ include_once("./header.php");
                     </div>
                     <div class="col-md-6">
                         <div class="mb-3">
-                            <select name="SelectPCat" class="form-select form-control">
+                            <select name="SelectPCat" class="form-select form-control" id="SelectPCat">
                                 <option>--- Select Category ---</option>
-                                <option value=""></option>
-                                <option value=""></option>
+                                <?php
+                                $pcq = $conn->query("SELECT * FROM `product_categories`");
+                                while ($pc = $pcq->fetch_object()) {
+                                ?>
+                                    <option value="<?= $pc->id ?>"><?= $pc->name ?></option>
+                                <?php } ?>
                             </select>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="mb-3">
-                            <select name="SelectPCat" class="form-select form-control">
+                            <select name="SelectPSCat" class="form-select form-control" id="SelectPSCat">
                                 <option>--- Select Sub Category ---</option>
-                                <option value=""></option>
-                                <option value=""></option>
                             </select>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="mb-3">
-                            <select name="SelectPCat" class="form-select form-control">
+                            <select name="SelectPSSCat" class="form-select form-control">
                                 <option>--- Select Sub-sub Category ---</option>
                                 <option value=""></option>
                                 <option value=""></option>
@@ -155,6 +157,7 @@ include_once("./header.php");
         }
     });
 </script>
+
 <?php
 include_once("./footer.php");
 ?>

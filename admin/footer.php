@@ -57,11 +57,11 @@
 <script src="js/sb-admin-2.min.js"></script>
 
 <!-- Page level plugins -->
-<script src="vendor/chart.js/Chart.min.js"></script>
+<!-- <script src="vendor/chart.js/Chart.min.js"></script> -->
 
 <!-- Page level custom scripts -->
-<script src="js/demo/chart-area-demo.js"></script>
-<script src="js/demo/chart-pie-demo.js"></script>
+<!-- <script src="js/demo/chart-area-demo.js"></script>
+<script src="js/demo/chart-pie-demo.js"></script> -->
 
 <!-- modal update chategory scripts -->
 <script src="./js/custom/upCatModal.js?<?= time(); ?>"></script>
@@ -127,6 +127,7 @@
         });
     });
 </script>
+<script src="./js/custom/addSubCat.js"></script>
 </body>
 
 </html>
