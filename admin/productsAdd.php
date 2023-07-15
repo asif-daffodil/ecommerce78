@@ -1,6 +1,14 @@
 <?php
 include_once("./header.php");
+if (isset($_POST["addProduct"])) {
+    $fnames = $_FILES["myPic"]["name"];
+    $tmpname = $_FILES["myPic"]["tmp_name"];
+    foreach ($fnames as $fname) {
+        echo $fname;
+    }
+}
 ?>
+<link rel="stylesheet" href="./css/productAdd.css">
 <div id="content">
     <?php
     include_once("./topbar.php")
@@ -11,7 +19,7 @@ include_once("./header.php");
                 <h1 class="h3 mb-0 text-gray-800">Add New Products</h1>
             </div>
 
-            <form method="post">
+            <form action="" method="post" enctype="multipart/form-data">
                 <div class="row">
                     <div class="col-md-6">
                         <div class="mb-3">
@@ -50,7 +58,7 @@ include_once("./header.php");
                     <div class="col-md-6">
                         <div class="mb-3">
                             <select name="SelectPCat" class="form-select form-control" id="SelectPCat">
-                                <option>--- Select Category ---</option>
+                                <option value="">--- Select Category ---</option>
                                 <?php
                                 $pcq = $conn->query("SELECT * FROM `product_categories`");
                                 while ($pc = $pcq->fetch_object()) {
@@ -63,16 +71,14 @@ include_once("./header.php");
                     <div class="col-md-6">
                         <div class="mb-3">
                             <select name="SelectPSCat" class="form-select form-control" id="SelectPSCat">
-                                <option>--- Select Sub Category ---</option>
+                                <option value="">--- Select Sub Category ---</option>
                             </select>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="mb-3">
-                            <select name="SelectPSSCat" class="form-select form-control">
-                                <option>--- Select Sub-sub Category ---</option>
-                                <option value=""></option>
-                                <option value=""></option>
+                            <select name="SelectPSSCat" class="form-select form-control" id="SelectPSSCat">
+                                <option value="">--- Select Sub-sub Category ---</option>
                             </select>
                         </div>
                     </div>
@@ -98,12 +104,20 @@ include_once("./header.php");
                         </div>
                     </div>
                     <div class="col-md-12">
-                        <div id="editor">
+                        <div id="editor" class="mb-3">
 
                         </div>
                     </div>
+                    <div class="col-md-6"></div>
+                    <div class="col-md-6">
+                        <label for="gimage" class="btn btn-primary">
+                            Choose Gallery Images
+                            <input type="file" name="myPic[]" multiple class="d-none" id="gimage">
+                        </label>
+                        <div id="images"></div>
+                    </div>
                     <div class="col-md-12 mt-5">
-                        <button class="btn btn-primary btn-sm">Add</button>
+                        <button class="btn btn-primary btn-sm" name="addProduct">Add Product</button>
                     </div>
                 </div>
             </form>
@@ -219,7 +233,7 @@ include_once("./header.php");
 </script>
 <!-- when select the cetagory then auto load the sub-cetagory -->
 <script src="./js/custom/addSubCat.js"></script>
-
+<script src="./js/custom/productAdd.js"></script>
 <?php
 include_once("./footer.php");
 ?>
