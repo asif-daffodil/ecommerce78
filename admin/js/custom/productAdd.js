@@ -2,14 +2,19 @@ $(document).ready(function () {
   $("#singleProImg").change(function (e) {
     const file = e.target.files[0];
     if (file) {
-      const reader = new FileReader();
+      const fileName = file.name.toLowerCase();
+      const fileExtension = fileName.split(".").pop();
+      const allowedExtensions = ["jpg", "jpeg", "png", "gif"];
+      if (allowedExtensions.includes(fileExtension)) {
+        const reader = new FileReader();
 
-      reader.onload = function (event) {
-        $(".preview-image").removeClass("d-none");
-        $("#previewImgSingle").attr("src", event.target.result);
-      };
+        reader.onload = function (event) {
+          $(".preview-image").removeClass("d-none");
+          $("#previewImgSingle").attr("src", event.target.result);
+        };
 
-      reader.readAsDataURL(file);
+        reader.readAsDataURL(file);
+      }
     }
   });
   $(".preview-image").click(function () {
@@ -31,20 +36,25 @@ $(document).ready(function () {
       $(".allMultiImg").addClass("d-flex");
 
       files.forEach(function (file) {
-        const reader = new FileReader();
+        const fileName = file.name.toLowerCase();
+        const fileExtension = fileName.split(".").pop();
+        const allowedExtensions = ["jpg", "jpeg", "png", "gif"];
+        if (allowedExtensions.includes(fileExtension)) {
+          const reader = new FileReader();
 
-        reader.onload = function (event) {
-          const parent = $('<div class="multiPreview-img"></div>');
-          const image = $('<img class="multi-img" width="120" height="120">');
-          image.attr("src", event.target.result);
-          parent.append(image);
-          $(".allMultiImg").append(parent);
-        };
+          reader.onload = function (event) {
+            const parent = $('<div class="multiPreview-img"></div>');
+            const image = $('<img class="multi-img" width="120" height="120">');
+            image.attr("src", event.target.result);
+            parent.append(image);
+            $(".allMultiImg").append(parent);
+          };
 
-        reader.readAsDataURL(file);
+          reader.readAsDataURL(file);
 
-        // Add the file to the selectedFiles array
-        selectedFiles.push(file);
+          // Add the file to the selectedFiles array
+          selectedFiles.push(file);
+        }
       });
       // Update the files in the #proGlryImg input
       updateProGlryImgFiles();
@@ -93,6 +103,7 @@ $(document).ready(function () {
   $("#addProduct").click(function () {
     const singleFile = $("#singleProImg")[0].files[0];
     const multiFiles = $("#proGlryImg")[0].files;
+    const proName = $("#proName").val();
 
     const formData = new FormData();
 
@@ -105,6 +116,7 @@ $(document).ready(function () {
         formData.append("multiImages[]", multiFiles[i]);
       }
     }
+    formData.append("proName", proName);
 
     $.ajax({
       url: "./ajax/product/productAdd.php",
@@ -113,11 +125,11 @@ $(document).ready(function () {
       processData: false,
       contentType: false,
       success: function (response) {
-        const res = JSON.parse(response);
+        console.log(response);
 
+        const res = JSON.parse(response);
         var error = res.error;
         var msg = res.msg;
-
         if (error === true) {
           Swal.fire({
             icon: "error",

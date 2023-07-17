@@ -26,6 +26,7 @@ include_once("./header.php");
             </div>
             <form action="" method="POST" id="proAddForm" enctype="multipart/form-data">
                 <div class="row">
+                    <!-- single image -->
                     <div class="col-md-6 mb-3">
                         <h5>Product Image</h5>
                         <div class="d-flex" style="gap:10px">
@@ -41,6 +42,7 @@ include_once("./header.php");
                         </div>
                         <input type="file" id="singleProImg" name="productImage" />
                     </div>
+                    <!-- product image gallery -->
                     <div class="col-md-6 mb-3">
                         <h5>Product Image Gallery</h5>
                         <div class="col-12 d-flex flex-wrap" style="gap:10px">
@@ -55,9 +57,10 @@ include_once("./header.php");
                         </div>
                         <input type="file" id="proGlryImg" name="imageGallery[]" multiple />
                     </div>
+                    <!-- product name -->
                     <div class="col-md-6">
                         <div class="mb-3">
-                            <input type="text" placeholder="Name" class="form-control">
+                            <input type="text" id="proName" placeholder="Name" class="form-control">
                             <div class="invalid-feedback"></div>
                         </div>
                     </div>
