@@ -1,0 +1,108 @@
+.ql-container {
+  height: 100px !important;
+}
+label {
+  width: max-content;
+  height: max-content;
+  overflow: hidden;
+}
+
+label .single-img {
+  width: 120px;
+  height: 120px;
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #ddd;
+  cursor: pointer;
+  border-radius: 10px;
+}
+.preview-image {
+  width: 120px;
+  height: 120px;
+  overflow: hidden;
+  border: 1px solid #ddd;
+  cursor: pointer;
+  border-radius: 10px;
+  position: relative;
+}
+.multiPreview-img {
+  width: 120px;
+  height: 120px;
+  overflow: hidden;
+  border: 1px solid #ddd;
+  cursor: pointer;
+  border-radius: 10px;
+  position: relative;
+}
+#previewImgSingle {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+}
+.multi-img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+}
+.preview-image::before {
+  content: "x";
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-size: 20px;
+  background: rgba(0, 0, 0, 0.438);
+  transition: 0.5s;
+  top: 100%;
+  left: 0;
+}
+.multiPreview-img::before {
+  content: "x";
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-size: 20px;
+  background: rgba(0, 0, 0, 0.438);
+  transition: 0.5s;
+  top: 100%;
+  left: 0;
+}
+.preview-image:hover::before {
+  top: 0;
+  left: 0;
+}
+.multiPreview-img:hover::before {
+  top: 0;
+  left: 0;
+}
+
+label .multiple-img {
+  width: 120px;
+  height: 120px;
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #ddd;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+label .multiple-img i {
+  font-weight: bolc;
+}
+
+input[type="file"] {
+  display: none;
+}

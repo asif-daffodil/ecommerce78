@@ -1,14 +1,20 @@
 <?php
 include_once("./header.php");
-if (isset($_POST["addProduct"])) {
-    $fnames = $_FILES["myPic"]["name"];
-    $tmpname = $_FILES["myPic"]["tmp_name"];
-    foreach ($fnames as $fname) {
-        echo $fname;
-    }
-}
+// if (isset($_POST["addProduct"])) {
+//     $fnames = $_POST["demo1"];
+//     $tmpname = $_POST["demo1"];
+//     foreach ($fnames as $fname) {
+//         echo $fname;
+//     }
 ?>
-<link rel="stylesheet" href="./css/productAdd.css">
+<!-- text editor link -->
+<link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+
+<!-- color selcetor css -->
+<link href="./css/magicsuggest.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="./css/product.css?<?= time(); ?>">
+
 <div id="content">
     <?php
     include_once("./topbar.php")
@@ -18,9 +24,37 @@ if (isset($_POST["addProduct"])) {
             <div class="d-sm-flex align-items-center justify-content-between mb-4">
                 <h1 class="h3 mb-0 text-gray-800">Add New Products</h1>
             </div>
-
-            <form action="" method="post" enctype="multipart/form-data">
+            <form action="" method="POST" id="proAddForm" enctype="multipart/form-data">
                 <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <h5>Product Image</h5>
+                        <div class="d-flex" style="gap:10px">
+                            <div class="preview-image d-none">
+                                <img src="" alt="" id="previewImgSingle">
+                            </div>
+                            <label for="singleProImg">
+                                <div class="single-img">
+                                    <i class="fa-solid fa-plus" style="color: #000000;"></i>
+                                    <span>Upload</span>
+                                </div>
+                            </label>
+                        </div>
+                        <input type="file" id="singleProImg" name="productImage" />
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <h5>Product Image Gallery</h5>
+                        <div class="col-12 d-flex flex-wrap" style="gap:10px">
+                            <div class="allMultiImg d-none flex-wrap" style="gap:10px">
+                            </div>
+                            <label for="proGlryImg">
+                                <div class="multiple-img">
+                                    <i class="fa-solid fa-plus" style="color: #000000;"></i>
+                                    <span>Upload</span>
+                                </div>
+                            </label>
+                        </div>
+                        <input type="file" id="proGlryImg" name="imageGallery[]" multiple />
+                    </div>
                     <div class="col-md-6">
                         <div class="mb-3">
                             <input type="text" placeholder="Name" class="form-control">
@@ -103,21 +137,17 @@ if (isset($_POST["addProduct"])) {
                             <input type="datetime-local" class="form-control">
                         </div>
                     </div>
-                    <div class="col-md-12">
-                        <div id="editor" class="mb-3">
-
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <input type="text" class="form-control" placeholder="Product Type">
                         </div>
                     </div>
-                    <div class="col-md-6"></div>
-                    <div class="col-md-6">
-                        <label for="gimage" class="btn btn-primary">
-                            Choose Gallery Images
-                            <input type="file" name="myPic[]" multiple class="d-none" id="gimage">
-                        </label>
-                        <div id="images"></div>
+                    <div class="col-md-12">
+                        <div id="editor" class="mb-3">
+                        </div>
                     </div>
-                    <div class="col-md-12 mt-5">
-                        <button class="btn btn-primary btn-sm" name="addProduct">Add Product</button>
+                    <div class="col-md-12 my-4">
+                        <button type="button" class="btn btn-primary btn-sm py-2 px-4 font-weight-bold" id="addProduct">Add Product</button>
                     </div>
                 </div>
             </form>
@@ -127,8 +157,8 @@ if (isset($_POST["addProduct"])) {
 </div>
 
 <!-- for text editor -->
-<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
-<script>
+<script type="text/javascript" src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+<script type="text/javascript">
     var toolbarOptions = [
         [{
             'header': [1, 2, 3, 4, 5, 6, false]
@@ -182,8 +212,9 @@ if (isset($_POST["addProduct"])) {
 </script>
 
 <!-- for auto suggestions color and multiple select data -->
-<script src="./js/MagicSuggest/magicsuggest.js"></script>
-<script>
+<script type="text/javascript" src="./js/magicsuggest.js"></script>
+
+<script type="text/javascript">
     $(function() {
         var ms1 = $('#ms1').magicSuggest({
             data: ['MediumVioletRed', 'DeepPink', 'PaleVioletRed', 'HotPink',
@@ -218,7 +249,7 @@ if (isset($_POST["addProduct"])) {
         });
     });
 </script>
-<script>
+<script type="text/javascript">
     $(function() {
         var ms2 = $('#ms2').magicSuggest({
             data: null,
@@ -231,9 +262,14 @@ if (isset($_POST["addProduct"])) {
         });
     });
 </script>
+
 <!-- when select the cetagory then auto load the sub-cetagory -->
-<script src="./js/custom/addSubCat.js"></script>
-<script src="./js/custom/productAdd.js"></script>
+<script type="text/javascript" src="./js/custom/loadChildCat.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<!-- product image add -->
+<script type="text/javascript" src="./js/custom/productAdd.js?<?= time(); ?>"></script>
+</script>
 <?php
 include_once("./footer.php");
 ?>

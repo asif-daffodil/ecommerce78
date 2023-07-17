@@ -33,22 +33,12 @@ function safeThat($data)
     <!-- Custom styles for this template -->
     <link href="css/sb-admin-2.min.css" rel="stylesheet" />
 
-    <!-- ajax sweet alert -->
-    <link rel="stylesheet" href="sweetalert2.min.css">
-
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet" />
 
     <!-- Bootstrap core css-->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
     <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" />
-
-    <!-- text editor link -->
-    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
-
-    <!-- color selcetor css -->
-    <link href="./js/MagicSuggest/magicsuggest.css" rel="stylesheet" type="text/css">
-
 
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>

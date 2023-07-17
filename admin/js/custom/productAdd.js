@@ -1,38 +1,139 @@
-const myPic = document.getElementsByName("myPic[]")[0];
-const images = document.getElementById("images");
-
-myPic.addEventListener("change", () => {
-    images.innerHTML = "";
-  const files = myPic.files;
-  console.log(files);
-  Array.from(files).map(file => {
+$(document).ready(function () {
+  $("#singleProImg").change(function (e) {
+    const file = e.target.files[0];
     if (file) {
-      const div = document.createElement("div");
-      const img = document.createElement("img");
-      img.src = URL.createObjectURL(file);
-      img.style.cssText = `
-        width: 100px;
-        height: 100px;
-        object-fit: cover;
-      `;
-      div.appendChild(img);
-      images.appendChild(div);
+      const reader = new FileReader();
 
-      // Add click event listener to remove the image
-      div.addEventListener('click', () => {
-        images.removeChild(div);
-        // Remove corresponding file from the FileList
-        const index = Array.from(images.children).indexOf(div);
-        if (index !== -1) {
-          const newFiles = [];
-          for (let i = 0; i < files.length; i++) {
-            if (i !== index) {
-              newFiles.push(files[i]);
-            }
-          }
-          myPic.files = new FileList(newFiles);
-        }
-      });
+      reader.onload = function (event) {
+        $(".preview-image").removeClass("d-none");
+        $("#previewImgSingle").attr("src", event.target.result);
+      };
+
+      reader.readAsDataURL(file);
     }
+  });
+  $(".preview-image").click(function () {
+    $("#previewImgSingle").removeAttr("src");
+    $(".preview-image").addClass("d-none");
+    $("#singleProImg").val(null);
+  });
+
+  // =================================================================
+  // ================ product images gallery =========================
+  // =================================================================
+  let selectedFiles = [];
+
+  $("#proGlryImg").change(function (e) {
+    const files = Array.from(e.target.files);
+
+    if (files.length > 0) {
+      $(".allMultiImg").removeClass("d-none");
+      $(".allMultiImg").addClass("d-flex");
+
+      files.forEach(function (file) {
+        const reader = new FileReader();
+
+        reader.onload = function (event) {
+          const parent = $('<div class="multiPreview-img"></div>');
+          const image = $('<img class="multi-img" width="120" height="120">');
+          image.attr("src", event.target.result);
+          parent.append(image);
+          $(".allMultiImg").append(parent);
+        };
+
+        reader.readAsDataURL(file);
+
+        // Add the file to the selectedFiles array
+        selectedFiles.push(file);
+      });
+      // Update the files in the #proGlryImg input
+      updateProGlryImgFiles();
+    } else {
+      $(".allMultiImg").addClass("d-none");
+      $(".allMultiImg").removeClass("d-flex");
+      $(".allMultiImg").empty();
+
+      // Clear the selectedFiles array
+      selectedFiles = [];
+    }
+  });
+
+  $(document).on("click", ".multiPreview-img", function () {
+    // Remove the .multiPreview-img element
+    $(this).remove();
+
+    // Get the index of the removed file in the selectedFiles array
+    const index = $(this).index();
+
+    // Remove the file from the selectedFiles array
+    selectedFiles.splice(index, 1);
+
+    // Update the files in the #proGlryImg input
+    updateProGlryImgFiles();
+  });
+
+  // Function to update the files in the #proGlryImg input
+  function updateProGlryImgFiles() {
+    // Create a new DataTransfer object
+    const updatedFiles = new DataTransfer();
+
+    // Add each file from the selectedFiles array to the updatedFiles
+    selectedFiles.forEach(function (file) {
+      updatedFiles.items.add(file);
+    });
+
+    // Assign the updatedFiles to #proGlryImg input
+    $("#proGlryImg")[0].files = updatedFiles.files;
+  }
+
+  // =================================================================
+  // ================ ajax request =========================
+  // =================================================================
+
+  $("#addProduct").click(function () {
+    const singleFile = $("#singleProImg")[0].files[0];
+    const multiFiles = $("#proGlryImg")[0].files;
+
+    const formData = new FormData();
+
+    if (singleFile) {
+      formData.append("singleImage", singleFile);
+    }
+
+    if (multiFiles.length > 0) {
+      for (let i = 0; i < multiFiles.length; i++) {
+        formData.append("multiImages[]", multiFiles[i]);
+      }
+    }
+
+    $.ajax({
+      url: "./ajax/product/productAdd.php",
+      type: "POST",
+      data: formData,
+      processData: false,
+      contentType: false,
+      success: function (response) {
+        const res = JSON.parse(response);
+
+        var error = res.error;
+        var msg = res.msg;
+
+        if (error === true) {
+          Swal.fire({
+            icon: "error",
+            title: "Error",
+            text: msg,
+            confirmButtonText: "Understand",
+          });
+        } else {
+          Swal.fire({
+            icon: "success",
+            title: "Congratulations!",
+            text: msg,
+            confirmButtonText: "Ok",
+          });
+        }
+      },
+    });
   });
 });
