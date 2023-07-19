@@ -17,6 +17,7 @@ $(document).ready(function () {
       }
     }
   });
+
   $(".preview-image").click(function () {
     $("#previewImgSingle").removeAttr("src");
     $(".preview-image").addClass("d-none");
@@ -104,6 +105,10 @@ $(document).ready(function () {
     const singleFile = $("#singleProImg")[0].files[0];
     const multiFiles = $("#proGlryImg")[0].files;
     const proName = $("#proName").val();
+    const proTitle = $("#proTitle").val();
+    const regPrice = $("#regPrice").val();
+    const disPrice = $("#disPrice").val();
+    const proColor = $("#proColor").val();
 
     const formData = new FormData();
 
@@ -117,6 +122,10 @@ $(document).ready(function () {
       }
     }
     formData.append("proName", proName);
+    formData.append("proTitle", proTitle);
+    formData.append("regPrice", regPrice);
+    formData.append("disPrice", disPrice);
+    formData.append("proColor", proColor);
 
     $.ajax({
       url: "./ajax/product/productAdd.php",
@@ -143,6 +152,13 @@ $(document).ready(function () {
             title: "Congratulations!",
             text: msg,
             confirmButtonText: "Ok",
+          }).then(function () {
+            $("#previewImgSingle").removeAttr("src");
+            $(".preview-image").addClass("d-none");
+            $("#proAddForm").trigger("reset");
+            $(".allMultiImg").addClass("d-none");
+            $(".allMultiImg").removeClass("d-flex");
+            $(".allMultiImg").empty();
           });
         }
       },

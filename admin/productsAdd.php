@@ -64,34 +64,40 @@ include_once("./header.php");
                             <div class="invalid-feedback"></div>
                         </div>
                     </div>
+                    <!-- product title  -->
                     <div class="col-md-6">
                         <div class="mb-3">
-                            <input type="text" placeholder="Title" class="form-control">
+                            <input type="text" placeholder="Title" id="proTitle" class="form-control">
                             <div class="invalid-feedback"></div>
                         </div>
                     </div>
+                    <!-- regular price -->
                     <div class="col-md-6">
                         <div class="mb-3">
-                            <input type="text" placeholder="Regular Price" class="form-control">
+                            <input type="text" placeholder="Regular Price" id="regPrice" class="form-control">
                             <div class="invalid-feedback"></div>
                         </div>
                     </div>
+                    <!-- discount price -->
                     <div class="col-md-6">
                         <div class="mb-3">
-                            <input type="text" placeholder="Discount Price" class="form-control">
+                            <input type="text" placeholder="Discount Price" id="disPrice" class="form-control">
                             <div class="invalid-feedback"></div>
                         </div>
                     </div>
+                    <!-- procduct color -->
                     <div class="col-md-6">
                         <div class="mb-3">
-                            <input type="text" id="ms1" class="form-control" placeholder="Select your color">
+                            <input type="text" id="ms1" class="form-control" id="proColor" placeholder="Select your color">
                         </div>
                     </div>
+                    <!-- size -->
                     <div class="col-md-6">
                         <div class="mb-3">
-                            <input type="text" id="ms2" class="form-control" placeholder="Place the value separate with coma">
+                            <input type="text" id="ms2" class="form-control" placeholder="Priduct Size">
                         </div>
                     </div>
+                    <!-- category -->
                     <div class="col-md-6">
                         <div class="mb-3">
                             <select name="SelectPCat" class="form-select form-control" id="SelectPCat">
@@ -105,6 +111,7 @@ include_once("./header.php");
                             </select>
                         </div>
                     </div>
+                    <!-- sub category -->
                     <div class="col-md-6">
                         <div class="mb-3">
                             <select name="SelectPSCat" class="form-select form-control" id="SelectPSCat">
@@ -112,6 +119,7 @@ include_once("./header.php");
                             </select>
                         </div>
                     </div>
+                    <!-- sub sub category -->
                     <div class="col-md-6">
                         <div class="mb-3">
                             <select name="SelectPSSCat" class="form-select form-control" id="SelectPSSCat">
@@ -119,6 +127,7 @@ include_once("./header.php");
                             </select>
                         </div>
                     </div>
+                    <!-- brand -->
                     <div class="col-md-6">
                         <div class="mb-3">
                             <select name="SelectPCat" class="form-select form-control">
@@ -140,6 +149,7 @@ include_once("./header.php");
                             <input type="datetime-local" class="form-control">
                         </div>
                     </div>
+                    <!-- product type -->
                     <div class="col-md-6">
                         <div class="mb-3">
                             <input type="text" class="form-control" placeholder="Product Type">
