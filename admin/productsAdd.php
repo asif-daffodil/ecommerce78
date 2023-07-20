@@ -88,7 +88,7 @@ include_once("./header.php");
                     <!-- procduct color -->
                     <div class="col-md-6">
                         <div class="mb-3">
-                            <input type="text" id="ms1" class="form-control" id="proColor" placeholder="Select your color">
+                            <input type="text" id="ms1" class="form-control" placeholder="Select your color">
                         </div>
                     </div>
                     <!-- size -->
@@ -275,10 +275,8 @@ include_once("./header.php");
         });
     });
 </script>
-
 <!-- when select the cetagory then auto load the sub-cetagory -->
 <script type="text/javascript" src="./js/custom/loadChildCat.js"></script>
-
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <!-- product image add -->
 <script type="text/javascript" src="./js/custom/productAdd.js?<?= time(); ?>"></script>

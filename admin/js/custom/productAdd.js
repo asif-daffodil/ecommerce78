@@ -102,6 +102,19 @@ $(document).ready(function () {
   // =================================================================
 
   $("#addProduct").click(function () {
+
+    let hiddenInputs = $("#ms1 .ms-sel-ctn input[type='hidden']");
+    let valuesArray = hiddenInputs.map(function() {
+      return $(this).val();
+    }).get();
+    console.log(valuesArray);
+
+    let piddenInputs = $("#ms2 .ms-sel-ctn input[type='hidden']");
+    let aluesArray = piddenInputs.map(function() {
+      return $(this).val();
+    }).get();
+    console.log(aluesArray);
+
     const singleFile = $("#singleProImg")[0].files[0];
     const multiFiles = $("#proGlryImg")[0].files;
     const proName = $("#proName").val();
@@ -126,6 +139,7 @@ $(document).ready(function () {
     formData.append("regPrice", regPrice);
     formData.append("disPrice", disPrice);
     formData.append("proColor", proColor);
+
 
     $.ajax({
       url: "./ajax/product/productAdd.php",
