@@ -130,7 +130,7 @@ include_once("./header.php");
                     <!-- brand -->
                     <div class="col-md-6">
                         <div class="mb-3">
-                            <select name="SelectPCat" class="form-select form-control">
+                            <select name="SelectPBrand" id="SelectPBrand" class="form-select form-control">
                                 <option>--- Select Brand ---</option>
 
                                 <?php
@@ -144,6 +144,7 @@ include_once("./header.php");
                             </select>
                         </div>
                     </div>
+                    <!-- offer time -->
                     <div class="col-md-6">
                         <div class="mb-3">
                             <input type="datetime-local" class="form-control">
@@ -152,11 +153,22 @@ include_once("./header.php");
                     <!-- product type -->
                     <div class="col-md-6">
                         <div class="mb-3">
-                            <input type="text" class="form-control" placeholder="Product Type">
+                            <input type="text" class="form-control" id="proType" placeholder="Product Type">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <h5>Short Description</h5>
+                        <div id="addProShortDes" class="mb-3">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <h5>Description</h5>
+                        <div id="addProDes" class="mb-3">
                         </div>
                     </div>
                     <div class="col-md-12">
-                        <div id="editor" class="mb-3">
+                        <h5>Additional Infomation</h5>
+                        <div id="addInfo" class="mb-3">
                         </div>
                     </div>
                     <div class="col-md-12 my-4">
@@ -216,7 +228,19 @@ include_once("./header.php");
 
         ['clean'] // remove formatting button
     ];
-    var quill = new Quill('#editor', {
+    var quill = new Quill('#addProShortDes', {
+        theme: 'snow',
+        modules: {
+            toolbar: toolbarOptions
+        }
+    });
+    var quill = new Quill('#addProDes', {
+        theme: 'snow',
+        modules: {
+            toolbar: toolbarOptions
+        }
+    });
+    var quill = new Quill('#addInfo', {
         theme: 'snow',
         modules: {
             toolbar: toolbarOptions

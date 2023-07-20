@@ -102,44 +102,71 @@ $(document).ready(function () {
   // =================================================================
 
   $("#addProduct").click(function () {
-
-    let hiddenInputs = $("#ms1 .ms-sel-ctn input[type='hidden']");
-    let valuesArray = hiddenInputs.map(function() {
-      return $(this).val();
-    }).get();
-    console.log(valuesArray);
-
-    let piddenInputs = $("#ms2 .ms-sel-ctn input[type='hidden']");
-    let aluesArray = piddenInputs.map(function() {
-      return $(this).val();
-    }).get();
-    console.log(aluesArray);
-
     const singleFile = $("#singleProImg")[0].files[0];
     const multiFiles = $("#proGlryImg")[0].files;
     const proName = $("#proName").val();
     const proTitle = $("#proTitle").val();
     const regPrice = $("#regPrice").val();
     const disPrice = $("#disPrice").val();
-    const proColor = $("#proColor").val();
+    const selectPCat = $("#SelectPCat").val();
+    const selectPSCat = $("#SelectPSCat").val();
+    const selectPSSCat = $("#SelectPSSCat").val();
+    const selectPBrand = $("#SelectPBrand").val();
+    const proType = $("#proType").val();
+    const addProShortDes = $("#addProShortDes .ql-editor").val();
+    const addProDes = $("#addProDes .ql-editor").val();
+    const addInfo = $("#addProShortDes .ql-editor").val();
+
+    let productHidenColor = $("#ms1 .ms-sel-ctn input[type='hidden']");
+    let productColor = productHidenColor
+      .map(function () {
+        return $(this).val();
+      })
+      .get();
+    console.log(productColor.length);
+
+    let productHidenSize = $("#ms2 .ms-sel-ctn input[type='hidden']");
+    let productSize = productHidenSize
+      .map(function () {
+        return $(this).val();
+      })
+      .get();
+    console.log(productSize);
 
     const formData = new FormData();
-
-    if (singleFile) {
-      formData.append("singleImage", singleFile);
-    }
 
     if (multiFiles.length > 0) {
       for (let i = 0; i < multiFiles.length; i++) {
         formData.append("multiImages[]", multiFiles[i]);
       }
     }
+
+    if (productColor.length > 0) {
+      for (let i = 0; i < productColor.length; i++) {
+        formData.append("proColor[]", productColor[i]);
+      }
+    }
+
+    if (productSize.length > 0) {
+      for (let i = 0; i < productSize.length; i++) {
+        formData.append("proSize[]", productSize[i]);
+      }
+    }
+    formData.append("singleImage", singleFile);
     formData.append("proName", proName);
     formData.append("proTitle", proTitle);
     formData.append("regPrice", regPrice);
     formData.append("disPrice", disPrice);
-    formData.append("proColor", proColor);
-
+    formData.append("selectPCat", selectPCat);
+    formData.append("selectPSCat", selectPSCat);
+    formData.append("selectPSSCat", selectPSSCat);
+    formData.append("selectPBrand", selectPBrand);
+    formData.append("proType", proType);
+    formData.append("proType", proType);
+    formData.append("proType", proType);
+    formData.append("addProShortDes", addProShortDes);
+    formData.append("addProDes", addProDes);
+    formData.append("addInfo", addInfo);
 
     $.ajax({
       url: "./ajax/product/productAdd.php",

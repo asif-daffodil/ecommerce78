@@ -12,6 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $regPrice = $_POST['regPrice'];
     $disPrice = $_POST['disPrice'] ?? null;
     $proColor = $_POST['proColor'];
+    $proColor = $_POST['proSize'];
 
     $allowedTypes = array("image/jpeg", "image/png", "image/gif", "image/jpg");
 
