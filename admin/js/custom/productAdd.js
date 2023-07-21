@@ -113,17 +113,18 @@ $(document).ready(function () {
     const selectPSSCat = $("#SelectPSSCat").val();
     const selectPBrand = $("#SelectPBrand").val();
     const proType = $("#proType").val();
-    const addProShortDes = $("#addProShortDes .ql-editor").val();
-    const addProDes = $("#addProDes .ql-editor").val();
-    const addInfo = $("#addProShortDes .ql-editor").val();
+    const addProShortDes = $("#addProShortDes .ql-editor").html();
+    const addProDes = $("#addProDes .ql-editor").html();
+    const addInfo = $("#addInfo .ql-editor").html();
+    const offerTime = $("#offerTime").val();
 
+    console.log(addProShortDes);
     let productHidenColor = $("#ms1 .ms-sel-ctn input[type='hidden']");
     let productColor = productHidenColor
       .map(function () {
         return $(this).val();
       })
       .get();
-    console.log(productColor.length);
 
     let productHidenSize = $("#ms2 .ms-sel-ctn input[type='hidden']");
     let productSize = productHidenSize
@@ -131,7 +132,6 @@ $(document).ready(function () {
         return $(this).val();
       })
       .get();
-    console.log(productSize);
 
     const formData = new FormData();
 
@@ -162,11 +162,10 @@ $(document).ready(function () {
     formData.append("selectPSSCat", selectPSSCat);
     formData.append("selectPBrand", selectPBrand);
     formData.append("proType", proType);
-    formData.append("proType", proType);
-    formData.append("proType", proType);
     formData.append("addProShortDes", addProShortDes);
     formData.append("addProDes", addProDes);
     formData.append("addInfo", addInfo);
+    formData.append("offerTime", offerTime);
 
     $.ajax({
       url: "./ajax/product/productAdd.php",
@@ -200,6 +199,7 @@ $(document).ready(function () {
             $(".allMultiImg").addClass("d-none");
             $(".allMultiImg").removeClass("d-flex");
             $(".allMultiImg").empty();
+            window.location.reload();
           });
         }
       },

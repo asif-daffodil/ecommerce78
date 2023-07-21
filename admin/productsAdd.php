@@ -147,7 +147,7 @@ include_once("./header.php");
                     <!-- offer time -->
                     <div class="col-md-6">
                         <div class="mb-3">
-                            <input type="datetime-local" class="form-control">
+                            <input id="offerTime" type="datetime-local" class="form-control">
                         </div>
                     </div>
                     <!-- product type -->
@@ -182,7 +182,7 @@ include_once("./header.php");
 </div>
 
 <!-- for text editor -->
-<script type="text/javascript" src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+<script type="text/javascript" src="./js/quill.js?<?= time(); ?>"></script>
 <script type="text/javascript">
     var toolbarOptions = [
         [{
