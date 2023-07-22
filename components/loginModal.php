@@ -12,13 +12,13 @@
         <form id="mollaSignIn">
             <div class="form-group">
                 <label for="singin-email">Email address *</label>
-                <input type="text" class="form-control" id="singin-email" name="singin-email">
+                <input type="text" class="form-control" id="singin-email" name="singin-email" value="<?= isset($_COOKIE['logEmailCookie']) ? $_COOKIE['logEmailCookie'] : null ?>">
                 <div id="errSingInEmail" class="text-danger"></div>
             </div><!-- End .form-group -->
 
             <div class="form-group">
                 <label for="singin-password">Password *</label>
-                <input type="password" class="form-control" id="singin-password" name="singin-password">
+                <input type="password" class="form-control" id="singin-password" name="singin-password" value="<?= isset($_COOKIE['logPassCookie']) ? $_COOKIE['logPassCookie'] : null ?>">
                 <div id="errSingInPassword" class="text-danger"></div>
             </div><!-- End .form-group -->
 
@@ -173,12 +173,14 @@
         const err_singin_email = document.getElementById("errSingInEmail");
         const singin_pass = document.getElementById("singin-password");
         const err_singin_pass = document.getElementById("errSingInPassword");
+        const signInRememberMe = document.getElementById("signin-remember").checked;
 
         const url = "./classes/loginValidation.php";
 
         const data = {
             singin_email: singin_email.value,
             singin_pass: singin_pass.value,
+            signInRememberMe: signInRememberMe,
             signin: 'ASDfgh123'
         };
 
@@ -193,6 +195,7 @@
         fetch(url, options)
             .then(response => response.json())
             .then(res => {
+                console.log(res);
                 if (res.err_logInEmail) {
                     err_singin_email.innerHTML = "<small>" + res.err_logInEmail + "</small>";
                 } else {

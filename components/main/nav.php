@@ -1,5 +1,6 @@
 <?php
 $pagename = pathinfo($_SERVER['PHP_SELF'], PATHINFO_FILENAME);
+
 ?>
 <header class="header header-14">
     <div class="header-top">

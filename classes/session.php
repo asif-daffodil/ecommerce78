@@ -35,7 +35,7 @@ class sessionClass extends dbConnect
             if ($fetch_data->num_rows > 0) {
                 $fetch = $fetch_data->fetch_object();
                 $img_data = $fetch->images;
-                $userArr = ['id' => $fetch->id, 'first_name' => $first_name, 'last_name' => $last_name, 'phone' => $_GET['mobile'], 'email' => $_GET['email'], 'images' => $img_data, 'role' => $fetch->role];
+                $userArr = ['id' => $fetch->id, 'first_name' => $first_name, 'last_name' => $last_name, 'phone' => $get_mobile, 'email' => $_GET['email'], 'images' => $img_data, 'role' => $fetch->role];
                 sessionClass::session($userArr);
                 header("location: ../");
             } else {
