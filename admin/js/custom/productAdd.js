@@ -36,27 +36,51 @@ $(document).ready(function () {
       $(".allMultiImg").removeClass("d-none");
       $(".allMultiImg").addClass("d-flex");
 
-      files.forEach(function (file) {
-        const fileName = file.name.toLowerCase();
-        const fileExtension = fileName.split(".").pop();
-        const allowedExtensions = ["jpg", "jpeg", "png", "gif"];
-        if (allowedExtensions.includes(fileExtension)) {
-          const reader = new FileReader();
+      const imageCount = files.length;
+      let totalSize = 0;
+      const allowSize = 20 * 1024 * 1024;
 
-          reader.onload = function (event) {
-            const parent = $('<div class="multiPreview-img"></div>');
-            const image = $('<img class="multi-img" width="120" height="120">');
-            image.attr("src", event.target.result);
-            parent.append(image);
-            $(".allMultiImg").append(parent);
-          };
+      // Loop through the images and get their sizes
+      for (var i = 0; i < imageCount; i++) {
+        var file = files[i];
+        var size = file.size;
 
-          reader.readAsDataURL(file);
+        // Add the size of the image to the total size
+        totalSize += size;
+      }
 
-          // Add the file to the selectedFiles array
-          selectedFiles.push(file);
-        }
-      });
+      if (totalSize <= allowSize) {
+        files.forEach(function (file) {
+          const fileName = file.name.toLowerCase();
+          const fileExtension = fileName.split(".").pop();
+          const allowedExtensions = ["jpg", "jpeg", "png", "gif"];
+          if (allowedExtensions.includes(fileExtension)) {
+            const reader = new FileReader();
+
+            reader.onload = function (event) {
+              const parent = $('<div class="multiPreview-img"></div>');
+              const image = $(
+                '<img class="multi-img" width="120" height="120">'
+              );
+              image.attr("src", event.target.result);
+              parent.append(image);
+              $(".allMultiImg").append(parent);
+            };
+
+            reader.readAsDataURL(file);
+
+            // Add the file to the selectedFiles array
+            selectedFiles.push(file);
+          }
+        });
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "Doesn't allow Big File!",
+          text: "Your file size is not allowed to gather than 20MB!",
+          confirmButtonText: "Ok",
+        });
+      }
       // Update the files in the #proGlryImg input
       updateProGlryImgFiles();
     } else {

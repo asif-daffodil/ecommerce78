@@ -73,87 +73,83 @@ include_once("./header.php");
                     </div>
                     <!-- regular price -->
                     <div class="col-md-6">
-                        <div class="mb-3">
-                            <input type="text" placeholder="Regular Price" id="regPrice" class="form-control">
-                            <div class="invalid-feedback"></div>
+                        <div class="row">
+                            <div class="mb-3 col-md-6">
+                                <input type="number" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" placeholder="Regular Price" id="regPrice" class="form-control">
+                                <div class="invalid-feedback"></div>
+                            </div>
+                            <div class="mb-3 col-md-6">
+                                <input type="number" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" placeholder="Discount Price" id="disPrice" class="form-control">
+                                <div class="invalid-feedback"></div>
+                            </div>
                         </div>
                     </div>
                     <!-- discount price -->
                     <div class="col-md-6">
                         <div class="mb-3">
-                            <input type="text" placeholder="Discount Price" id="disPrice" class="form-control">
-                            <div class="invalid-feedback"></div>
+                            <input type="text" id="ms1" class="form-control" placeholder="Select your color">
                         </div>
                     </div>
                     <!-- procduct color -->
                     <div class="col-md-6">
                         <div class="mb-3">
-                            <input type="text" id="ms1" class="form-control" placeholder="Select your color">
+                            <input type="text" id="ms2" class="form-control" placeholder="Priduct Size">
                         </div>
                     </div>
                     <!-- size -->
                     <div class="col-md-6">
-                        <div class="mb-3">
-                            <input type="text" id="ms2" class="form-control" placeholder="Priduct Size">
+                        <div class="row">
+                            <div class="mb-3 col-md-6">
+                                <select name="SelectPCat" class="form-select form-control" id="SelectPCat">
+                                    <option value="">--- Select Category ---</option>
+                                    <?php
+                                    $pcq = $conn->query("SELECT * FROM `product_categories`");
+                                    while ($pc = $pcq->fetch_object()) {
+                                    ?>
+                                        <option value="<?= $pc->id ?>"><?= $pc->name ?></option>
+                                    <?php } ?>
+                                </select>
+                            </div>
+                            <div class="mb-3 col-md-6">
+                                <select name="SelectPSCat" class="form-select form-control" id="SelectPSCat">
+                                    <option value="">--- Select Sub Category ---</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
                     <!-- category -->
                     <div class="col-md-6">
-                        <div class="mb-3">
-                            <select name="SelectPCat" class="form-select form-control" id="SelectPCat">
-                                <option value="">--- Select Category ---</option>
-                                <?php
-                                $pcq = $conn->query("SELECT * FROM `product_categories`");
-                                while ($pc = $pcq->fetch_object()) {
-                                ?>
-                                    <option value="<?= $pc->id ?>"><?= $pc->name ?></option>
-                                <?php } ?>
-                            </select>
+                        <div class="row">
+                            <div class="mb-3 col-md-6">
+                                <select name="SelectPSSCat" class="form-select form-control" id="SelectPSSCat">
+                                    <option value="">--- Select Sub-sub Category ---</option>
+                                </select>
+                            </div>
+                            <div class="mb-3 col-md-6">
+                                <select name="SelectPBrand" id="SelectPBrand" class="form-select form-control">
+                                    <option>--- Select Brand ---</option>
+
+                                    <?php
+                                    $selectbrand = $conn->query("SELECT * FROM `brands`");
+                                    if ($selectbrand->num_rows > 0) {
+                                        while ($row = $selectbrand->fetch_object()) {
+                                    ?>
+                                            <option value="<?= $row->brand_id ?>"><?= $row->brand_name ?></option>
+                                    <?php }
+                                    } ?>
+                                </select>
+                            </div>
                         </div>
                     </div>
                     <!-- sub category -->
                     <div class="col-md-6">
-                        <div class="mb-3">
-                            <select name="SelectPSCat" class="form-select form-control" id="SelectPSCat">
-                                <option value="">--- Select Sub Category ---</option>
-                            </select>
-                        </div>
-                    </div>
-                    <!-- sub sub category -->
-                    <div class="col-md-6">
-                        <div class="mb-3">
-                            <select name="SelectPSSCat" class="form-select form-control" id="SelectPSSCat">
-                                <option value="">--- Select Sub-sub Category ---</option>
-                            </select>
-                        </div>
-                    </div>
-                    <!-- brand -->
-                    <div class="col-md-6">
-                        <div class="mb-3">
-                            <select name="SelectPBrand" id="SelectPBrand" class="form-select form-control">
-                                <option>--- Select Brand ---</option>
-
-                                <?php
-                                $selectbrand = $conn->query("SELECT * FROM `brands`");
-                                if ($selectbrand->num_rows > 0) {
-                                    while ($row = $selectbrand->fetch_object()) {
-                                ?>
-                                        <option value="<?= $row->brand_id ?>"><?= $row->brand_name ?></option>
-                                <?php }
-                                } ?>
-                            </select>
-                        </div>
-                    </div>
-                    <!-- offer time -->
-                    <div class="col-md-6">
-                        <div class="mb-3">
-                            <input id="offerTime" type="datetime-local" class="form-control">
-                        </div>
-                    </div>
-                    <!-- product type -->
-                    <div class="col-md-6">
-                        <div class="mb-3">
-                            <input type="text" class="form-control" id="proType" placeholder="Product Type">
+                        <div class="row">
+                            <div class="mb-3 col-md-6">
+                                <input id="offerTime" type="datetime-local" class="form-control">
+                            </div>
+                            <div class="mb-3 col-md-6">
+                                <input type="text" class="form-control" id="proType" placeholder="Product Type">
+                            </div>
                         </div>
                     </div>
                     <div class="col-md-6">
