@@ -1,6 +1,9 @@
 .ql-container {
   height: 100px !important;
 }
+.ms-res-ctn {
+  display: none;
+}
 label {
   width: max-content;
   height: max-content;

@@ -142,7 +142,6 @@ $(document).ready(function () {
     const addInfo = $("#addInfo .ql-editor").html();
     const offerTime = $("#offerTime").val();
 
-    console.log(addProShortDes);
     let productHidenColor = $("#ms1 .ms-sel-ctn input[type='hidden']");
     let productColor = productHidenColor
       .map(function () {
@@ -198,8 +197,6 @@ $(document).ready(function () {
       processData: false,
       contentType: false,
       success: function (response) {
-        console.log(response);
-
         const res = JSON.parse(response);
         var error = res.error;
         var msg = res.msg;

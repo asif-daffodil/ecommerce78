@@ -44,11 +44,20 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     // count multiimage files size
     if (isset($multiImagesTmpName)) {
+        foreach ($multiImagesType as $multiType) {
+            if (!in_array($multiType, $allowedTypes)) {
+                $res = array(
+                    "error" => true,
+                    "msg" => "Please select an Image file for the gallery!"
+                );
+                exit(json_encode($res));
+            }
+        }
+
         $totalSize  = 0;
         foreach ($multiImagesSize as $oneImgSize) {
             $totalSize += $oneImgSize;
         }
-
         if ($totalSize >= $allowSize) {
             $res = array(
                 "error" => true,
@@ -199,23 +208,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     $multiImgInsert[] = "assets/images/products/gallery/$multidirectory_name/$uniqGalleryName";
                 }
             }
-            foreach ($multiImagesType as $multiType) {
-                if (!in_array($multiType, $allowedTypes)) {
-                    $res = array(
-                        "error" => true,
-                        "msg" => "Please select an Image file for the gallery!"
-                    );
-                    exit(json_encode($res));
-                }
-            }
         }
     }
     // Serialize the gallery image array as a JSON string
     $galleryImagesJson = json_encode($multiImgInsert);
     $productColorJson = json_encode($proColor);
-    $productSizeJson = json_encode($proSize) ?? null;
+    $proSizeJson = json_encode($proSize);
 
-    $insert_multiImg = $conn->query("INSERT INTO `products`( `name`, `title`, `regular_price`, `discount_price`, `short_description`, `color`, `size`, `category_id`, `sub_category_id`, `sub_sub_cat_id`, `brand_id`, `featured_img`, `gallery`, `description`, `additional_information`, `type`, `offer_time`, `token`) VALUES ('$proName','$proTitle',$regPrice,'$disPrice','$addProShortDes','$productColorJson','$productSizeJson','$selectPCat','$selectPSCat','$selectPSSCat','$selectPBrand','$insertImg','$galleryImagesJson','$addProDes','$addInfo','$proType','$offerTime','$token')");
+    $insert_multiImg = $conn->query("INSERT INTO `products`( `name`, `title`, `regular_price`, `discount_price`, `short_description`, `color`, `size`, `category_id`, `sub_category_id`, `sub_sub_cat_id`, `brand_id`, `featured_img`, `gallery`, `description`, `additional_information`, `type`, `offer_time`, `token`) VALUES ('$proName','$proTitle',$regPrice,'$disPrice','$addProShortDes','$productColorJson','$proSizeJson','$selectPCat','$selectPSCat','$selectPSSCat','$selectPBrand','$insertImg','$galleryImagesJson','$addProDes','$addInfo','$proType','$offerTime','$token')");
     if (!$insert_multiImg) {
         $res = array(
             "error" => true,
