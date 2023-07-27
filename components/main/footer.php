@@ -240,6 +240,26 @@
     ?>
  <!-- Plugins JS File -->
  <script src="assets/js/jquery.min.js"></script>
+ <script>
+     $(document).ready(() => {
+         $(document).on("click", ".btn-cart", (e) => {
+             let cartObj = {
+                 id: []
+             };
+
+             if (sessionStorage.getItem("cartIds")) {
+                 let oldSes = JSON.parse(sessionStorage.getItem("cartIds"))
+                 oldSes.id.map(oid => cartObj.id.push(oid));
+             }
+
+             let id = e.target.parentNode.getAttribute("data-id");
+             id && cartObj.id.push(id);
+
+             cartObj = JSON.stringify(cartObj);
+             sessionStorage.setItem("cartIds", cartObj);
+         })
+     })
+ </script>
  <script src="assets/js/bootstrap.bundle.min.js"></script>
  <script src="assets/js/jquery.hoverIntent.min.js"></script>
  <script src="assets/js/jquery.waypoints.min.js"></script>

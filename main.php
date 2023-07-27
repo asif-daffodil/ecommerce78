@@ -80,7 +80,7 @@
                                         }
                                     }'>
                 <?php
-                $select = $conn->query("SELECT p.name, p.title, p.regular_price, p.discount_price, p.featured_img, p.type ,p.offer_time, c.name AS category_name, AVG(r.rating) AS average_rating, COUNT(r.id) AS review_count
+                $select = $conn->query("SELECT p.id, p.name, p.title, p.regular_price, p.discount_price, p.featured_img, p.type ,p.offer_time, c.name AS category_name, AVG(r.rating) AS average_rating, COUNT(r.id) AS review_count
                 FROM Products p 
                 INNER JOIN Product_Categories c ON p.category_id = c.id
                 LEFT JOIN Reviews r ON p.id = r.product_id
@@ -122,7 +122,7 @@
                                 </div>
 
                                 <div class="product-action">
-                                    <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
+                                    <button class="btn-product btn-cart" title="Add to cart" data-id="<?= $data->id ?>"><span>add to cart</span></button>
                                 </div>
                             </figure>
 
