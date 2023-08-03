@@ -122,7 +122,10 @@
                                 </div>
 
                                 <div class="product-action">
-                                    <button class="btn-product btn-cart" title="Add to cart" data-id="<?= $data->id ?>"><span>add to cart</span></button>
+                                    <form action="" class="m-auto" style="width: max-content" onsubmit="return addToCart(event)">
+                                        <input type="hidden" value="<?= $data->id ?>" name="cartId">
+                                        <button class="btn-product btn-cart" title="Add to cart" type="submit"><span>add to cart</span></button>
+                                    </form>
                                 </div>
                             </figure>
 

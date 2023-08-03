@@ -157,9 +157,21 @@ $pagename = pathinfo($_SERVER['PHP_SELF'], PATHINFO_FILENAME);
                                 <div class="dropdown cart-dropdown">
                                     <a href="cart" class="dropdown-toggle">
                                         <i class="icon-shopping-cart"></i>
-                                        <span class="cart-count">2</span>
+                                        <span class="cart-count" id="cartCount">2</span>
                                         <span class="cart-txt">Cart</span>
                                     </a>
+                                    <script>
+                                        const cartFunc = () => {
+                                            const cartCount = document.getElementById("cartCount");
+                                            if (sessionStorage.getItem("cartIds")) {
+                                                sessionData = JSON.parse(sessionStorage.getItem("cartIds"));
+                                                cartCount.textContent = sessionData.id.length;
+                                            } else {
+                                                cartCount.textContent = 0;
+                                            }
+                                        }
+                                        cartFunc();
+                                    </script>
 
                                     <div class="dropdown-menu dropdown-menu-right">
                                         <div class="dropdown-cart-products">

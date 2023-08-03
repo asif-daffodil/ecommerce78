@@ -240,31 +240,39 @@
     ?>
  <!-- Plugins JS File -->
  <script src="assets/js/jquery.min.js"></script>
+ <script src="assets/js/owl.carousel.min.js"></script>
+
  <script>
-     $(document).ready(() => {
-         $(document).on("click", ".btn-cart", (e) => {
-             let cartObj = {
-                 id: []
-             };
+     const addToCart = (e) => {
+         e.preventDefault();
+         let cartObj = {
+             id: [],
+         };
 
-             if (sessionStorage.getItem("cartIds")) {
-                 let oldSes = JSON.parse(sessionStorage.getItem("cartIds"))
-                 oldSes.id.map(oid => cartObj.id.push(oid));
-             }
+         // Access form data
+         const form = e.target;
+         const formData = new FormData(form);
+         const cartId = formData.get("cartId");
 
-             let id = e.target.parentNode.getAttribute("data-id");
-             id && cartObj.id.push(id);
 
-             cartObj = JSON.stringify(cartObj);
-             sessionStorage.setItem("cartIds", cartObj);
-         })
-     })
+         if (sessionStorage.getItem("cartIds")) {
+             let oldSes = JSON.parse(sessionStorage.getItem("cartIds"));
+             oldSes.id.map((oid) => cartObj.id.push(oid));
+         }
+
+         cartObj.id.push(cartId);
+
+         cartObj = JSON.stringify(cartObj);
+         sessionStorage.setItem("cartIds", cartObj);
+         cartFunc();
+         return false;
+     }
  </script>
+
  <script src="assets/js/bootstrap.bundle.min.js"></script>
  <script src="assets/js/jquery.hoverIntent.min.js"></script>
  <script src="assets/js/jquery.waypoints.min.js"></script>
  <script src="assets/js/superfish.min.js"></script>
- <script src="assets/js/owl.carousel.min.js"></script>
  <script src="assets/js/bootstrap-input-spinner.js"></script>
  <!-- <script src="assets/js/jquery.magnific-popup.min.js"></script> -->
  <script src="assets/js/jquery.plugin.min.js"></script>
