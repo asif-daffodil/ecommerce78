@@ -35,4 +35,8 @@ session_start();
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/skins/skin-demo-14.css">
     <link rel="stylesheet" href="assets/css/demos/demo-14.css">
+
+    <!-- jquery -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/owl.carousel.min.js"></script>
 </head>

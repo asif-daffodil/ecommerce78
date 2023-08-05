@@ -238,9 +238,6 @@
  <?php
     include_once("./statup-newslater.php");
     ?>
- <!-- Plugins JS File -->
- <script src="assets/js/jquery.min.js"></script>
- <script src="assets/js/owl.carousel.min.js"></script>
 
  <script>
      const addToCart = (e) => {
