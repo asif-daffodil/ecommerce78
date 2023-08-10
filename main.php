@@ -123,7 +123,11 @@
 
                                 <div class="product-action">
                                     <form action="" class="m-auto" style="width: max-content" onsubmit="return addToCart(event)">
-                                        <input type="hidden" value="<?= $data->id ?>" name="cartId">
+                                        <input type="hidden" value="<?= $data->id ?>" name="proId">
+                                        <input type="hidden" value="<?= $data->name ?>" name="proName">
+                                        <input type="hidden" value="<?= $data->title ?>" name="proTitle">
+                                        <input type="hidden" value="<?= $data->discount_price ?>" name="proPrice">
+                                        <input type="hidden" value="<?= $data->featured_img ?>" name="proImg">
                                         <button class="btn-product btn-cart" title="Add to cart" type="submit"><span>add to cart</span></button>
                                     </form>
                                 </div>

@@ -242,26 +242,56 @@
  <script>
      const addToCart = (e) => {
          e.preventDefault();
-         let cartObj = {
-             id: [],
-         };
+         let cartObj = [];
 
-         // Access form data
+         // Access cart form data
          const form = e.target;
          const formData = new FormData(form);
-         const cartId = formData.get("cartId");
+         const proId = formData.get("proId");
+         const proName = formData.get("proName");
+         const proTitle = formData.get("proTitle");
+         const proPrice = formData.get("proPrice");
+         const proImg = formData.get("proImg");
 
 
-         if (sessionStorage.getItem("cartIds")) {
-             let oldSes = JSON.parse(sessionStorage.getItem("cartIds"));
-             oldSes.id.map((oid) => cartObj.id.push(oid));
+         if (sessionStorage.getItem("cartInfo")) {
+             let oldSes = JSON.parse(sessionStorage.getItem("cartInfo"));
+             let found = false;
+             oldSes.forEach((oldInfo, inn) => {
+                 if (oldInfo.proId === proId) {
+                     oldSes[inn].proCount++;
+                     found = true;
+                 }
+             });
+
+             if (found) {
+                 let cartObj = JSON.stringify(oldSes);
+                 sessionStorage.setItem("cartInfo", cartObj);
+             } else {
+                 oldSes.push({
+                     proId: proId,
+                     proName: proName,
+                     proTitle: proTitle,
+                     proPrice: proPrice,
+                     proImg: proImg,
+                     proCount: 1
+                 })
+                 let cartObj = JSON.stringify(oldSes);
+                 sessionStorage.setItem("cartInfo", cartObj);
+             }
+         } else {
+             cartObj.push({
+                 proId: proId,
+                 proName: proName,
+                 proTitle: proTitle,
+                 proPrice: proPrice,
+                 proImg: proImg,
+                 proCount: 1
+             })
+             cartObj = JSON.stringify(cartObj);
+             sessionStorage.setItem("cartInfo", cartObj);
          }
-
-         cartObj.id.push(cartId);
-
-         cartObj = JSON.stringify(cartObj);
-         sessionStorage.setItem("cartIds", cartObj);
-         cartFunc();
+         //  cartFunc();
          return false;
      }
  </script>
