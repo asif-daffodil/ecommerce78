@@ -1,7 +1,13 @@
 <?php
 $pagename = pathinfo($_SERVER['PHP_SELF'], PATHINFO_FILENAME);
-
 ?>
+<style>
+    .dropdown-cart-products {
+        height: 200px;
+        overflow: scroll;
+    }
+</style>
+
 <header class="header header-14">
     <div class="header-top">
         <div class="container">
@@ -157,69 +163,19 @@ $pagename = pathinfo($_SERVER['PHP_SELF'], PATHINFO_FILENAME);
                                 <div class="dropdown cart-dropdown">
                                     <a href="cart" class="dropdown-toggle">
                                         <i class="icon-shopping-cart"></i>
-                                        <span class="cart-count" id="cartCount">2</span>
+                                        <span class="cart-count" id="cartCount">0</span>
                                         <span class="cart-txt">Cart</span>
                                     </a>
-                                    <script>
-                                        const cartFunc = () => {
-                                            const cartCount = document.getElementById("cartCount");
-                                            if (sessionStorage.getItem("cartIds")) {
-                                                sessionData = JSON.parse(sessionStorage.getItem("cartIds"));
-                                                cartCount.textContent = sessionData.id.length;
-                                            } else {
-                                                cartCount.textContent = 0;
-                                            }
-                                        }
-                                        cartFunc();
-                                    </script>
 
                                     <div class="dropdown-menu dropdown-menu-right">
-                                        <div class="dropdown-cart-products">
-                                            <div class="product">
-                                                <div class="product-cart-details">
-                                                    <h4 class="product-title">
-                                                        <a href="product.php">Beige knitted elastic runner shoes</a>
-                                                    </h4>
+                                        <div class="dropdown-cart-products" id="dcp">
 
-                                                    <span class="cart-product-info">
-                                                        <span class="cart-product-qty">1</span>
-                                                        x $84.00
-                                                    </span>
-                                                </div>
-
-                                                <figure class="product-image-container">
-                                                    <a href="product.php" class="product-image">
-                                                        <img src="assets/images/products/cart/product-1.jpg" alt="product">
-                                                    </a>
-                                                </figure>
-                                                <a href="#" class="btn-remove" title="Remove Product"><i class="icon-close"></i></a>
-                                            </div>
-
-                                            <div class="product">
-                                                <div class="product-cart-details">
-                                                    <h4 class="product-title">
-                                                        <a href="product">Blue utility pinafore denim dress</a>
-                                                    </h4>
-
-                                                    <span class="cart-product-info">
-                                                        <span class="cart-product-qty">1</span>
-                                                        x $76.00
-                                                    </span>
-                                                </div>
-
-                                                <figure class="product-image-container">
-                                                    <a href="product" class="product-image">
-                                                        <img src="assets/images/products/cart/product-2.jpg" alt="product">
-                                                    </a>
-                                                </figure>
-                                                <a href="#" class="btn-remove" title="Remove Product"><i class="icon-close"></i></a>
-                                            </div>
                                         </div>
 
                                         <div class="dropdown-cart-total">
                                             <span>Total</span>
 
-                                            <span class="cart-total-price">$160.00</span>
+                                            <span class="cart-total-price">0</span>
                                         </div>
 
                                         <div class="dropdown-cart-action">
@@ -235,6 +191,57 @@ $pagename = pathinfo($_SERVER['PHP_SELF'], PATHINFO_FILENAME);
             </div>
         </div>
     </div>
+
+    <script>
+        const cartFunc = () => {
+            const cartCount = document.getElementById("cartCount");
+            const dProCart = document.getElementById("dcp");
+            dProCart.innerHTML = null;
+            const cartTotalPrice = document.querySelectorAll(".cart-total-price")[0];
+            let proCount = 0;
+            let totalPrice = 0;
+            let sessionData;
+            if (sessionStorage.getItem("cartInfo")) {
+                sessionData = JSON.parse(sessionStorage.getItem("cartInfo"));
+                sessionData.map(proData => {
+                    proCount += +proData.proCount;
+                    totalPrice += (proData.proPrice * proData.proCount);
+                    const div = document.createElement("div");
+                    div.classList.add("product");
+                    div.innerHTML = `
+                <div class="product-cart-details">
+                    <h4 class="product-title">
+                        <a href="product.php">
+                        ${proData.proTitle}
+                        </a>
+                    </h4>
+
+                    <span class="cart-product-info">
+                        <span class="cart-product-qty">
+                        ${proData.proCount}
+                        </span>
+                        x $${proData.proPrice}
+                    </span>
+                </div>
+                <figure class="product-image-container">
+                        <a href="product.php" class="product-image">
+                            <img src="${proData.proImg}" alt="product">
+                        </a>
+                </figure>
+                <a href="#" class="btn-remove" title="Remove Product"><i class="icon-close"></i></a>
+            `;
+                    dProCart.appendChild(div);
+                });
+                cartCount.textContent = proCount;
+                cartTotalPrice.textContent = totalPrice;
+            } else {
+                cartCount.textContent = proCount;
+                cartTotalPrice.textContent = totalPrice;
+            }
+        }
+
+        cartFunc();
+    </script>
 
     <div class="header-bottom sticky-header">
         <div class="container-fluid">

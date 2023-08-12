@@ -291,7 +291,7 @@
              cartObj = JSON.stringify(cartObj);
              sessionStorage.setItem("cartInfo", cartObj);
          }
-         //  cartFunc();
+         cartFunc();
          return false;
      }
  </script>
