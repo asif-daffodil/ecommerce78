@@ -1,12 +1,7 @@
 <?php
 $pagename = pathinfo($_SERVER['PHP_SELF'], PATHINFO_FILENAME);
 ?>
-<style>
-    .dropdown-cart-products {
-        height: 200px;
-        overflow: scroll;
-    }
-</style>
+
 
 <header class="header header-14">
     <div class="header-top">
@@ -228,19 +223,35 @@ $pagename = pathinfo($_SERVER['PHP_SELF'], PATHINFO_FILENAME);
                             <img src="${proData.proImg}" alt="product">
                         </a>
                 </figure>
-                <a href="#" class="btn-remove" title="Remove Product"><i class="icon-close"></i></a>
+                <button class="btn-remove" title="Remove Product"><i class="icon-close" onclick="delCartItem(${proData.proId})"></i></button>
             `;
                     dProCart.appendChild(div);
                 });
                 cartCount.textContent = proCount;
-                cartTotalPrice.textContent = totalPrice;
+                cartTotalPrice.textContent = `$${totalPrice}`;
             } else {
                 cartCount.textContent = proCount;
-                cartTotalPrice.textContent = totalPrice;
+                cartTotalPrice.textContent = `$${totalPrice}`;
             }
         }
 
         cartFunc();
+
+        const delCartItem = (proId) => {
+            let sessionData;
+            sessionData = JSON.parse(sessionStorage.getItem("cartInfo"));
+            let newSesData = sessionData.filter(proData => proData.proId != proId);
+            let cartObj = JSON.stringify(newSesData);
+            sessionStorage.setItem("cartInfo", cartObj);
+            cartFunc();
+            Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                title: 'Product has been deleted',
+                showConfirmButton: false,
+                timer: 1500
+            })
+        }
     </script>
 
     <div class="header-bottom sticky-header">

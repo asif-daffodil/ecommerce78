@@ -292,6 +292,13 @@
              sessionStorage.setItem("cartInfo", cartObj);
          }
          cartFunc();
+         Swal.fire({
+             position: 'bottom-end',
+             icon: 'success',
+             title: 'Product has been added to the cart',
+             showConfirmButton: false,
+             timer: 1500
+         })
          return false;
      }
  </script>
